@@ -1,9 +1,5 @@
 package br.ufrn.telefoneme.dto;
 
-
-/**
- * Created by Vinicius on 09/12/2015.
- */
 public class TelefoneDTO {
     private String localizacao;
     private String setor;
