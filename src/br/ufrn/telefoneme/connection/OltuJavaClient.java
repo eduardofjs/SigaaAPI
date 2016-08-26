@@ -24,12 +24,12 @@ public class OltuJavaClient {
     /**
      * Client ID of your client credential.  Change this to match whatever credential you have created.
      */
-    public static final String CLIENT_ID = "client_id";
+    public static final String CLIENT_ID = "mobile-services-id";
 
     /**
      * Client secret of your client credential.  Change this to match whatever credential you have created.
      */
-    public static final String CLIENT_SECRET = "client_secret";
+    public static final String CLIENT_SECRET = "segredo";
 
     public static final String RESOURCE_URL_TPL = "http://apitestes.info.ufrn.br/telefone-services/services/consulta/telefone/";
 

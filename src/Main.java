@@ -11,7 +11,7 @@ public class Main {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		String text = OltuJavaClient.getResource("");
+		String text = OltuJavaClient.getResource("imd");
         ArrayList<TelefoneDTO> telefones = new ArrayList<TelefoneDTO>();
         if(!text.equalsIgnoreCase("")){
             try {
