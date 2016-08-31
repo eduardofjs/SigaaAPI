@@ -6,6 +6,7 @@ import org.json.JSONObject;
 
 import br.ufrn.telefoneme.connection.OltuJavaClient;
 import br.ufrn.telefoneme.dto.CursoDTO;
+import br.ufrn.telefoneme.dto.MatrizCurricularDTO;
 import br.ufrn.telefoneme.dto.TelefoneDTO;
 
 public class Main {
@@ -60,9 +61,9 @@ public class Main {
         }
         
         for(CursoDTO curso : cursos){
+        	if(curso.getCurso().equals("TECNOLOGIA DA INFORMAÇÃO"))
+        		System.out.println(curso.getIdCurso());
         	System.out.println(curso.getCurso());
         }
-        
 	}
-
 }
