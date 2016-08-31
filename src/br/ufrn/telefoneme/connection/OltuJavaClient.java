@@ -64,9 +64,11 @@ public class OltuJavaClient {
             String token =
                     client.accessToken(request, OAuthJSONAccessTokenResponse.class)
                             .getAccessToken();
-
-            HttpURLConnection resource_cxn =
-                    (HttpURLConnection)(new URL(RESOURCE_URL_TPL + urlIntermediaria + complemento).openConnection());
+            HttpURLConnection resource_cxn;
+            if(complemento.isEmpty())
+            	resource_cxn = (HttpURLConnection)(new URL(RESOURCE_URL_TPL + urlIntermediaria).openConnection());
+            else
+            	resource_cxn = (HttpURLConnection)(new URL(RESOURCE_URL_TPL + urlIntermediaria + "/" + complemento).openConnection());
             resource_cxn.addRequestProperty("Authorization", "Bearer " + token);
 
             InputStream resource = resource_cxn.getInputStream();
