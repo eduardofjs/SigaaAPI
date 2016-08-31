@@ -6,6 +6,9 @@ import org.apache.oltu.oauth2.client.request.OAuthClientRequest;
 import org.apache.oltu.oauth2.client.response.OAuthJSONAccessTokenResponse;
 import org.apache.oltu.oauth2.common.message.types.GrantType;
 
+import exception.ExtracaoServidorException;
+import exception.IdException;
+
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -33,11 +36,32 @@ public class OltuJavaClient {
 
     public static final String RESOURCE_URL_TPL = "http://apitestes.info.ufrn.br";
 
-    private static String getDados(String urlIntermediaria, int complemento){
-    	return getDadosAux(urlIntermediaria,Integer.toString(complemento));
+    
+    
+    public static String getEstruturaCurricular() throws ExtracaoServidorException{
+    	return getDados("/curso-services/services/consulta/curso/GRADUACAO","");
     }
     
-    private static String getDados(String urlIntermediaria, String complemento){
+    public static String getMatrizCurricular(Integer idCurso) throws Exception{
+    	if(idCurso < 0){
+    		throw new IdException("ID menor que zero!");  
+    	}
+        return getDados("/curso-services/services/consulta/curso/matriz/graduacao",idCurso);	
+    }
+    
+    public static String getComponentes(Integer idCurriculo) throws ExtracaoServidorException,IdException{
+    	if(idCurriculo<0){
+    		throw new IdException("ID menor que zero!"); 
+    	}
+    	return getDados("/curso-services/services/consulta/curso/componentes",idCurriculo);
+    }
+    
+    
+    private static String getDados(String urlIntermediaria, int complemento) throws ExtracaoServidorException{
+    	return getDadosAux(urlIntermediaria,""+complemento);
+    }
+    
+    private static String getDados(String urlIntermediaria, String complemento) throws ExtracaoServidorException{
     	return getDadosAux(urlIntermediaria,complemento);
     }
     /**
@@ -48,8 +72,9 @@ public class OltuJavaClient {
      * @param urlIntermediaria
      * @param complemento
      * @return
+     * @throws Exception 
      */
-    private static String getDadosAux(String urlIntermediaria, String complemento){
+    private static String getDadosAux(String urlIntermediaria, String complemento) throws ExtracaoServidorException{
         String resultJson = "";
         try {
             OAuthClient client = new OAuthClient(new URLConnectionClient());
@@ -64,11 +89,9 @@ public class OltuJavaClient {
             String token =
                     client.accessToken(request, OAuthJSONAccessTokenResponse.class)
                             .getAccessToken();
-            HttpURLConnection resource_cxn;
-            if(complemento.isEmpty())
-            	resource_cxn = (HttpURLConnection)(new URL(RESOURCE_URL_TPL + urlIntermediaria).openConnection());
-            else
-            	resource_cxn = (HttpURLConnection)(new URL(RESOURCE_URL_TPL + urlIntermediaria + "/" + complemento).openConnection());
+
+            HttpURLConnection resource_cxn =
+                    (HttpURLConnection)(new URL(RESOURCE_URL_TPL + urlIntermediaria + complemento).openConnection());
             resource_cxn.addRequestProperty("Authorization", "Bearer " + token);
 
             InputStream resource = resource_cxn.getInputStream();
@@ -81,22 +104,9 @@ public class OltuJavaClient {
             }
 
         } catch (Exception exn) {
-            exn.printStackTrace();
+            throw new ExtracaoServidorException("Problemas na obtenção de dados!",exn.getCause());
         }
 
         return resultJson;
-    }
-    
-
-    public static String getEstruturaCurricular(){
-    	return getDados("/curso-services/services/consulta/curso/GRADUACAO","");
-    }
-    
-    public static String getMatrizCurricular(Integer idCurso){
-        return getDados("/curso-services/services/consulta/curso/matriz/graduacao",idCurso);	
-    }
-    
-    public static String getComponentes(Integer idCurriculo){
-        return getDados("/curso-services/services/consulta/curso/componentes",idCurriculo);
     }
 }
