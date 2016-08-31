@@ -31,18 +31,19 @@ public class OltuJavaClient {
      */
     public static final String CLIENT_SECRET = "segredo";
 
-    public static final String RESOURCE_URL_TPL = "http://apitestes.info.ufrn.br/telefone-services/services/consulta/telefone/";
+    public static final String RESOURCE_URL_TPL = "http://apitestes.info.ufrn.br";
 
     /**
      * Request a fresh access token using the given client ID, client secret, and token request URL,
      * then request the resource at the given resource URL using that access token, and get the resource
      * content.  If an exception is thrown, print the stack trace instead.
      *
-     * @param keyWord It's the information you are searching   
+     * @param unidade Unidade que se quer saber os telefones
      */
 
-    public static String getResource(String keyWord){
+    public static String getTelefones(String unidade){
         String resultJson = "";
+        String urlIntermediaria = "/telefone-services/services/consulta/telefone/";
         try {
             OAuthClient client = new OAuthClient(new URLConnectionClient());
 
@@ -58,7 +59,52 @@ public class OltuJavaClient {
                             .getAccessToken();
 
             HttpURLConnection resource_cxn =
-                    (HttpURLConnection)(new URL(RESOURCE_URL_TPL + keyWord).openConnection());
+                    (HttpURLConnection)(new URL(RESOURCE_URL_TPL + urlIntermediaria + unidade).openConnection());
+            resource_cxn.addRequestProperty("Authorization", "Bearer " + token);
+
+            InputStream resource = resource_cxn.getInputStream();
+
+            BufferedReader r = new BufferedReader(new InputStreamReader(resource, "UTF-8"));
+            String line = null;
+
+            while ((line = r.readLine()) != null) {
+                resultJson += line;
+            }
+
+        } catch (Exception exn) {
+            exn.printStackTrace();
+        }
+
+        return resultJson;
+    }
+    
+    /**
+     * Request a fresh access token using the given client ID, client secret, and token request URL,
+     * then request the resource at the given resource URL using that access token, and get the resource
+     * content.  If an exception is thrown, print the stack trace instead.
+     *
+     * @param unidade Unidade que se quer saber os telefones
+     */
+
+    public static String getEstruturaCurricular(){
+        String resultJson = "";
+        String urlIntermediaria = "/curso-services/services/consulta/curso/GRADUACAO";
+        try {
+            OAuthClient client = new OAuthClient(new URLConnectionClient());
+
+            OAuthClientRequest request =
+                    OAuthClientRequest.tokenLocation(TOKEN_REQUEST_URL)
+                            .setGrantType(GrantType.CLIENT_CREDENTIALS)
+                            .setClientId(CLIENT_ID)
+                            .setClientSecret(CLIENT_SECRET)
+                            .buildQueryMessage();
+
+            String token =
+                    client.accessToken(request, OAuthJSONAccessTokenResponse.class)
+                            .getAccessToken();
+
+            HttpURLConnection resource_cxn =
+                    (HttpURLConnection)(new URL(RESOURCE_URL_TPL + urlIntermediaria).openConnection());
             resource_cxn.addRequestProperty("Authorization", "Bearer " + token);
 
             InputStream resource = resource_cxn.getInputStream();
