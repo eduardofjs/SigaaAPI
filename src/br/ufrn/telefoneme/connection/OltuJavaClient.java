@@ -6,8 +6,8 @@ import org.apache.oltu.oauth2.client.request.OAuthClientRequest;
 import org.apache.oltu.oauth2.client.response.OAuthJSONAccessTokenResponse;
 import org.apache.oltu.oauth2.common.message.types.GrantType;
 
-import exception.ExtracaoServidorException;
-import exception.IdException;
+import br.ufrn.telefoneme.exception.ExtracaoServidorException;
+import br.ufrn.telefoneme.exception.IdException;
 
 import java.io.BufferedReader;
 import java.io.InputStream;
@@ -58,7 +58,7 @@ public class OltuJavaClient {
     
     
     private static String getDados(String urlIntermediaria, int complemento) throws ExtracaoServidorException{
-    	return getDadosAux(urlIntermediaria,""+complemento);
+    	return getDadosAux(urlIntermediaria,Integer.toString(complemento));
     }
     
     private static String getDados(String urlIntermediaria, String complemento) throws ExtracaoServidorException{
@@ -91,7 +91,7 @@ public class OltuJavaClient {
                             .getAccessToken();
 
             HttpURLConnection resource_cxn =
-                    (HttpURLConnection)(new URL(RESOURCE_URL_TPL + urlIntermediaria + complemento).openConnection());
+                    (HttpURLConnection)(new URL(RESOURCE_URL_TPL + urlIntermediaria + "/" + complemento).openConnection());
             resource_cxn.addRequestProperty("Authorization", "Bearer " + token);
 
             InputStream resource = resource_cxn.getInputStream();
@@ -104,7 +104,8 @@ public class OltuJavaClient {
             }
 
         } catch (Exception exn) {
-            throw new ExtracaoServidorException("Problemas na obtenÃ§Ã£o de dados!",exn.getCause());
+        	exn.printStackTrace();
+            throw new ExtracaoServidorException("Problemas na obtenção de dados!",exn.getCause());
         }
 
         return resultJson;

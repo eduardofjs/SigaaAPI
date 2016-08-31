@@ -1,4 +1,4 @@
-package exception;
+package br.ufrn.telefoneme.exception;
 
 public class JsonStringInvalidaException extends Exception {
 

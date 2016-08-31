@@ -1,12 +1,10 @@
-package test;
-
-import java.util.ArrayList;
+package br.ufrn.telefoneme.test;
 
 import org.junit.Test;
 
 import br.ufrn.telefoneme.connection.OltuJavaClient;
-import exception.ExtracaoServidorException;
-import exception.IdException;
+import br.ufrn.telefoneme.exception.ExtracaoServidorException;
+import br.ufrn.telefoneme.exception.IdException;
 
 public class OltuJavaClientExceptionTest {//Separadamente?
 	

@@ -9,7 +9,7 @@ import org.json.JSONObject;
 import br.ufrn.telefoneme.dto.ComponenteCurricularDTO;
 import br.ufrn.telefoneme.dto.CursoDTO;
 import br.ufrn.telefoneme.dto.MatrizCurricularDTO;
-import exception.JsonStringInvalidaException;
+import br.ufrn.telefoneme.exception.JsonStringInvalidaException;
 
 public class JsonToObject {
 	

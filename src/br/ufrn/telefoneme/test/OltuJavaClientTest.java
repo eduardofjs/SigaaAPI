@@ -1,4 +1,4 @@
-package test;
+package br.ufrn.telefoneme.test;
 
 import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.fail;
@@ -6,8 +6,8 @@ import static org.junit.Assert.fail;
 import org.junit.Test;
 
 import br.ufrn.telefoneme.connection.OltuJavaClient;
-import exception.ExtracaoServidorException;
-import exception.IdException;
+import br.ufrn.telefoneme.exception.ExtracaoServidorException;
+import br.ufrn.telefoneme.exception.IdException;
 
 public class OltuJavaClientTest {
 

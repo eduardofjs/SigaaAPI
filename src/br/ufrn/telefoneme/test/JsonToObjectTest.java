@@ -1,4 +1,4 @@
-package test;
+package br.ufrn.telefoneme.test;
 
 import static org.junit.Assert.*;
 
@@ -6,9 +6,9 @@ import org.junit.Test;
 
 import br.ufrn.telefoneme.connection.OltuJavaClient;
 import br.ufrn.telefoneme.conversion.JsonToObject;
-import exception.ExtracaoServidorException;
-import exception.IdException;
-import exception.JsonStringInvalidaException;
+import br.ufrn.telefoneme.exception.ExtracaoServidorException;
+import br.ufrn.telefoneme.exception.IdException;
+import br.ufrn.telefoneme.exception.JsonStringInvalidaException;
 
 public class JsonToObjectTest {
 
@@ -32,13 +32,13 @@ public class JsonToObjectTest {
 	public void testToComponenteCurricularDTO() throws  IdException {
 		String text="";
 		try {
-			text=OltuJavaClient.getComponentes(232132);
+			text=OltuJavaClient.getComponentes(102200805);
 			assertNotNull(JsonToObject.toComponenteCurricularDTO(text));
 			assertFalse(JsonToObject.toComponenteCurricularDTO(text).isEmpty());
 		} catch (ExtracaoServidorException e) {
-			fail("N√£o conectado");
+			fail("N„o conectado");
 		} catch (JsonStringInvalidaException e) {
-			fail("String seguinte √© inv√°lida: "+text);
+			fail("String seguinte È inv·lida: "+text);
 		}
 	}
 
@@ -46,7 +46,7 @@ public class JsonToObjectTest {
 	public void testToMatrizCurricularDTO() throws IdException {
 		String text="";
 		try {
-			text=OltuJavaClient.getMatrizCurricular(3342324);
+			text=OltuJavaClient.getMatrizCurricular(92127264);
 			assertNotNull(JsonToObject.toMatrizCurricularDTO(text));
 			assertNotNull(JsonToObject.toMatrizCurricularDTO(text).isEmpty());
 		} catch (ExtracaoServidorException e) {

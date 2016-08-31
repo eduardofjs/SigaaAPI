@@ -5,9 +5,9 @@ import br.ufrn.telefoneme.conversion.JsonToObject;
 import br.ufrn.telefoneme.dto.ComponenteCurricularDTO;
 import br.ufrn.telefoneme.dto.CursoDTO;
 import br.ufrn.telefoneme.dto.MatrizCurricularDTO;
-import exception.ExtracaoServidorException;
-import exception.IdException;
-import exception.JsonStringInvalidaException;
+import br.ufrn.telefoneme.exception.ExtracaoServidorException;
+import br.ufrn.telefoneme.exception.IdException;
+import br.ufrn.telefoneme.exception.JsonStringInvalidaException;
 
 public class Main {
 
@@ -26,15 +26,14 @@ public class Main {
 		} catch (JsonStringInvalidaException e1) {
 			e1.printStackTrace();
 		}
+		System.out.println("CURSOS DE GRADUAÇÃO DA UFRN\n");
         for(CursoDTO curso : cursos){
-        	if(curso.getCurso().equals("TECNOLOGIA DA INFORMAï¿½ï¿½O"))
-        		System.out.println(curso.getIdCurso());
         	System.out.println(curso.getCurso());
         }
-        
+		System.out.println("--------------------------------------------");
 
         try {
-			text = OltuJavaClient.getMatrizCurricular(2131244);
+			text = OltuJavaClient.getMatrizCurricular(92127264);
 		} catch (ExtracaoServidorException | IdException e) {
 			e.printStackTrace();
 		}
@@ -43,26 +42,31 @@ public class Main {
 			matrizesCurriculares = JsonToObject.toMatrizCurricularDTO(text);
 		} catch (JsonStringInvalidaException e1) {
 			e1.printStackTrace();
-		} 
+		}
+		System.out.println("MATRIZES CURRICULARES DO CURSO DE TECNOLOGIA DA INFORMAÇÃO\n");
         for(MatrizCurricularDTO matrizCurricular : matrizesCurriculares){
-        	System.out.println(matrizCurricular.getNome());
+        	if(matrizCurricular.getAtivo())
+        		System.out.println(matrizCurricular.getNome() + " - " + matrizCurricular.getEnfase() + " - " + matrizCurricular.getTurno() + " - " + matrizCurricular.getIdCurriculo());
         }
+		System.out.println("--------------------------------------------");
         
 
         try {
-			text = OltuJavaClient.getComponentes(12);
+			text = OltuJavaClient.getComponentes(102200805);
 		} catch (ExtracaoServidorException | IdException e) {
 			e.printStackTrace();
 		}
-        ArrayList<ComponenteCurricularDTO> componentesCurriculares=new ArrayList<>();
+        ArrayList<ComponenteCurricularDTO> componentesCurriculares = new ArrayList<>();
 		try {
 			componentesCurriculares = JsonToObject.toComponenteCurricularDTO(text);
 		} catch (JsonStringInvalidaException e) {
 			e.printStackTrace();
 		}
-        
-        if(!componentesCurriculares.isEmpty())
-        	System.out.println(componentesCurriculares.get(0).getNome());
+		
+		System.out.println("ESTRUTURA CURRICULAR DA MATRIZ CURRICULAR DO CURSO DE TECNOLOGIA DA INFORMAÇÃO - COMPUTAÇÃO\n");
+		for(ComponenteCurricularDTO componenteCurricular : componentesCurriculares){
+        	System.out.println(componenteCurricular.getNome());
+		}
         
 	}
 }

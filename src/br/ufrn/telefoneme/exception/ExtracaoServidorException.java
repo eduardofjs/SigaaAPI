@@ -1,7 +1,4 @@
-/**
- * 
- */
-package exception;
+package br.ufrn.telefoneme.exception;
 
 /**
  * @author leal
