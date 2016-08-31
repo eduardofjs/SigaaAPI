@@ -33,17 +33,24 @@ public class OltuJavaClient {
 
     public static final String RESOURCE_URL_TPL = "http://apitestes.info.ufrn.br";
 
+    private static String getDados(String urlIntermediaria, int complemento){
+    	return getDadosAux(urlIntermediaria,Integer.toString(complemento));
+    }
+    
+    private static String getDados(String urlIntermediaria, String complemento){
+    	return getDadosAux(urlIntermediaria,complemento);
+    }
     /**
      * Request a fresh access token using the given client ID, client secret, and token request URL,
      * then request the resource at the given resource URL using that access token, and get the resource
      * content.  If an exception is thrown, print the stack trace instead.
-     *
-     * @param unidade Unidade que se quer saber os telefones
+     * 
+     * @param urlIntermediaria
+     * @param complemento
+     * @return
      */
-
-    public static String getTelefones(String unidade){
+    private static String getDadosAux(String urlIntermediaria, String complemento){
         String resultJson = "";
-        String urlIntermediaria = "/telefone-services/services/consulta/telefone/";
         try {
             OAuthClient client = new OAuthClient(new URLConnectionClient());
 
@@ -59,11 +66,11 @@ public class OltuJavaClient {
                             .getAccessToken();
 
             HttpURLConnection resource_cxn =
-                    (HttpURLConnection)(new URL(RESOURCE_URL_TPL + urlIntermediaria + unidade).openConnection());
+                    (HttpURLConnection)(new URL(RESOURCE_URL_TPL + urlIntermediaria + complemento).openConnection());
             resource_cxn.addRequestProperty("Authorization", "Bearer " + token);
 
             InputStream resource = resource_cxn.getInputStream();
-
+            
             BufferedReader r = new BufferedReader(new InputStreamReader(resource, "UTF-8"));
             String line = null;
 
@@ -78,89 +85,16 @@ public class OltuJavaClient {
         return resultJson;
     }
     
-    /**
-     * Request a fresh access token using the given client ID, client secret, and token request URL,
-     * then request the resource at the given resource URL using that access token, and get the resource
-     * content.  If an exception is thrown, print the stack trace instead.
-     */
 
     public static String getEstruturaCurricular(){
-        String resultJson = "";
-        String urlIntermediaria = "/curso-services/services/consulta/curso/GRADUACAO";
-        try {
-            OAuthClient client = new OAuthClient(new URLConnectionClient());
-
-            OAuthClientRequest request =
-                    OAuthClientRequest.tokenLocation(TOKEN_REQUEST_URL)
-                            .setGrantType(GrantType.CLIENT_CREDENTIALS)
-                            .setClientId(CLIENT_ID)
-                            .setClientSecret(CLIENT_SECRET)
-                            .buildQueryMessage();
-
-            String token =
-                    client.accessToken(request, OAuthJSONAccessTokenResponse.class)
-                            .getAccessToken();
-
-            HttpURLConnection resource_cxn =
-                    (HttpURLConnection)(new URL(RESOURCE_URL_TPL + urlIntermediaria).openConnection());
-            resource_cxn.addRequestProperty("Authorization", "Bearer " + token);
-
-            InputStream resource = resource_cxn.getInputStream();
-
-            BufferedReader r = new BufferedReader(new InputStreamReader(resource, "UTF-8"));
-            String line = null;
-
-            while ((line = r.readLine()) != null) {
-                resultJson += line;
-            }
-
-        } catch (Exception exn) {
-            exn.printStackTrace();
-        }
-
-        return resultJson;
+    	return getDados("/curso-services/services/consulta/curso/GRADUACAO","");
     }
     
-    /**
-     * Request a fresh access token using the given client ID, client secret, and token request URL,
-     * then request the resource at the given resource URL using that access token, and get the resource
-     * content.  If an exception is thrown, print the stack trace instead.
-     */
-
     public static String getMatrizCurricular(Integer idCurso){
-        String resultJson = "";
-        String urlIntermediaria = "/curso-services/services/consulta/curso/matriz/graduacao";
-        try {
-            OAuthClient client = new OAuthClient(new URLConnectionClient());
-
-            OAuthClientRequest request =
-                    OAuthClientRequest.tokenLocation(TOKEN_REQUEST_URL)
-                            .setGrantType(GrantType.CLIENT_CREDENTIALS)
-                            .setClientId(CLIENT_ID)
-                            .setClientSecret(CLIENT_SECRET)
-                            .buildQueryMessage();
-
-            String token =
-                    client.accessToken(request, OAuthJSONAccessTokenResponse.class)
-                            .getAccessToken();
-
-            HttpURLConnection resource_cxn =
-                    (HttpURLConnection)(new URL(RESOURCE_URL_TPL + urlIntermediaria + "/" + idCurso).openConnection());
-            resource_cxn.addRequestProperty("Authorization", "Bearer " + token);
-
-            InputStream resource = resource_cxn.getInputStream();
-
-            BufferedReader r = new BufferedReader(new InputStreamReader(resource, "UTF-8"));
-            String line = null;
-
-            while ((line = r.readLine()) != null) {
-                resultJson += line;
-            }
-
-        } catch (Exception exn) {
-            exn.printStackTrace();
-        }
-
-        return resultJson;
+        return getDados("/curso-services/services/consulta/curso/matriz/graduacao",idCurso);	
+    }
+    
+    public static String getComponentes(Integer idCurriculo){
+        return getDados("/curso-services/services/consulta/curso/componentes",idCurriculo);
     }
 }
