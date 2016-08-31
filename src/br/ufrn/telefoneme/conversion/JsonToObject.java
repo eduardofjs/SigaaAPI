@@ -9,10 +9,11 @@ import org.json.JSONObject;
 import br.ufrn.telefoneme.dto.ComponenteCurricularDTO;
 import br.ufrn.telefoneme.dto.CursoDTO;
 import br.ufrn.telefoneme.dto.MatrizCurricularDTO;
+import exception.JsonStringInvalidaException;
 
-public class JsonToClass {
+public class JsonToObject {
 	
-	public static ArrayList<CursoDTO> toCursoDTO(String text){
+	public static ArrayList<CursoDTO> toCursoDTO(String text) throws JsonStringInvalidaException{
 		ArrayList<CursoDTO> cursos = new ArrayList<CursoDTO>();
         if(!text.equalsIgnoreCase("")){
             try {
@@ -31,13 +32,15 @@ public class JsonToClass {
 
 
             } catch (JSONException e) {
-                e.printStackTrace();
+            	throw new JsonStringInvalidaException(e.getMessage(),e.getCause());
             }
+        }else{
+        	throw new JsonStringInvalidaException("String vazia!");
         }
         return cursos;
     }
 	
-	public static ArrayList<ComponenteCurricularDTO> toComponenteCurricularDTO(String text){
+	public static ArrayList<ComponenteCurricularDTO> toComponenteCurricularDTO(String text) throws JsonStringInvalidaException{
 ArrayList<ComponenteCurricularDTO> componentesCurriculares = new ArrayList<>();        
         
         if(!text.equalsIgnoreCase("")){
@@ -54,13 +57,15 @@ ArrayList<ComponenteCurricularDTO> componentesCurriculares = new ArrayList<>();
 
 
             } catch (JSONException e) {
-                e.printStackTrace();
+            	throw new JsonStringInvalidaException(e.getMessage(),e.getCause());
             }
+        }else{
+        	throw new JsonStringInvalidaException("String vazia!");
         }
         return componentesCurriculares;
     }
 	
-	public static ArrayList<MatrizCurricularDTO> toMatrizCurricularDTO(String text){
+	public static ArrayList<MatrizCurricularDTO> toMatrizCurricularDTO(String text) throws JsonStringInvalidaException{
 		ArrayList<MatrizCurricularDTO> matrizesCurriculares = new ArrayList<MatrizCurricularDTO>();
         if(!text.equalsIgnoreCase("")){
             try {
@@ -91,8 +96,10 @@ ArrayList<ComponenteCurricularDTO> componentesCurriculares = new ArrayList<>();
                 }
 
             } catch (JSONException e) {
-                e.printStackTrace();
+            	throw new JsonStringInvalidaException(e.getMessage(),e.getCause());
             }
+        }else{
+        	throw new JsonStringInvalidaException("String vazia!");
         }
         return matrizesCurriculares;
     }

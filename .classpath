@@ -2,8 +2,9 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
-	<classpathentry kind="lib" path="C:/Users/Joel/Downloads/org.json.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Joel/Downloads/org.apache.oltu.oauth2.client-1.0.0.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Joel/Downloads/org.apache.oltu.oauth2.common-1.0.0.jar"/>
+	<classpathentry kind="lib" path="/home/leal/Downloads/org.json.jar"/>
+	<classpathentry kind="lib" path="/home/leal/Dropbox/workspace/SIGAA/org.apache.oltu.oauth2.client-1.0.0.jar"/>
+	<classpathentry kind="lib" path="/home/leal/Dropbox/workspace/SIGAA/org.apache.oltu.oauth2.common-1.0.0.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

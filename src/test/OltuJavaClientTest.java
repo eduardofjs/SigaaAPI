@@ -1,6 +1,7 @@
 package test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.fail;
 
 import org.junit.Test;
 
@@ -10,17 +11,35 @@ import exception.IdException;
 
 public class OltuJavaClientTest {
 
-	@Test(expected=IdException.class)
-	public void negativeIdTest() throws Exception {
-		OltuJavaClient.getComponentes(-12);
-		OltuJavaClient.getMatrizCurricular(-12);
+	
+	@Test
+	public void getCursosTest(){
+		try{
+			assertNotEquals(OltuJavaClient.getCursos(), "");
+		}catch(ExtracaoServidorException ex){
+			fail("Não conectado");
+		}
 	}
 	
-	//Deve ser testado sem ter haver conexão com o servidor
-	@Test(expected=ExtracaoServidorException.class)
-	public void urlVaziaTest() throws Exception {
-		OltuJavaClient.getComponentes(0);
-		OltuJavaClient.getEstruturaCurricular();
-		OltuJavaClient.getMatrizCurricular(0);
+	@Test
+	public void getComponentesTest(){
+		try{
+			assertNotEquals(OltuJavaClient.getComponentes(3213), "");
+		}catch(ExtracaoServidorException ex){
+			fail("Não conectado");
+		}catch(IdException ex){
+			fail("Exceção não esperada");
+		}
+	}
+	
+	@Test
+	public void getMatrizTest(){
+		try{
+			assertNotEquals(OltuJavaClient.getMatrizCurricular(3113), "");
+		}catch(ExtracaoServidorException ex){
+			fail("Não conectado");
+		}catch(IdException ex){
+			fail("Exceção não esperada");
+		}
 	}
 }

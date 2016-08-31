@@ -38,11 +38,11 @@ public class OltuJavaClient {
 
     
     
-    public static String getEstruturaCurricular() throws ExtracaoServidorException{
+    public static String getCursos() throws ExtracaoServidorException{
     	return getDados("/curso-services/services/consulta/curso/GRADUACAO","");
     }
     
-    public static String getMatrizCurricular(Integer idCurso) throws Exception{
+    public static String getMatrizCurricular(Integer idCurso) throws ExtracaoServidorException,IdException{
     	if(idCurso < 0){
     		throw new IdException("ID menor que zero!");  
     	}
