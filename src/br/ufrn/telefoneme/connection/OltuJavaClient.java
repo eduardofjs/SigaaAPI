@@ -53,9 +53,19 @@ public class OltuJavaClient {
     	if(idCurriculo<0){
     		throw new IdException("ID menor que zero!"); 
     	}
-    	return getDados("/curso-services/services/consulta/curso/componentes",idCurriculo);
+    	return getDados("/curso-services/services/consulta/curso/componentes/detalhes",idCurriculo);
     }
     
+    public static String getEstatísticas(String nivel, String codigo) throws ExtracaoServidorException{
+    	return getDados("/ensino-services/services/consulta/turmas/estatisticas",nivel + "/" + codigo);
+    }
+    
+    public static String getAvaliacaoInstitucionalDocente(Integer idUnidade, Integer ano, Integer periodo) throws ExtracaoServidorException,IdException{
+    	if(idUnidade<0){
+    		throw new IdException("ID menor que zero!"); 
+    	}
+    	return getDados("/ensino-services/services/consulta/avaliacaoInstitucional/docente",idUnidade + "/" + ano + "/" + periodo);
+    }
     
     private static String getDados(String urlIntermediaria, int complemento) throws ExtracaoServidorException{
     	return getDadosAux(urlIntermediaria,Integer.toString(complemento));

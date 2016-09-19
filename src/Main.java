@@ -4,6 +4,7 @@ import br.ufrn.telefoneme.connection.OltuJavaClient;
 import br.ufrn.telefoneme.conversion.JsonToObject;
 import br.ufrn.telefoneme.dto.ComponenteCurricularDTO;
 import br.ufrn.telefoneme.dto.CursoDTO;
+import br.ufrn.telefoneme.dto.EstatisticasTurmasDTO;
 import br.ufrn.telefoneme.dto.MatrizCurricularDTO;
 import br.ufrn.telefoneme.exception.ExtracaoServidorException;
 import br.ufrn.telefoneme.exception.IdException;
@@ -65,8 +66,27 @@ public class Main {
 		
 		System.out.println("ESTRUTURA CURRICULAR DA MATRIZ CURRICULAR DO CURSO DE TECNOLOGIA DA INFORMAÇÃO - COMPUTAÇÃO\n");
 		for(ComponenteCurricularDTO componenteCurricular : componentesCurriculares){
-        	System.out.println(componenteCurricular.getNome());
+        	System.out.println(componenteCurricular.getNome() + " - " + componenteCurricular.getCodigo());
 		}
+
+		System.out.println("--------------------------------------------");
         
+
+        try {
+			text = OltuJavaClient.getEstatísticas("GRADUACAO", "DIM0549");
+		} catch (ExtracaoServidorException e) {
+			e.printStackTrace();
+		}
+        ArrayList<EstatisticasTurmasDTO> estatisticasTurmas = new ArrayList<>();
+		try {
+			estatisticasTurmas = JsonToObject.toEstatisticasTurmasDTO(text);
+		} catch (JsonStringInvalidaException e) {
+			e.printStackTrace();
+		}
+		
+		System.out.println("ESTATISTICAS DAS TURMAS DE GRAFOS\n");
+		for(EstatisticasTurmasDTO estatisticaTurma : estatisticasTurmas){
+        	System.out.println(estatisticaTurma.getAno() + "." + estatisticaTurma.getPeriodo() + " - " + (estatisticaTurma.getAprovados()+estatisticaTurma.getReprovados()) + " - " + estatisticaTurma.getAprovados());
+		}
 	}
 }
