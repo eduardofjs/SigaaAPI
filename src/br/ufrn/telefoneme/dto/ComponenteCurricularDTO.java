@@ -22,24 +22,6 @@ public class ComponenteCurricularDTO {
 	private List<ComponenteCurricularDTO> componentesBloco;
 	
 	/**
-	 * @param codigo
-	 * @param nome
-	 * @param isObrigatoria
-	 * @param semetreOferta
-	 */
-	public ComponenteCurricularDTO(String codigo, String nome, boolean isObrigatoria, int semetreOferta, String departamento, int cargaHorariaTotal, String preRequisitos, String coRequisitos, String equivalentes, List<ComponenteCurricularDTO> componentesBloco) {
-		this.codigo = codigo;
-		this.nome = nome;
-		this.isObrigatoria = isObrigatoria;
-		this.semetreOferta = semetreOferta;
-		this.departamento = departamento;
-		this.cargaHorariaTotal = cargaHorariaTotal;
-		this.preRequisitos = preRequisitos;
-		this.coRequisitos = coRequisitos;
-		this.equivalentes = equivalentes;
-		this.componentesBloco = componentesBloco;
-	}
-	/**
 	 * @return the codigo
 	 */
 	public String getCodigo() {

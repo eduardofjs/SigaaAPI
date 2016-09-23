@@ -11,18 +11,6 @@ public class EstatisticasTurmasDTO {
 	private Integer reprovados;
 	private Integer trancados;
 	
-	public EstatisticasTurmasDTO(Integer ano, Integer periodo, String codigo, String nomeComponente,
-			String codigoComponente, Integer aprovados, Integer reprovados, Integer trancados) {
-		this.ano = ano;
-		this.periodo = periodo;
-		this.codigo = codigo;
-		this.nomeComponente = nomeComponente;
-		this.codigoComponente = codigoComponente;
-		this.aprovados = aprovados;
-		this.reprovados = reprovados;
-		this.trancados = trancados;
-	}
-	
 	public Integer getAno() {
 		return ano;
 	}

@@ -22,7 +22,7 @@ public class OltuJavaClient {
     /**
      * URL for requesting OAuth access tokens.
      */
-    public static final String TOKEN_REQUEST_URL = "http://apitestes.info.ufrn.br/authz-server/oauth/token";
+    public static final String TOKEN_REQUEST_URL = "https://apitestes.info.ufrn.br/authz-server/oauth/token";
 
     /**
      * Client ID of your client credential.  Change this to match whatever credential you have created.
@@ -34,7 +34,7 @@ public class OltuJavaClient {
      */
     public static final String CLIENT_SECRET = "segredo";
 
-    public static final String RESOURCE_URL_TPL = "http://apitestes.info.ufrn.br";
+    public static final String RESOURCE_URL_TPL = "https://apitestes.info.ufrn.br";
 
     
     
@@ -65,6 +65,14 @@ public class OltuJavaClient {
     		throw new IdException("ID menor que zero!"); 
     	}
     	return getDados("/ensino-services/services/consulta/avaliacaoInstitucional/docente",idUnidade + "/" + ano + "/" + periodo);
+    }
+    
+    public static String getUnidadesAcademicas(String nome) throws ExtracaoServidorException{
+    	return getDados("/unidades-services/services/consulta/unidade",nome);
+    }
+    
+    public static String getAvaliacoesInstitucionaisDocentes(Integer codigoUnidade, Integer ano, Integer periodo) throws ExtracaoServidorException{
+    	return getDados("/ensino-services/services/consulta/avaliacaoInstitucional/docente",codigoUnidade + "/" + ano + "/" + periodo);
     }
     
     private static String getDados(String urlIntermediaria, int complemento) throws ExtracaoServidorException{

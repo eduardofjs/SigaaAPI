@@ -47,29 +47,6 @@ public class MatrizCurricularDTO{
 	private Integer creditosIdealSemestre;
 	
 	private Boolean ativo;
-	
-	public MatrizCurricularDTO(Long idCurriculo, String codigo, String nome, Integer ano, Integer periodo, String municipio, String grauAcademico, String modalidade, String turno, String enfase, Integer chTotalMin, Integer chOptativasMin, Integer chComplementarMin, Integer semestreConclusaoMin, Integer semestreConclusaoIdeal, Integer semestreConclusaoMax, Integer creditosMinSemestre, Integer creditosMaxSemestre, Integer creditosIdealSemestre, Boolean ativo){
-		this.idCurriculo = idCurriculo;
-		this.codigo = codigo;
-		this.nome = nome;
-		this.ano = ano;
-		this.periodo = periodo;
-		this.municipio = municipio;
-		this.grauAcademico = grauAcademico;
-		this.modalidade = modalidade;
-		this.turno = turno;
-		this.enfase = enfase;
-		this.chTotalMin = chTotalMin;
-		this.chOptativasMin = chOptativasMin;
-		this.chComplementarMin = chComplementarMin;
-		this.semestreConclusaoMin = semestreConclusaoMin;
-		this.semestreConclusaoIdeal = semestreConclusaoIdeal;
-		this.semestreConclusaoMax = semestreConclusaoMax;
-		this.creditosMinSemestre = creditosMinSemestre;
-		this.creditosMaxSemestre = creditosMaxSemestre;
-		this.creditosIdealSemestre = creditosIdealSemestre;
-		this.ativo = ativo;
-    }
 
 	public Long getIdCurriculo() {
 		return idCurriculo;

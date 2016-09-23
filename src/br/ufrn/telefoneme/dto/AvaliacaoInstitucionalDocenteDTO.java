@@ -11,18 +11,6 @@ public class AvaliacaoInstitucionalDocenteDTO {
 	private Double mediaGeral;
 	private Double desvioPadraoGeral;
 	
-	public AvaliacaoInstitucionalDocenteDTO(String docente, String nomeComponente, String codigoComponente,
-			String codigoTurma, String horario, Integer discente, Double mediaGeral, Double desvioPadraoGeral) {
-		this.docente = docente;
-		this.nomeComponente = nomeComponente;
-		this.codigoComponente = codigoComponente;
-		this.codigoTurma = codigoTurma;
-		this.horario = horario;
-		this.discente = discente;
-		this.mediaGeral = mediaGeral;
-		this.desvioPadraoGeral = desvioPadraoGeral;
-	}
-	
 	public String getDocente() {
 		return docente;
 	}

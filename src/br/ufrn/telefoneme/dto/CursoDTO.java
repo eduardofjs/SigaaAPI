@@ -13,15 +13,6 @@ public class CursoDTO {
 	private String nivel;
 	private String unidade;
 	private String municipio;
-	
-	public CursoDTO(Integer idCurso, String curso, String coordenador, String nivel, String unidade, String municipio){
-        this.idCurso = idCurso;
-        this.curso = curso;
-        this.coordenador = coordenador;
-        this.nivel = nivel;
-        this.unidade = unidade;
-        this.municipio = municipio;
-    }
 
 	public Integer getIdCurso() {
 		return idCurso;
