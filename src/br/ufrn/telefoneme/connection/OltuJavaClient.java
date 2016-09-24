@@ -56,7 +56,7 @@ public class OltuJavaClient {
     	return getDados("/curso-services/services/consulta/curso/componentes/detalhes",idCurriculo);
     }
     
-    public static String getEstatísticas(String nivel, String codigo) throws ExtracaoServidorException{
+    public static String getEstatisticas(String nivel, String codigo) throws ExtracaoServidorException{
     	return getDados("/ensino-services/services/consulta/turmas/estatisticas",nivel + "/" + codigo);
     }
     
@@ -123,7 +123,7 @@ public class OltuJavaClient {
 
         } catch (Exception exn) {
         	exn.printStackTrace();
-            throw new ExtracaoServidorException("Problemas na obtenção de dados!",exn.getCause());
+            throw new ExtracaoServidorException("Problemas na obtenï¿½ï¿½o de dados!",exn.getCause());
         }
 
         return resultJson;
