@@ -10,14 +10,13 @@ import java.awt.event.ActionListener;
 import java.util.HashMap;
 import java.util.Vector;
 
-import javax.swing.ComboBoxModel;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import br.ufrn.telefoneme.dados.Dados;
+import br.ufrn.telefoneme.dados.FachadaDeDados;
 import br.ufrn.telefoneme.dto.CursoDTO;
 import br.ufrn.telefoneme.dto.MatrizCurricularDTO;
 import br.ufrn.telefoneme.exception.IdException;
@@ -58,9 +57,9 @@ public class TelaCursos extends JFrame implements ActionListener {
 		
 		Vector<Item> model = new Vector<Item>();
         model.addElement( new Item((long) 0, "Selecione" ) );
-		Dados dados = new Dados();
+		
 		String nomeCurso;
-		for(CursoDTO curso : dados.getCursos()){
+		for(CursoDTO curso : FachadaDeDados.getInstance().getCursos()){
 			nomeCurso = curso.getCurso() + "/" + curso.getUnidade() + " - " + curso.getMunicipio() + " - " + curso.getNivel();
 	        model.addElement( new Item((long) curso.getIdCurso(), nomeCurso ) );
 		}
@@ -89,10 +88,10 @@ public class TelaCursos extends JFrame implements ActionListener {
         Integer idCurso = item.getId();
         Vector<Item> model = new Vector<Item>();
         model.addElement( new Item((long) 0, "Selecione" ) );
-        Dados dados = new Dados();
+
         String nomeMatriz;
 		try {
-			for(MatrizCurricularDTO matriz : dados.getMatrizes(idCurso)){
+			for(MatrizCurricularDTO matriz : FachadaDeDados.getInstance().getMatrizes(idCurso)){
 				nomeMatriz = matriz.getNome() + " - " + matriz.getMunicipio() + " - " + matriz.getModalidade() + " - ";
 				if(matriz.getEnfase() != null)
 					nomeMatriz += matriz.getEnfase() + " - ";

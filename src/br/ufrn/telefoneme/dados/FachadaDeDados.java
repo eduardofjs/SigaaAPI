@@ -5,15 +5,30 @@ import java.util.List;
 
 import br.ufrn.telefoneme.connection.OltuJavaClient;
 import br.ufrn.telefoneme.conversion.JsonToObject;
+import br.ufrn.telefoneme.dto.ComponenteCurricularDTO;
 import br.ufrn.telefoneme.dto.CursoDTO;
 import br.ufrn.telefoneme.dto.MatrizCurricularDTO;
 import br.ufrn.telefoneme.exception.ExtracaoServidorException;
 import br.ufrn.telefoneme.exception.IdException;
 import br.ufrn.telefoneme.exception.JsonStringInvalidaException;
 
-public class Dados {
-	
+/**
+ * 
+ * PS: Facade and Singleton
+ * @author Marciel Leal
+ *
+ */
+public class FachadaDeDados {
+	private static FachadaDeDados instance=new FachadaDeDados();
 	String text = "";
+	
+	private FachadaDeDados(){
+		//Empty
+	}
+	
+	public static FachadaDeDados getInstance(){
+		return instance;
+	}
 	
 	public List<CursoDTO> getCursos(){
 		try {
@@ -45,6 +60,23 @@ public class Dados {
 		}
         
         return cursos;
+	}
+	
+	public List<ComponenteCurricularDTO> getComponentes(){
+		
+		try {
+			text = OltuJavaClient.getComponentes(102200805);
+		} catch (ExtracaoServidorException | IdException e) {
+			e.printStackTrace();
+		}
+        ArrayList<ComponenteCurricularDTO> componentesCurriculares = new ArrayList<>();
+		try {
+			componentesCurriculares = JsonToObject.toComponenteCurricularDTO(text);
+		} catch (JsonStringInvalidaException e) {
+			e.printStackTrace();
+		}
+
+		return componentesCurriculares;
 	}
 	
 }

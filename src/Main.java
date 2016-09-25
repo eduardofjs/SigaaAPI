@@ -29,7 +29,7 @@ public class Main {
 		} catch (JsonStringInvalidaException e1) {
 			e1.printStackTrace();
 		}
-		System.out.println("CURSOS DE GRADUAÇÃO DA UFRN\n");
+		System.out.println("CURSOS DE GRADUAï¿½ï¿½O DA UFRN\n");
         for(CursoDTO curso : cursos){
         	System.out.println(curso.getCurso());
         }
@@ -46,7 +46,7 @@ public class Main {
 		} catch (JsonStringInvalidaException e1) {
 			e1.printStackTrace();
 		}
-		System.out.println("MATRIZES CURRICULARES DO CURSO DE TECNOLOGIA DA INFORMAÇÃO\n");
+		System.out.println("MATRIZES CURRICULARES DO CURSO DE TECNOLOGIA DA INFORMAï¿½ï¿½O\n");
         for(MatrizCurricularDTO matrizCurricular : matrizesCurriculares){
         	if(matrizCurricular.getAtivo())
         		System.out.println(matrizCurricular.getNome() + " - " + matrizCurricular.getEnfase() + " - " + matrizCurricular.getTurno() + " - " + matrizCurricular.getIdCurriculo());
@@ -66,7 +66,7 @@ public class Main {
 			e.printStackTrace();
 		}
 		
-		System.out.println("ESTRUTURA CURRICULAR DA MATRIZ CURRICULAR DO CURSO DE TECNOLOGIA DA INFORMAÇÃO - COMPUTAÇÃO\n");
+		System.out.println("ESTRUTURA CURRICULAR DA MATRIZ CURRICULAR DO CURSO DE TECNOLOGIA DA INFORMAï¿½ï¿½O - COMPUTAï¿½ï¿½O\n");
 		for(ComponenteCurricularDTO componenteCurricular : componentesCurriculares){
         	System.out.println(componenteCurricular.getNome() + " - " + componenteCurricular.getCodigo() + " - " + componenteCurricular.getDepartamento());
 		}
@@ -75,7 +75,7 @@ public class Main {
         
 
         try {
-			text = OltuJavaClient.getEstatísticas("GRADUACAO", "DIM0549");
+			text = OltuJavaClient.getEstatisticas("GRADUACAO", "DIM0549");
 		} catch (ExtracaoServidorException e) {
 			e.printStackTrace();
 		}
@@ -106,7 +106,7 @@ public class Main {
 			e.printStackTrace();
 		}
 		
-		System.out.println("UNIDADES ACADÊMICAS COM O NOME PARECIDO COM INSTITUTO METRÓPOLE DIGITAL\n");
+		System.out.println("UNIDADES ACADï¿½MICAS COM O NOME PARECIDO COM INSTITUTO METRï¿½POLE DIGITAL\n");
 		for(UnidadeAcademicaDTO unidadeAcademica : unidadesAcademica){
         	System.out.println(unidadeAcademica.getNomeUnidade() + " - " + unidadeAcademica.getCodigoUnidade());
 		}
@@ -126,7 +126,7 @@ public class Main {
 			e.printStackTrace();
 		}
 		
-		System.out.println("AVALIAÇÃO INSTITUCIONAL DOS DOCENTES DO IMD EM 2015.2\n");
+		System.out.println("AVALIAï¿½ï¿½O INSTITUCIONAL DOS DOCENTES DO IMD EM 2015.2\n");
 		for(AvaliacaoInstitucionalDocenteDTO avaliacaoInstitucionalDocente : avaliacaoInstitucionalDocentes){
         	System.out.println(avaliacaoInstitucionalDocente.getDocente() + " - " + avaliacaoInstitucionalDocente.getMediaGeral());
 		}
