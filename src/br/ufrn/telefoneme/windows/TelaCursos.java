@@ -13,6 +13,7 @@ import java.util.Vector;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
@@ -24,7 +25,7 @@ import br.ufrn.telefoneme.exception.IdException;
 public class TelaCursos extends JFrame implements ActionListener {
 
 	private JPanel contentPane;
-	private HashMap componentMap;
+	private HashMap<String, Component> componentMap;
 	
 	/**
 	 * Launch the application.
@@ -53,28 +54,34 @@ public class TelaCursos extends JFrame implements ActionListener {
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
-		setLayout(new FlowLayout());
+		getContentPane().setLayout(new FlowLayout());
 		
 		Vector<Item> model = new Vector<Item>();
-        model.addElement( new Item((long) 0, "Selecione" ) );
-		
-		String nomeCurso;
+        model.addElement( new Item("0", "Selecione" ) );
+
+        String nomeCurso;
 		for(CursoDTO curso : FachadaDeDados.getInstance().getCursos()){
 			nomeCurso = curso.getCurso() + "/" + curso.getUnidade() + " - " + curso.getMunicipio() + " - " + curso.getNivel();
-	        model.addElement( new Item((long) curso.getIdCurso(), nomeCurso ) );
+			model.addElement( new Item(curso.getIdCurso().toString(), nomeCurso ) );
 		}
 		box = new JComboBox<Item>(model);
 		box.setName("Cursos");
 		box.setEnabled(true);
 		box.addActionListener( this );
+        
+        JLabel label = new JLabel("Curso");
+        getContentPane().add(label);
         getContentPane().add(box, BorderLayout.NORTH );
 
 		model = new Vector<Item>();
-        model.addElement( new Item((long) 0, "Selecione" ) );
+        model.addElement( new Item("0", "Selecione" ) );
 		box = new JComboBox<Item>(model);
 		box.setName("Matriz");
 		box.setEnabled(true);
 		box.addActionListener( this );
+        
+        JLabel lblMatrizCurricular = new JLabel("Matriz Curricular");
+        getContentPane().add(lblMatrizCurricular);
         getContentPane().add(box, BorderLayout.SOUTH );
 		
         createComponentMap();
@@ -84,51 +91,68 @@ public class TelaCursos extends JFrame implements ActionListener {
     {
         JComboBox<?> comboBox = (JComboBox<?>)e.getSource();
         Item item = (Item)comboBox.getSelectedItem();
-        comboBox = (JComboBox<?>) getComponentByName("Matriz");
-        Integer idCurso = item.getId();
-        Vector<Item> model = new Vector<Item>();
-        model.addElement( new Item((long) 0, "Selecione" ) );
+        if(!comboBox.equals((JComboBox<?>) getComponentByName("Matriz"))){
+	        comboBox = (JComboBox<?>) getComponentByName("Matriz");
+	        Integer idCurso = Integer.parseInt(item.getId());
+	        Vector<Item> model = new Vector<Item>();
+	        model.addElement( new Item("0", "Selecione" ) );
 
-        String nomeMatriz;
-		try {
-			for(MatrizCurricularDTO matriz : FachadaDeDados.getInstance().getMatrizes(idCurso)){
-				nomeMatriz = matriz.getNome() + " - " + matriz.getMunicipio() + " - " + matriz.getModalidade() + " - ";
-				if(matriz.getEnfase() != null)
-					nomeMatriz += matriz.getEnfase() + " - ";
-				nomeMatriz += matriz.getTurno();
-				if(!matriz.getAtivo())
-					nomeMatriz += "(Inativo)";
-			    model.addElement( new Item(matriz.getIdCurriculo(), nomeMatriz ) );
+	        String nomeMatriz;
+			try {
+				for(MatrizCurricularDTO matriz : FachadaDeDados.getInstance().getMatrizes(idCurso)){
+					nomeMatriz = matriz.getNome() + " - " + matriz.getMunicipio() + " - " + matriz.getModalidade() + " - ";
+					if(matriz.getEnfase() != null)
+						nomeMatriz += matriz.getEnfase() + " - ";
+					nomeMatriz += matriz.getTurno();
+					if(!matriz.getAtivo())
+						nomeMatriz += "(Inativo)";
+				    model.addElement( new Item(new Item (matriz.getIdCurriculo().toString(), matriz.getTurno()), nomeMatriz ) );
+				}
+			} catch (IdException e1) {
+				e1.printStackTrace();
 			}
-		} catch (IdException e1) {
-			e1.printStackTrace();
-		}
-		DefaultComboBoxModel modelo = new DefaultComboBoxModel(model);
-		comboBox.setModel(modelo);
-		comboBox.setEnabled(true);
-		comboBox.addActionListener( this );
-        getContentPane().add(comboBox, BorderLayout.SOUTH );
-        
-        System.out.println( item.getId() + " : " + item.getDescription() );
+			DefaultComboBoxModel modelo = new DefaultComboBoxModel(model);
+			comboBox.setModel(modelo);
+			comboBox.setEnabled(true);
+			comboBox.addActionListener( this );
+	        getContentPane().add(comboBox, BorderLayout.SOUTH );
+    	}
+        else{
+        	String[] aux = item.getId().split(" . ");
+        	Integer idCurriculo = Integer.parseInt(aux[0]);
+        	String turno = aux[1];
+        	try {
+        		TelaEstruturaCurricular ec = new TelaEstruturaCurricular(idCurriculo, turno);
+	        	ec.main(idCurriculo, turno);
+			} catch (IdException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+        }
     }
 	
 	public class Item
 	{
-	    private Long id;
+	    private String id;
 	    private String description;
 
-        public Item(Long id, String description)
+        public Item(String id, String description)
         {
             this.id = id;
             this.description = description;
         }
+        
+        public Item(Item item, String description) {
+			this.id = item.getId() + " . " + item.getDescription();
+			this.description = description;
+		}
 
 		public String getDescription() {
 			return description;
 		}
 
-		public Integer getId() {
-			return id.intValue();
+		public String getId() {
+			return id;
 		}
 
 		@Override
@@ -151,5 +175,5 @@ public class TelaCursos extends JFrame implements ActionListener {
 	        	return (Component) componentMap.get(name);
 	        }
 	        else return null;
-}
+	}
 }
