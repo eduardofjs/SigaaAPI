@@ -55,7 +55,7 @@ public class StringToComponente {
 	 */
 	public List<ComponenteCurricularDTO> getComponentes(String componentes){
 		List<ComponenteCurricularDTO> novosComponentes=new ArrayList<>();
-		List<ComponenteCurricularDTO> compOn=FachadaDeDados.getInstance().getComponentes();
+		List<ComponenteCurricularDTO> compOn=FachadaDeDados.getInstance().getComponentes(102200805);
 		
 		ComponenteCurricularDTO auxiliar=null; 
 		for(String comp:tokenizeStringOfComponents(componentes)){

@@ -62,7 +62,7 @@ public class FachadaDeDados {
         return cursos;
 	}
 	
-	public List<ComponenteCurricularDTO> getComponentes(){
+	public List<ComponenteCurricularDTO> getComponentes(Integer idCurriculo){
 		
 		try {
 			text = OltuJavaClient.getComponentes(102200805);
