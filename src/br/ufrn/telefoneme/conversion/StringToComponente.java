@@ -1,7 +1,7 @@
 /**
  * 
  */
-package br.ufrn.telefoneme.util;
+package br.ufrn.telefoneme.conversion;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,15 +13,9 @@ import br.ufrn.telefoneme.dto.ComponenteCurricularDTO;
  * 
  */
 public class StringToComponente {
-
-	private static StringToComponente instance=new StringToComponente();
 	
 	private StringToComponente() {
 		// TODO Auto-generated constructor stub
-	}
-	
-	public static StringToComponente getInstance(){
-		return instance;
 	}
 	
 	private ArrayList<String> tokenizeStringOfComponents(String components){

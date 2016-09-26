@@ -17,7 +17,7 @@ public class Main {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		String text="";
-		
+		/*
 		try {
 			text = OltuJavaClient.getCursos();
 		} catch (ExtracaoServidorException e) {
@@ -52,7 +52,7 @@ public class Main {
         		System.out.println(matrizCurricular.getNome() + " - " + matrizCurricular.getEnfase() + " - " + matrizCurricular.getTurno() + " - " + matrizCurricular.getIdCurriculo());
         }
 		System.out.println("--------------------------------------------");
-        
+        */
 
         try {
 			text = OltuJavaClient.getComponentes(102200805);
@@ -68,11 +68,12 @@ public class Main {
 		
 		System.out.println("ESTRUTURA CURRICULAR DA MATRIZ CURRICULAR DO CURSO DE TECNOLOGIA DA INFORMA��O - COMPUTA��O\n");
 		for(ComponenteCurricularDTO componenteCurricular : componentesCurriculares){
-        	System.out.println(componenteCurricular.getNome() + " - " + componenteCurricular.getCodigo() + " - " + componenteCurricular.getDepartamento());
+        	if(componenteCurricular.isObrigatoria()==true&&componenteCurricular.getCargaHorariaTotal()==90&&componenteCurricular.getSemetreOferta()%2==0) 
+        		System.out.println(componenteCurricular.getNome() + " - " + componenteCurricular.getCodigo() + " - " + componenteCurricular.getDepartamento());
 		}
 
 		System.out.println("--------------------------------------------");
-        
+        /*
 
         try {
 			text = OltuJavaClient.getEstatisticas("GRADUACAO", "DIM0549");
@@ -129,6 +130,6 @@ public class Main {
 		System.out.println("AVALIA��O INSTITUCIONAL DOS DOCENTES DO IMD EM 2015.2\n");
 		for(AvaliacaoInstitucionalDocenteDTO avaliacaoInstitucionalDocente : avaliacaoInstitucionalDocentes){
         	System.out.println(avaliacaoInstitucionalDocente.getDocente() + " - " + avaliacaoInstitucionalDocente.getMediaGeral());
-		}
+		}*/
 	}
 }
