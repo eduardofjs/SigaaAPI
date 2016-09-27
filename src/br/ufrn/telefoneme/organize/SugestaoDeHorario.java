@@ -25,6 +25,8 @@ public class SugestaoDeHorario {
 		this.tabelas=new ArrayList<>();
 		this.componentes=new ArrayList<>();
 		
+		tabelas.
+		
 		for (int nivel = 1; nivel <= matriz.getSemestreConclusaoIdeal(); nivel++) {
 			tabelas.add(new TabelaDeHorarios(nivel, new TurnoFactory().geraTurno(matriz.getTurno()),
 					new Semana(new Dia(2), new Dia(7))));
@@ -38,11 +40,18 @@ public class SugestaoDeHorario {
 
 	public List<TabelaDeHorarios> getSugestao(){
 		for(Componente componente:componentes){
-			for(TabelaDeHorarios tabela:tabelas){
-				if(tabela.getNivel().equals(componente.getNivel())){
-					componente.insereNaTabelaDeHorarios(tabela);
-					break;
+			if(componente.getPrerequisitos().isEmpty()){
+				for(TabelaDeHorarios tabela:tabelas){
+					if(tabela.getNivel().equals(componente.getNivel())){
+						componente.insereNaTabelaDeHorarios(tabela,null);
+						break;
+					}
 					//TODO Lancar excecoes
+				}
+			}else{
+				
+				for(Componente prereq:componente.getPrerequisitos()){
+					
 				}
 			}
 			

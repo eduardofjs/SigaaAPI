@@ -2,7 +2,7 @@ package br.ufrn.telefoneme.componente;
 
 import java.util.List;
 
-import br.ufrn.telefoneme.organize.TabelaDeHorarios;
+import br.ufrn.telefoneme.organize.SugestaoDeHorario;
 
 /**
  * 
@@ -15,7 +15,7 @@ public class Componente120h extends Componente {
 		super(nivel,codigo, nome, prerequisitos, corequisitos);
 	}
 	@Override
-	public boolean insereNaTabelaDeHorarios(TabelaDeHorarios tabela) {
+	public boolean insereNaTabelaDeHorarios(SugestaoDeHorario sugestao) {
 		//TODO E??
 		return false;
 	}

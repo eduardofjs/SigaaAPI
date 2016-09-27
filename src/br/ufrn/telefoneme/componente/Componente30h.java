@@ -3,7 +3,7 @@ package br.ufrn.telefoneme.componente;
 import java.util.List;
 
 import br.ufrn.telefoneme.organize.Horario;
-import br.ufrn.telefoneme.organize.TabelaDeHorarios;
+import br.ufrn.telefoneme.organize.SugestaoDeHorario;
 
 /**
  * Sempre procura pares de horarios do tipo <impar, par>, nunca o contrario
@@ -18,12 +18,23 @@ public class Componente30h extends Componente {
 	}
 
 	@Override
-	public boolean insereNaTabelaDeHorarios(TabelaDeHorarios tabela) {
+	public boolean insereNaTabelaDeHorarios(SugestaoDeHorario sugestao) {
+		TabelaDeHorarios=sugestao
 		//TODO Testes com prerequisitos 
 		for(int index=0;index<tabela.getHorarios().size()-1;index+=2){
 			if(tabela.getHorarios().get(index).isLivre()&&tabela.getHorarios().get(index).isLivre()){
-				tabela.getHorarios().get(index).ocupaHorario(this);
-				return true;
+				if(this.getPrerequisitos().isEmpty()&&this.getCorequisitos().isEmpty()){
+					tabela.getHorarios().get(index).ocupaHorario(this);
+					return true;
+				}else if(this.getPrerequisitos().isEmpty()){
+					for(Componente correq:this.getCorequisitos()){
+						if(!this.getNivel().equals(correq.getNivel())){
+							
+						}
+					}
+				}else if(this.getPrerequisitos().isEmpty()){
+					
+				}
 			}
 		}return false;
 	}

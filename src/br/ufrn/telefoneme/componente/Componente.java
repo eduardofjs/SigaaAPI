@@ -3,7 +3,7 @@ package br.ufrn.telefoneme.componente;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.ufrn.telefoneme.organize.TabelaDeHorarios;
+import br.ufrn.telefoneme.organize.SugestaoDeHorario;
 
 /**
  * 
@@ -26,7 +26,7 @@ public abstract class Componente {
 		this.corequisitos=(prerequisitos==null)? new ArrayList<Componente>():corequisitos;
 	}
 	
-	public abstract boolean insereNaTabelaDeHorarios(TabelaDeHorarios tabela);
+	public abstract boolean insereNaTabelaDeHorarios(SugestaoDeHorario sugestao);
 	
 	public List<Componente> getPrerequisitos() {
 		return prerequisitos;

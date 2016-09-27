@@ -44,9 +44,9 @@ public class Horario implements Comparable<Horario>{
 	public boolean isLivre() {
 		return isLivre;
 	}
-	public void ocupaHorario(Componente componente){
-		this.componente=componente;
-		isLivre=false;
+	public void ocupaHorario(){
+		this.isLivre=false;
+		
 	}
 	
 	@Override
