@@ -3,6 +3,7 @@ package br.ufrn.telefoneme.organize;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.TreeMap;
 
 import br.ufrn.telefoneme.auxiliarhorario.GeraTabelaDeTurno;
@@ -46,7 +47,9 @@ public class TabelaDeHorarios {
 		//TODO Excecao: Esse componente nao esta no horario 
 	}
 	
-	
+	public Set<Horario> getHorarios(){
+		return tabela.keySet();
+	}
 	
 	/*
 	public List<Horario> getHorariosPeloDia(Dia dia){

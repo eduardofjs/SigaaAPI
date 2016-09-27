@@ -5,6 +5,9 @@ import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
 
+import br.ufrn.telefoneme.auxiliarhorario.Dia;
+import br.ufrn.telefoneme.auxiliarhorario.Semana;
+import br.ufrn.telefoneme.auxiliarhorario.TurnoFactory;
 import br.ufrn.telefoneme.componente.Componente;
 import br.ufrn.telefoneme.componente.ComponenteFactory;
 import br.ufrn.telefoneme.dto.ComponenteCurricularDTO;
@@ -28,16 +31,19 @@ public class SugestaoDeHorario {
 		this.tabelas=new ArrayList<>();
 		this.componentes=new ArrayList<>();
 		
+		//Criando horarios
 		for (int nivel = 1; nivel <= matriz.getSemestreConclusaoIdeal(); nivel++) {
 			tabelas.add(new TabelaDeHorarios(nivel, new TurnoFactory().geraTurno(matriz.getTurno()),
 					new Semana(new Dia(2), new Dia(7))));
 		}
-
+		
+		//Convertendo componentes
 		for(ComponenteCurricularDTO componenteDaGrade:componentesDaGrade){
 			if(componenteDaGrade.isObrigatoria())
 				componentes.add(new ComponenteFactory().geraNovoComponente(componenteDaGrade, matriz.getIdCurriculo()));
 		}
 		
+		//Ordenando componentes para facilitar a procura de componentes sem prerequisito
 		componentes.sort(new Comparator<Componente>(){
 			@Override
 			public int compare(Componente o1, Componente o2) {
