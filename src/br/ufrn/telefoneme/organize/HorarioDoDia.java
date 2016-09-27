@@ -1,5 +1,9 @@
 package br.ufrn.telefoneme.organize;
-
+/**
+ * 
+ * @author Marciel Leal
+ *
+ */
 public class HorarioDoDia {
 	
 	private final Turno turno;
