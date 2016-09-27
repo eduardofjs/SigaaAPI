@@ -8,7 +8,7 @@ import br.ufrn.telefoneme.organize.TabelaDeHorarios;
 /**
  * 
  * @author Marciel Leal
- * Strategy
+ * @category Template
  */
 public abstract class Componente {
 	private final String codigo;
@@ -20,8 +20,8 @@ public abstract class Componente {
 	public Componente(String codigo,String nome,List<Componente> prerequisitos,List<Componente> corequisitos){
 		this.codigo = codigo;
 		this.nome = nome;
-		this.prerequisitos=(prerequisitos==null)?new ArrayList<Componente>():prerequisitos;
-		this.corequisitos=(prerequisitos==null)?new ArrayList<Componente>():corequisitos;
+		this.prerequisitos=(prerequisitos==null)? new ArrayList<Componente>():prerequisitos;
+		this.corequisitos=(prerequisitos==null)? new ArrayList<Componente>():corequisitos;
 	}
 	
 	public abstract void insereNaTabelaDeHorarios(TabelaDeHorarios tabela);

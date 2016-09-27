@@ -33,10 +33,10 @@ public class Main {
         	System.out.println(curso.getCurso());
         }
 		System.out.println("--------------------------------------------");
-
+*/
         try {
 			text = OltuJavaClient.getMatrizCurricular(92127264);
-		} catch (ExtracaoServidorException | IdException e) {
+		} catch (IdException | ConexaoException e) {
 			e.printStackTrace();
 		}
         ArrayList<MatrizCurricularDTO> matrizesCurriculares=new ArrayList<>();
@@ -47,12 +47,15 @@ public class Main {
 		}
 		System.out.println("MATRIZES CURRICULARES DO CURSO DE TECNOLOGIA DA INFORMA��O\n");
         for(MatrizCurricularDTO matrizCurricular : matrizesCurriculares){
-        	if(matrizCurricular.getAtivo())
-        		System.out.println(matrizCurricular.getNome() + " - " + matrizCurricular.getEnfase() + " - " + matrizCurricular.getTurno() + " - " + matrizCurricular.getIdCurriculo());
+        	if(matrizCurricular.getAtivo()){
+        		//System.out.println(matrizCurricular.getNome() + " - " + matrizCurricular.getEnfase() + " - " + matrizCurricular.getTurno() + " - " + matrizCurricular.getIdCurriculo());
+        		System.out.println(matrizCurricular.getPeriodo());
+        		System.out.println(matrizCurricular.getNome());
+        	}
         }
 		System.out.println("--------------------------------------------");
-        */
-
+        
+/*
         try {
 			text = OltuJavaClient.getComponentes(102200805);
 		} catch (ConexaoException | IdException e) {
@@ -72,7 +75,7 @@ public class Main {
 		}
 
 		System.out.println("--------------------------------------------");
-        /*
+        
 
         try {
 			text = OltuJavaClient.getEstatisticas("GRADUACAO", "DIM0549");

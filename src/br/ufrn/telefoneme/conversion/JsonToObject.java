@@ -39,7 +39,7 @@ public class JsonToObject {
 
             } catch (JSONException e) {
             	e.printStackTrace();
-            	throw new JsonStringInvalidaException(e.getMessage(),e.getCause());
+            	throw new JsonStringInvalidaException(e.getMessage());
             }
         }else{
         	throw new JsonStringInvalidaException("String vazia!");
@@ -81,7 +81,7 @@ public class JsonToObject {
 
 
             } catch (JSONException e) {
-            	throw new JsonStringInvalidaException(e.getMessage(),e.getCause());
+            	throw new JsonStringInvalidaException(e.getMessage());
             }
         }else{
         	throw new JsonStringInvalidaException("String vazia!");
@@ -124,7 +124,7 @@ public class JsonToObject {
                 }
 
             } catch (JSONException e) {
-            	throw new JsonStringInvalidaException(e.getMessage(),e.getCause());
+            	throw new JsonStringInvalidaException(e.getMessage());
             }
         }else{
         	throw new JsonStringInvalidaException("String vazia!");
@@ -155,7 +155,7 @@ public class JsonToObject {
 
 
             } catch (JSONException e) {
-            	throw new JsonStringInvalidaException(e.getMessage(),e.getCause());
+            	throw new JsonStringInvalidaException(e.getMessage());
             }
         }else{
         	throw new JsonStringInvalidaException("String vazia!");
@@ -186,7 +186,7 @@ public class JsonToObject {
 
 
             } catch (JSONException e) {
-            	throw new JsonStringInvalidaException(e.getMessage(),e.getCause());
+            	throw new JsonStringInvalidaException(e.getMessage());
             }
         }else{
         	throw new JsonStringInvalidaException("String vazia!");
@@ -215,7 +215,7 @@ public class JsonToObject {
 
 
             } catch (JSONException e) {
-            	throw new JsonStringInvalidaException(e.getMessage(),e.getCause());
+            	throw new JsonStringInvalidaException(e.getMessage());
             }
         }else{
         	throw new JsonStringInvalidaException("String vazia!");

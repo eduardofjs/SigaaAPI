@@ -16,6 +16,7 @@ public class SugestaoDeHorario {
 	public SugestaoDeHorario(MatrizCurricularDTO matriz){
 		this.tabelas=new ArrayList<>();
 		
+		for(int nivel=0;)
 	}
 
 	public List<TabelaDeHorarios> getTabelas() {

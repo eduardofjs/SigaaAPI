@@ -10,15 +10,13 @@ import java.util.List;
 public class TabelaDeHorarios {
 	private final int nivel;
 	private final List<Horario> horarios;
-	private final Semana semana;
+	//TODO May be add/remove this fields after
+	//private final Semana semana;
+	//private final Turno
 	
-	public TabelaDeHorarios(int nivel, Turno turno,Semana semana) {
+	public TabelaDeHorarios(int nivel, TurnoTemplate turno,Semana semana) {
 		this.nivel=nivel;
-		this.horarios=new ArrayList<>();
-		this.semana=semana;
-		//TODO A generator for TabelaDeHorarios
-		//TODO May be, is not necessary fields in this class
-		
+		this.horarios=turno.getHorarios(semana);
 	}
 	public int getNivel() {
 		return nivel;

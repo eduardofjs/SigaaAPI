@@ -8,22 +8,15 @@ import br.ufrn.telefoneme.componente.Componente;
  */
 public class Horario{
 	private Dia dia;
-	private Turno turno;
+	private TurnoTemplate turno;
 	private Integer horarioDoDia;
 	private boolean isLivre;
 	private Componente componente;
 	
-	public Horario(Dia dia, Turno turno, Integer horarioDoDia){
+	public Horario(Dia dia, TurnoTemplate turno, Integer horarioDoDia){
 		this.dia = dia;
 		this.turno = turno;
 		this.horarioDoDia = horarioDoDia;
-		this.isLivre=true;
-	}
-	
-	public Horario(Dia dia,HorarioDoDia horario){
-		this.dia=dia;
-		this.turno=horario.getTurno();
-		this.horarioDoDia=horario.getNumDoHorario();
 		this.isLivre=true;
 	}
 	
@@ -33,10 +26,10 @@ public class Horario{
 	public void setDia(Dia dia) {
 		this.dia = dia;
 	}
-	public Turno getTurno() {
+	public TurnoTemplate getTurno() {
 		return turno;
 	}
-	public void setTurno(Turno turno) {
+	public void setTurno(TurnoTemplate turno) {
 		this.turno = turno;
 	}
 	public Integer getHorarioDoDia() {
