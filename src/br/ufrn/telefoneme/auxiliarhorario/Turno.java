@@ -3,7 +3,7 @@ package br.ufrn.telefoneme.auxiliarhorario;
 /**
  * 
  * @author Marciel Leal
- * @category Decorator and Template
+ * @category Decorator
  */
 public abstract class Turno {
 	
@@ -20,5 +20,5 @@ public abstract class Turno {
 	public Turno getOutroturno() {
 		return outroturno;
 	}
-	
+	public abstract Integer getNumHorariosNoDia();
 }

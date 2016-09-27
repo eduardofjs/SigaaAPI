@@ -22,7 +22,7 @@ public class Manha extends Turno {
 		return "M";
 	}
 	public Integer getNumHorariosNoDia() {
-		return numHorariosNoDia;
+		return this.numHorariosNoDia;
 	}
 
 }

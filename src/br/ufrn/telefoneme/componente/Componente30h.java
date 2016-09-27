@@ -4,6 +4,7 @@ import java.util.List;
 
 import br.ufrn.telefoneme.organize.Horario;
 import br.ufrn.telefoneme.organize.SugestaoDeHorario;
+import br.ufrn.telefoneme.organize.TabelaDeHorarios;
 
 /**
  * Sempre procura pares de horarios do tipo <impar, par>, nunca o contrario
@@ -18,8 +19,7 @@ public class Componente30h extends Componente {
 	}
 
 	@Override
-	public boolean insereNaTabelaDeHorarios(SugestaoDeHorario sugestao) {
-		TabelaDeHorarios=sugestao
+	public boolean insereNaTabelaDeHorarios(TabelaDeHorarios tabela) {
 		//TODO Testes com prerequisitos 
 		for(int index=0;index<tabela.getHorarios().size()-1;index+=2){
 			if(tabela.getHorarios().get(index).isLivre()&&tabela.getHorarios().get(index).isLivre()){

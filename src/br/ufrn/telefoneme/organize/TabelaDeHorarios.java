@@ -1,8 +1,11 @@
 package br.ufrn.telefoneme.organize;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
+import br.ufrn.telefoneme.auxiliarhorario.GeraTabelaDeTurno;
 import br.ufrn.telefoneme.auxiliarhorario.Semana;
 import br.ufrn.telefoneme.auxiliarhorario.Turno;
 import br.ufrn.telefoneme.componente.Componente;
@@ -22,16 +25,27 @@ public class TabelaDeHorarios {
 		this.nivel=nivel;
 		this.tabela=new TreeMap<>();
 		
-		for(Horario horario: turno.getHorarios(semana))
+		for(Horario horario:new GeraTabelaDeTurno().getHorariosDoTurno(semana, turno)){
 			this.tabela.put(horario, null);
+		}
 	}
 	public Integer getNivel() {
 		return nivel;
 	}
 	
-	public Map<Horario, Componente> getTabela() {
-		return tabela;
+	public Componente getComponente(Horario horario) {
+		return tabela.get(horario);
 	}
+	
+	public Horario getHorario(Componente componente){
+		for(Horario horario: tabela.keySet()){
+			if(tabela.get(horario).equals(componente)){
+				return horario;
+			}
+		}return null;
+		//TODO Excecao: Esse componente nao esta no horario 
+	}
+	
 	
 	
 	/*

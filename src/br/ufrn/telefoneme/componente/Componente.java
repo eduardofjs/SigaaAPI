@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.ufrn.telefoneme.organize.SugestaoDeHorario;
+import br.ufrn.telefoneme.organize.TabelaDeHorarios;
 
 /**
  * 
@@ -26,7 +27,7 @@ public abstract class Componente {
 		this.corequisitos=(prerequisitos==null)? new ArrayList<Componente>():corequisitos;
 	}
 	
-	public abstract boolean insereNaTabelaDeHorarios(SugestaoDeHorario sugestao);
+	public abstract boolean insereNaTabelaDeHorarios(TabelaDeHorarios sugestao);
 	
 	public List<Componente> getPrerequisitos() {
 		return prerequisitos;
@@ -47,6 +48,6 @@ public abstract class Componente {
 	public Integer getNivel() {
 		return nivel;
 	}
-	
+
 	
 }
