@@ -48,8 +48,8 @@ public class FachadaDeDados {
         return cursos;
 	}
 	
-	public List<ComponenteCurricularDTO> getComponentes(Integer idCurriculo) throws ConexaoException, IdException, JsonStringInvalidaException{
-		text = OltuJavaClient.getComponentes(102200805);
+	public List<ComponenteCurricularDTO> getComponentes(Long idCurriculo) throws ConexaoException, IdException, JsonStringInvalidaException{
+		text = OltuJavaClient.getComponentes(102200805);//TODO Mudar para idCurriculo
 
         ArrayList<ComponenteCurricularDTO> componentesCurriculares = new ArrayList<>();
         componentesCurriculares = JsonToObject.toComponenteCurricularDTO(text);

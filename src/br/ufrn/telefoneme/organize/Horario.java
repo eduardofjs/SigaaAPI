@@ -6,14 +6,14 @@ import br.ufrn.telefoneme.componente.Componente;
  * @author Marciel Leal
  *
  */
-public class Horario{
+public class Horario implements Comparable<Horario>{
 	private Dia dia;
-	private TurnoTemplate turno;
+	private Turno turno;
 	private Integer horarioDoDia;
 	private boolean isLivre;
 	private Componente componente;
 	
-	public Horario(Dia dia, TurnoTemplate turno, Integer horarioDoDia){
+	public Horario(Dia dia, Turno turno, Integer horarioDoDia){
 		this.dia = dia;
 		this.turno = turno;
 		this.horarioDoDia = horarioDoDia;
@@ -26,10 +26,10 @@ public class Horario{
 	public void setDia(Dia dia) {
 		this.dia = dia;
 	}
-	public TurnoTemplate getTurno() {
+	public Turno getTurno() {
 		return turno;
 	}
-	public void setTurno(TurnoTemplate turno) {
+	public void setTurno(Turno turno) {
 		this.turno = turno;
 	}
 	public Integer getHorarioDoDia() {
@@ -60,5 +60,11 @@ public class Horario{
 			}
 		}return false;
 	}
+
+	@Override
+	public int compareTo(Horario o) {
+		return this.getDia().compareTo(o.getDia());
+	}	
+	
 	
 }

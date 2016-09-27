@@ -1,15 +1,20 @@
 package br.ufrn.telefoneme.organize;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 /**
  * 
  * @author Marciel Leal
  *
  */
-public class Manha extends TurnoTemplate {
+public class Manha extends Turno {
 	private Integer numHorariosPorDiaNoTurno=6;
+
+	public Manha(Turno turno) {
+		super(turno);
+	}
+	public Manha(){
+		//Empty
+	}
 
 	@Override
 	public List<Horario> getHorarios(Semana semana) {

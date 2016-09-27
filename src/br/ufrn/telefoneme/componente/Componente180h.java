@@ -11,13 +11,14 @@ import br.ufrn.telefoneme.organize.TabelaDeHorarios;
  */
 public class Componente180h extends Componente {
 
-	public Componente180h(String codigo, String nome, List<Componente> prerequisitos, List<Componente> corequisitos) {
-		super(codigo, nome, prerequisitos, corequisitos);
+	public Componente180h(Integer nivel, String codigo, String nome, List<Componente> prerequisitos, List<Componente> corequisitos) {
+		super(nivel,codigo, nome, prerequisitos, corequisitos);
 	}
-
+	
 	@Override
-	public void insereNaTabelaDeHorarios(TabelaDeHorarios tabela) {
+	public boolean insereNaTabelaDeHorarios(TabelaDeHorarios tabela) {
 		// TODO Auto-generated method stub
+		return false;
 		
 	}
 

@@ -53,7 +53,7 @@ public class StringToComponente {
 	 * @throws IdException 
 	 * @throws ConexaoException 
 	 */
-	public List<ComponenteCurricularDTO> getComponentes(String componentes, int idCurriculo) throws ConexaoException, IdException, JsonStringInvalidaException{
+	public List<ComponenteCurricularDTO> getComponentes(String componentes, Long idCurriculo) throws ConexaoException, IdException, JsonStringInvalidaException{
 		List<ComponenteCurricularDTO> novosComponentes=new ArrayList<>();
 		List<ComponenteCurricularDTO> compsNoBanco=FachadaDeDados.getInstance().getComponentes(idCurriculo);
 		
@@ -66,5 +66,4 @@ public class StringToComponente {
 		}
 		return novosComponentes;
 	}
-
 }

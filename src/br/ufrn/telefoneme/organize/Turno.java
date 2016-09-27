@@ -5,17 +5,17 @@ import java.util.List;
 /**
  * 
  * @author Marciel Leal
- * @category Decorator
+ * @category Decorator and Template
  */
-public abstract class TurnoTemplate implements Turno{
+public abstract class Turno {
 	
-	private final TurnoTemplate outroturno;
+	private final Turno outroturno;
 	
-	public TurnoTemplate(TurnoTemplate turno){
+	public Turno(Turno turno){
 		this.outroturno=turno;
 		
 	}
-	public TurnoTemplate(){
+	public Turno(){
 		this.outroturno=null;
 	}
 	
