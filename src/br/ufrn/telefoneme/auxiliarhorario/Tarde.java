@@ -1,25 +1,26 @@
-package br.ufrn.telefoneme.turno;
+package br.ufrn.telefoneme.auxiliarhorario;
+
+import java.util.List;
 /**
  * 
  * @author Marciel Leal
  *
  */
-public class Manha extends Turno {
-
+public class Tarde extends Turno {
 	private final Integer numHorariosNoDia=6;
 	
-	public Manha(Turno turno) {
+	public Tarde(Turno turno) {
 		super(turno);
 	}
-	public Manha(){
+	public Tarde(){
 		super();
 	}
 	
 	@Override
 	public String toString(){
 		if(getOutroturno()!=null)
-			return "M"+getOutroturno().toString();
-		return "M";
+			return "T"+getOutroturno().toString();
+		return "T";
 	}
 	public Integer getNumHorariosNoDia() {
 		return numHorariosNoDia;

@@ -1,4 +1,4 @@
-package br.ufrn.telefoneme.turno;
+package br.ufrn.telefoneme.auxiliarhorario;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,9 +1,4 @@
-package br.ufrn.telefoneme.organize;
-
-import br.ufrn.telefoneme.turno.Manha;
-import br.ufrn.telefoneme.turno.Noite;
-import br.ufrn.telefoneme.turno.Tarde;
-import br.ufrn.telefoneme.turno.Turno;
+package br.ufrn.telefoneme.auxiliarhorario;
 
 public class TurnoFactory {
 

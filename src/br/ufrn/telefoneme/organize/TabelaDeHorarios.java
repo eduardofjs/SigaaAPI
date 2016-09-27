@@ -3,8 +3,9 @@ package br.ufrn.telefoneme.organize;
 import java.util.Map;
 import java.util.TreeMap;
 
+import br.ufrn.telefoneme.auxiliarhorario.Semana;
+import br.ufrn.telefoneme.auxiliarhorario.Turno;
 import br.ufrn.telefoneme.componente.Componente;
-import br.ufrn.telefoneme.turno.Turno;
 /**
  * Dada uma tabela imaginaria, ela sera "lida" de cima pra baixo em cada dia e de cada horario
  * @author Marciel Leal

@@ -13,6 +13,8 @@ import br.ufrn.telefoneme.exception.ConexaoException;
 import br.ufrn.telefoneme.exception.IdException;
 import br.ufrn.telefoneme.exception.JsonStringInvalidaException;
 import br.ufrn.telefoneme.turno.Dia;
+import br.ufrn.telefoneme.turno.Semana;
+import br.ufrn.telefoneme.turno.TurnoFactory;
 
 /**
  * Somente disciplinas obrigatorias

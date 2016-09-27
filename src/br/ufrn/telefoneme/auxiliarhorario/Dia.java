@@ -1,7 +1,7 @@
 /**
  * 
  */
-package br.ufrn.telefoneme.turno;
+package br.ufrn.telefoneme.auxiliarhorario;
 
 /**
  * @author leal
