@@ -17,7 +17,7 @@ public class Componente30h extends Componente {
 	public Componente30h(Integer nivel, String codigo, String nome, List<Componente> prerequisitos, List<Componente> corequisitos) {
 		super(nivel,codigo, nome, prerequisitos, corequisitos);
 	}
-
+/*
 	@Override
 	public boolean insereNaTabelaDeHorarios(TabelaDeHorarios tabela) {
 		//TODO Testes com prerequisitos 
@@ -37,6 +37,12 @@ public class Componente30h extends Componente {
 				}
 			}
 		}return false;
+	}*/
+
+	@Override
+	public boolean insereNaTabelaDeHorarios(TabelaDeHorarios sugestao, List<Componente> prerequisitos) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 }

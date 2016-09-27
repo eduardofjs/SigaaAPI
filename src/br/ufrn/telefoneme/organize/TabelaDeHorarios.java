@@ -47,6 +47,20 @@ public class TabelaDeHorarios {
 		//TODO Excecao: Esse componente nao esta no horario 
 	}
 	
+	public List<Horario> getHorarios(List<Componente> componentes){
+		List<Horario> horarios =new ArrayList<>();
+		
+		for(Componente componente: componentes){
+			for(Horario horario: tabela.keySet()){
+				if(tabela.get(horario).equals(componente)){
+					horarios.add(horario);
+					break;
+				}
+			}
+		}return horarios;
+		//TODO Excecao: Esse componente nao esta no horario 
+	}
+	
 	public Set<Horario> getHorarios(){
 		return tabela.keySet();
 	}

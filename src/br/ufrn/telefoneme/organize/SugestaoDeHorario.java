@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
+import java.util.TreeMap;
 
 import br.ufrn.telefoneme.auxiliarhorario.Dia;
 import br.ufrn.telefoneme.auxiliarhorario.Semana;
@@ -54,19 +55,22 @@ public class SugestaoDeHorario {
 
 	public List<TabelaDeHorarios> getSugestao(){
 		for(Componente componente:componentes){
-			if(componente.getPrerequisitos().isEmpty()){
-				for(TabelaDeHorarios tabela:tabelas){
-					if(tabela.getNivel().equals(componente.getNivel())){
+			for(TabelaDeHorarios tabela:tabelas){
+				if(tabela.getNivel().equals(componente.getNivel())){
+					if(componente.getPrerequisitos().isEmpty()){
 						componente.insereNaTabelaDeHorarios(tabela,null);
-						break;
+					}else{
+						componente.insereNaTabelaDeHorarios(tabela,tabela.getHorarios(componente.getPrerequisitos()));
 					}
-					//TODO Lancar excecoes
 				}
+				//TODO Lancar excecoes
+			} 
+			
+				
 			}else{
 				for(TabelaDeHorarios tabela:tabelas){
-					for(Componente prereq:componente.getPrerequisitos()){
-						
-					}
+					
+				}
 			}
 			
 		}//TODO lancar excecoes
