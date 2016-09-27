@@ -125,7 +125,6 @@ public class TelaCursos extends JFrame implements ActionListener {
         		TelaEstruturaCurricular ec = new TelaEstruturaCurricular(idCurriculo, turno);
 	        	ec.main(idCurriculo, turno);
 			} catch (IdException e1) {
-				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
         }

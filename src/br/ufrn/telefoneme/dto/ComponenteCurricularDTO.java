@@ -106,4 +106,14 @@ public class ComponenteCurricularDTO {
 	public void setComponentesBloco(List<ComponenteCurricularDTO> componentesBloco) {
 		this.componentesBloco = componentesBloco;
 	}
+	
+	@Override
+	public boolean equals(Object o){
+		if(o instanceof ComponenteCurricularDTO){
+			ComponenteCurricularDTO comp= (ComponenteCurricularDTO)o;
+			if(this.codigo.equals(comp.getCodigo())){
+				return true;
+			}
+		}return false;
+	}
 }

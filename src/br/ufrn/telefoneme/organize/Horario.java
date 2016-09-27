@@ -1,28 +1,36 @@
-/**
- * 
- */
 package br.ufrn.telefoneme.organize;
 
+import br.ufrn.telefoneme.componente.Componente;
+
 /**
- * @author leal
+ * @author Marciel Leal
  *
  */
-public class Horario implements Comparable{
-	public enum Turno{ M,T,N }
-	private int dia;
+public class Horario{
+	private Dia dia;
 	private Turno turno;
-	private int horarioDoDia;
+	private Integer horarioDoDia;
+	private boolean isLivre;
+	private Componente componente;
 	
-	public Horario(int dia, Turno turno, int horarioDoDia){
+	public Horario(Dia dia, Turno turno, Integer horarioDoDia){
 		this.dia = dia;
 		this.turno = turno;
 		this.horarioDoDia = horarioDoDia;
+		this.isLivre=true;
 	}
 	
-	public int getDia() {
+	public Horario(Dia dia,HorarioDoDia horario){
+		this.dia=dia;
+		this.turno=horario.getTurno();
+		this.horarioDoDia=horario.getNumDoHorario();
+		this.isLivre=true;
+	}
+	
+	public Dia getDia() {
 		return dia;
 	}
-	public void setDia(int dia) {
+	public void setDia(Dia dia) {
 		this.dia = dia;
 	}
 	public Turno getTurno() {
@@ -31,40 +39,33 @@ public class Horario implements Comparable{
 	public void setTurno(Turno turno) {
 		this.turno = turno;
 	}
-	public int getHorarioDoDia() {
+	public Integer getHorarioDoDia() {
 		return horarioDoDia;
 	}
-	public void setHorarioDoDia(int horarioDoDia) {
+	public void setHorarioDoDia(Integer horarioDoDia) {
 		this.horarioDoDia = horarioDoDia;
 	}
-	
+	public Componente getComponente(){
+		return componente;
+	}
+	public boolean isLivre() {
+		return isLivre;
+	}
+	public void ocupaHorario(Componente componente){
+		this.componente=componente;
+		isLivre=false;
+	}
 	
 	@Override
 	public boolean equals(Object o){
 		if(o instanceof Horario){
 			Horario outrohor=(Horario) o;
-			if(this.dia==outrohor.getDia()
-					&&this.turno==outrohor.getTurno()
-					&&this.getHorarioDoDia()==outrohor.getHorarioDoDia()){
+			if(this.dia.equals(outrohor)
+					&&this.turno.equals(outrohor.getTurno())
+					&&this.horarioDoDia.equals(outrohor.getHorarioDoDia())){
 				return true;
 			}
 		}return false;
-	}
-
-	@Override
-	public int compareTo(Object o) {
-		if(o instanceof Horario){
-			Horario outrohor=(Horario) o;
-			if(this.dia<outrohor.getDia()
-					||(this.dia<outrohor.getDia()&&this.turno.compareTo(outrohor.getTurno())==-1)
-					||(this.dia<outrohor.getDia()&&this.turno.compareTo(outrohor.getTurno())==-1)&&this.getHorarioDoDia()<outrohor.getHorarioDoDia()
-					){
-				return -1;
-			}else if(this.equals(outrohor)){
-				return 0;
-			}
-		}
-		return 1;
 	}
 	
 }

@@ -6,7 +6,7 @@ import org.apache.oltu.oauth2.client.request.OAuthClientRequest;
 import org.apache.oltu.oauth2.client.response.OAuthJSONAccessTokenResponse;
 import org.apache.oltu.oauth2.common.message.types.GrantType;
 
-import br.ufrn.telefoneme.exception.ExtracaoServidorException;
+import br.ufrn.telefoneme.exception.ConexaoException;
 import br.ufrn.telefoneme.exception.IdException;
 
 import java.io.BufferedReader;
@@ -38,48 +38,48 @@ public class OltuJavaClient {
 
     
     
-    public static String getCursos() throws ExtracaoServidorException{
+    public static String getCursos() throws ConexaoException{
     	return getDados("/curso-services/services/consulta/curso/GRADUACAO","");
     }
     
-    public static String getMatrizCurricular(Integer idCurso) throws ExtracaoServidorException,IdException{
+    public static String getMatrizCurricular(Integer idCurso) throws ConexaoException,IdException{
     	if(idCurso < 0){
     		throw new IdException("ID menor que zero!");  
     	}
         return getDados("/curso-services/services/consulta/curso/matriz/graduacao",idCurso);	
     }
     
-    public static String getComponentes(Integer idCurriculo) throws ExtracaoServidorException,IdException{
+    public static String getComponentes(Integer idCurriculo) throws ConexaoException,IdException{
     	if(idCurriculo<0){
     		throw new IdException("ID menor que zero!"); 
     	}
     	return getDados("/curso-services/services/consulta/curso/componentes/detalhes",idCurriculo);
     }
     
-    public static String getEstatisticas(String nivel, String codigo) throws ExtracaoServidorException{
+    public static String getEstatisticas(String nivel, String codigo) throws ConexaoException{
     	return getDados("/ensino-services/services/consulta/turmas/estatisticas",nivel + "/" + codigo);
     }
     
-    public static String getAvaliacaoInstitucionalDocente(Integer idUnidade, Integer ano, Integer periodo) throws ExtracaoServidorException,IdException{
+    public static String getAvaliacaoInstitucionalDocente(Integer idUnidade, Integer ano, Integer periodo) throws ConexaoException,IdException{
     	if(idUnidade<0){
     		throw new IdException("ID menor que zero!"); 
     	}
     	return getDados("/ensino-services/services/consulta/avaliacaoInstitucional/docente",idUnidade + "/" + ano + "/" + periodo);
     }
     
-    public static String getUnidadesAcademicas(String nome) throws ExtracaoServidorException{
+    public static String getUnidadesAcademicas(String nome) throws ConexaoException{
     	return getDados("/unidades-services/services/consulta/unidade",nome);
     }
     
-    public static String getAvaliacoesInstitucionaisDocentes(Integer codigoUnidade, Integer ano, Integer periodo) throws ExtracaoServidorException{
+    public static String getAvaliacoesInstitucionaisDocentes(Integer codigoUnidade, Integer ano, Integer periodo) throws ConexaoException{
     	return getDados("/ensino-services/services/consulta/avaliacaoInstitucional/docente",codigoUnidade + "/" + ano + "/" + periodo);
     }
     
-    private static String getDados(String urlIntermediaria, int complemento) throws ExtracaoServidorException{
+    private static String getDados(String urlIntermediaria, int complemento) throws ConexaoException{
     	return getDadosAux(urlIntermediaria,Integer.toString(complemento));
     }
     
-    private static String getDados(String urlIntermediaria, String complemento) throws ExtracaoServidorException{
+    private static String getDados(String urlIntermediaria, String complemento) throws ConexaoException{
     	return getDadosAux(urlIntermediaria,complemento);
     }
     /**
@@ -92,7 +92,7 @@ public class OltuJavaClient {
      * @return
      * @throws Exception 
      */
-    private static String getDadosAux(String urlIntermediaria, String complemento) throws ExtracaoServidorException{
+    private static String getDadosAux(String urlIntermediaria, String complemento) throws ConexaoException{
         String resultJson = "";
         try {
             OAuthClient client = new OAuthClient(new URLConnectionClient());
@@ -123,7 +123,7 @@ public class OltuJavaClient {
 
         } catch (Exception exn) {
         	exn.printStackTrace();
-            throw new ExtracaoServidorException("Problemas na obten��o de dados!",exn.getCause());
+            throw new ConexaoException("Problemas na obten��o de dados!",exn.getCause());
         }
 
         return resultJson;

@@ -6,7 +6,7 @@ import org.junit.Test;
 
 import br.ufrn.telefoneme.connection.OltuJavaClient;
 import br.ufrn.telefoneme.conversion.JsonToObject;
-import br.ufrn.telefoneme.exception.ExtracaoServidorException;
+import br.ufrn.telefoneme.exception.ConexaoException;
 import br.ufrn.telefoneme.exception.IdException;
 import br.ufrn.telefoneme.exception.JsonStringInvalidaException;
 
@@ -20,7 +20,7 @@ public class JsonToObjectTest {
 			text = OltuJavaClient.getCursos();
 			assertNotNull(JsonToObject.toCursoDTO(text));
 			assertFalse(JsonToObject.toCursoDTO(text).isEmpty());
-		} catch (ExtracaoServidorException e) {
+		} catch (ConexaoException e) {
 			fail("Não conectado");
 		} catch (JsonStringInvalidaException e) {
 			fail("String seguinte é inválida: "+text);
@@ -35,10 +35,10 @@ public class JsonToObjectTest {
 			text=OltuJavaClient.getComponentes(102200805);
 			assertNotNull(JsonToObject.toComponenteCurricularDTO(text));
 			assertFalse(JsonToObject.toComponenteCurricularDTO(text).isEmpty());
-		} catch (ExtracaoServidorException e) {
-			fail("N�o conectado");
+		} catch (ConexaoException e) {
+			fail("N�o conectado");
 		} catch (JsonStringInvalidaException e) {
-			fail("String seguinte � inv�lida: "+text);
+			fail("String seguinte � inv�lida: "+text);
 		}
 	}
 
@@ -49,7 +49,7 @@ public class JsonToObjectTest {
 			text=OltuJavaClient.getMatrizCurricular(92127264);
 			assertNotNull(JsonToObject.toMatrizCurricularDTO(text));
 			assertNotNull(JsonToObject.toMatrizCurricularDTO(text).isEmpty());
-		} catch (ExtracaoServidorException e) {
+		} catch (ConexaoException e) {
 			fail("Não conectado");
 		} catch (JsonStringInvalidaException e) {
 			fail("String seguinte é inválida: "+text);

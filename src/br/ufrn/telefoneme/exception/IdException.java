@@ -1,6 +1,6 @@
 package br.ufrn.telefoneme.exception;
 
-public class IdException extends Exception {
+public class IdException extends ErroNaManipulacaoDosDados {
 
 	public IdException() {
 		super();
@@ -9,13 +9,4 @@ public class IdException extends Exception {
 	public IdException(String message) {
 		super(message);
 	}
-
-	public IdException(Throwable cause) {
-		super(cause);
-	}
-
-	public IdException(String message, Throwable cause) {
-		super(message, cause);
-	}
-
 }

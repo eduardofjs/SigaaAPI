@@ -7,6 +7,9 @@ import java.util.ArrayList;
 import java.util.List;
 import br.ufrn.telefoneme.dados.FachadaDeDados;
 import br.ufrn.telefoneme.dto.ComponenteCurricularDTO;
+import br.ufrn.telefoneme.exception.ConexaoException;
+import br.ufrn.telefoneme.exception.IdException;
+import br.ufrn.telefoneme.exception.JsonStringInvalidaException;
 
 /**
  * @author Marciel Leal
@@ -14,8 +17,8 @@ import br.ufrn.telefoneme.dto.ComponenteCurricularDTO;
  */
 public class StringToComponente {
 	
-	private StringToComponente() {
-		// TODO Auto-generated constructor stub
+	public StringToComponente() {
+		// Empty
 	}
 	
 	private ArrayList<String> tokenizeStringOfComponents(String components){
@@ -46,17 +49,19 @@ public class StringToComponente {
 	 * Gera uma lista de componetes a partir de uma expressão de componentes 
 	 * @param componentes String contendo uma expressão de componentes
 	 * @return Componentes gerados pelo método
+	 * @throws JsonStringInvalidaException 
+	 * @throws IdException 
+	 * @throws ConexaoException 
 	 */
-	public List<ComponenteCurricularDTO> getComponentes(String componentes){
+	public List<ComponenteCurricularDTO> getComponentes(String componentes, int idCurriculo) throws ConexaoException, IdException, JsonStringInvalidaException{
 		List<ComponenteCurricularDTO> novosComponentes=new ArrayList<>();
-		List<ComponenteCurricularDTO> compOn=FachadaDeDados.getInstance().getComponentes(102200805);
+		List<ComponenteCurricularDTO> compsNoBanco=FachadaDeDados.getInstance().getComponentes(idCurriculo);
 		
-		ComponenteCurricularDTO auxiliar=null; 
-		for(String comp:tokenizeStringOfComponents(componentes)){
-			auxiliar= new ComponenteCurricularDTO();
-			auxiliar.setCodigo(comp);
-			if(compOn.contains(auxiliar)){
-				novosComponentes.add(auxiliar);
+		for(ComponenteCurricularDTO compNoBanco:compsNoBanco){
+			for(String comp:tokenizeStringOfComponents(componentes)){				
+				if(compNoBanco.getCodigo().equals(comp)){
+					novosComponentes.add(compNoBanco);
+				}
 			}
 		}
 		return novosComponentes;

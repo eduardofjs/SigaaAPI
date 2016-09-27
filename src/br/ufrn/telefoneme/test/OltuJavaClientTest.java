@@ -6,7 +6,7 @@ import static org.junit.Assert.fail;
 import org.junit.Test;
 
 import br.ufrn.telefoneme.connection.OltuJavaClient;
-import br.ufrn.telefoneme.exception.ExtracaoServidorException;
+import br.ufrn.telefoneme.exception.ConexaoException;
 import br.ufrn.telefoneme.exception.IdException;
 
 public class OltuJavaClientTest {
@@ -16,7 +16,7 @@ public class OltuJavaClientTest {
 	public void getCursosTest(){
 		try{
 			assertNotEquals(OltuJavaClient.getCursos(), "");
-		}catch(ExtracaoServidorException ex){
+		}catch(ConexaoException ex){
 			fail("Não conectado");
 		}
 	}
@@ -25,7 +25,7 @@ public class OltuJavaClientTest {
 	public void getComponentesTest(){
 		try{
 			assertNotEquals(OltuJavaClient.getComponentes(3213), "");
-		}catch(ExtracaoServidorException ex){
+		}catch(ConexaoException ex){
 			fail("Não conectado");
 		}catch(IdException ex){
 			fail("Exceção não esperada");
@@ -36,7 +36,7 @@ public class OltuJavaClientTest {
 	public void getMatrizTest(){
 		try{
 			assertNotEquals(OltuJavaClient.getMatrizCurricular(3113), "");
-		}catch(ExtracaoServidorException ex){
+		}catch(ConexaoException ex){
 			fail("Não conectado");
 		}catch(IdException ex){
 			fail("Exceção não esperada");

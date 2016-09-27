@@ -8,14 +8,13 @@ import br.ufrn.telefoneme.dto.CursoDTO;
 import br.ufrn.telefoneme.dto.EstatisticasTurmasDTO;
 import br.ufrn.telefoneme.dto.MatrizCurricularDTO;
 import br.ufrn.telefoneme.dto.UnidadeAcademicaDTO;
-import br.ufrn.telefoneme.exception.ExtracaoServidorException;
+import br.ufrn.telefoneme.exception.ConexaoException;
 import br.ufrn.telefoneme.exception.IdException;
 import br.ufrn.telefoneme.exception.JsonStringInvalidaException;
 
 public class Main {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		String text="";
 		/*
 		try {
@@ -56,7 +55,7 @@ public class Main {
 
         try {
 			text = OltuJavaClient.getComponentes(102200805);
-		} catch (ExtracaoServidorException | IdException e) {
+		} catch (ConexaoException | IdException e) {
 			e.printStackTrace();
 		}
         ArrayList<ComponenteCurricularDTO> componentesCurriculares = new ArrayList<>();
