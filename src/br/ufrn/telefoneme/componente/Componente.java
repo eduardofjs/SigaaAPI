@@ -30,7 +30,7 @@ public abstract class Componente {
 		this.horarios=new ArrayList<>();
 	}
 	
-	public abstract boolean insereNaTabelaDeHorarios(TabelaDeHorarios sugestao, List<Componente> prerequisitos);
+	public abstract boolean insereNaTabelaDeHorarios(TabelaDeHorarios sugestao, List<Horario> horariosPrerequisitos);
 	
 	public List<Componente> getPrerequisitos() {
 		return prerequisitos;

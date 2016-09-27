@@ -66,13 +66,6 @@ public class SugestaoDeHorario {
 				//TODO Lancar excecoes
 			} 
 			
-				
-			}else{
-				for(TabelaDeHorarios tabela:tabelas){
-					
-				}
-			}
-			
 		}//TODO lancar excecoes
 		return tabelas;
 	}
