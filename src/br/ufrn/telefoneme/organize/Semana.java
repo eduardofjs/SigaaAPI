@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import br.ufrn.telefoneme.turno.Dia;
+
 public class Semana {
 	private final List<Dia> dias;
 	

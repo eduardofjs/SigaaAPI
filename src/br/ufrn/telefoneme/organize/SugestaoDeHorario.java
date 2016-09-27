@@ -1,6 +1,7 @@
 package br.ufrn.telefoneme.organize;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 import br.ufrn.telefoneme.componente.Componente;
@@ -11,6 +12,7 @@ import br.ufrn.telefoneme.exception.CargaHorariaDesconhecidaException;
 import br.ufrn.telefoneme.exception.ConexaoException;
 import br.ufrn.telefoneme.exception.IdException;
 import br.ufrn.telefoneme.exception.JsonStringInvalidaException;
+import br.ufrn.telefoneme.turno.Dia;
 
 /**
  * Somente disciplinas obrigatorias
@@ -24,7 +26,7 @@ public class SugestaoDeHorario {
 	public SugestaoDeHorario(MatrizCurricularDTO matriz,List<ComponenteCurricularDTO> componentesDaGrade) throws IdException, JsonStringInvalidaException, CargaHorariaDesconhecidaException, ConexaoException{
 		this.tabelas=new ArrayList<>();
 		this.componentes=new ArrayList<>();
-		
+		new HashSet<Integer>().
 		tabelas.
 		
 		for (int nivel = 1; nivel <= matriz.getSemestreConclusaoIdeal(); nivel++) {
@@ -49,10 +51,10 @@ public class SugestaoDeHorario {
 					//TODO Lancar excecoes
 				}
 			}else{
-				
-				for(Componente prereq:componente.getPrerequisitos()){
-					
-				}
+				for(TabelaDeHorarios tabela:tabelas){
+					for(Componente prereq:componente.getPrerequisitos()){
+						
+					}
 			}
 			
 		}//TODO lancar excecoes

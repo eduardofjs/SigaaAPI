@@ -1,7 +1,7 @@
 /**
  * 
  */
-package br.ufrn.telefoneme.organize;
+package br.ufrn.telefoneme.turno;
 
 /**
  * @author leal
