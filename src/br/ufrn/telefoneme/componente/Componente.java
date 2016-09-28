@@ -16,9 +16,9 @@ public abstract class Componente {
 	private final Integer nivel;
 	private final String codigo;
 	private final String nome;
-	//TODO ComponentesBloco
 	private final List<Componente> prerequisitos;
 	private final List<Componente> corequisitos;
+	private final List<Componente> subComponente;
 	private final List<Horario> horarios;//TODO repensar: tentar criar uma classe Turma que tenha um componente e uma lista de hoarios
 	
 	public Componente(Integer nivel,String codigo,String nome,List<Componente> prerequisitos,List<Componente> corequisitos){
@@ -27,6 +27,7 @@ public abstract class Componente {
 		this.nome = nome;
 		this.prerequisitos=(prerequisitos==null)? new ArrayList<Componente>():prerequisitos;
 		this.corequisitos=(prerequisitos==null)? new ArrayList<Componente>():corequisitos;
+		this.subComponente=new ArrayList<>();
 		this.horarios=new ArrayList<>();
 	}
 	//TODO Adicionar horarios em todos os componentes nos metodos filhos
@@ -64,6 +65,9 @@ public abstract class Componente {
 				//TODO Realmente so por codigo da certo?
 			}
 		}return false;
+	}
+	public List<Componente> getSubComponente() {
+		return subComponente;
 	}
 	
 }

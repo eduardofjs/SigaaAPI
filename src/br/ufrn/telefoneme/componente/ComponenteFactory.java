@@ -24,17 +24,32 @@ public class ComponenteFactory {
 	public Componente geraNovoComponente(ComponenteCurricularDTO componente, Long idCurriculo) throws CargaHorariaDesconhecidaException, IdException, JsonStringInvalidaException, ConexaoException {
 		List<ComponenteCurricularDTO> prerequisitos = new StringToComponente().getComponentes(componente.getPreRequisitos(), idCurriculo);
 		List<ComponenteCurricularDTO> corequisitos = new StringToComponente().getComponentes(componente.getCoRequisitos(), idCurriculo);
+		List<ComponenteCurricularDTO> subComponentes=componente.getComponentesBloco();
 		
+		//TODO Muita memooria, criando basicamente um grafo
 		List<Componente> prerequisitosConvertidos=new ArrayList<>();
 		for(ComponenteCurricularDTO prereq:prerequisitos){
 			prerequisitosConvertidos.add(geraNovoComponente(prereq,idCurriculo));
 		}
-		
 		List<Componente> corequisitosConvertidos=new ArrayList<>();
 		for(ComponenteCurricularDTO coreq:corequisitos){
 			corequisitosConvertidos.add(geraNovoComponente(coreq,idCurriculo));
 		}
 		
+		if(!subComponentes.isEmpty()){
+			List<Componente> subComponentesConvertidos=new ArrayList<>();
+			for(ComponenteCurricularDTO sub:subComponentes){
+				subComponentesConvertidos.add(geraNovoComponente(sub, idCurriculo));
+			}			
+			Componente novo= this.getComponente(componente,prerequisitosConvertidos,corequisitosConvertidos);
+			novo.getSubComponente().addAll(subComponentesConvertidos);
+			return novo;
+		}
+		
+		return getComponente(componente,prerequisitosConvertidos,corequisitosConvertidos);
+	}
+	
+	private Componente getComponente(ComponenteCurricularDTO componente,List<Componente> prerequisitosConvertidos,List<Componente> corequisitosConvertidos) throws CargaHorariaDesconhecidaException{
 		if (componente != null) {
 			switch (componente.getCargaHorariaTotal()) {
 			case 30:
@@ -56,6 +71,5 @@ public class ComponenteFactory {
 			}
 		}return null;
 	}
-	
 
 }
