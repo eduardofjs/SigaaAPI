@@ -10,7 +10,7 @@ import br.ufrn.telefoneme.organize.Semestre;
 /**
  * 
  * @author Marciel Leal
- * @category Template
+ * @category Strategy | Template
  */
 public abstract class Componente {
 	private final Integer nivel;
