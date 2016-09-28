@@ -4,7 +4,7 @@ import java.util.List;
 
 import br.ufrn.telefoneme.organize.Horario;
 import br.ufrn.telefoneme.organize.SugestaoDeHorario;
-import br.ufrn.telefoneme.organize.TabelaDeHorarios;
+import br.ufrn.telefoneme.organize.Semestre;
 
 /**
  * Sempre procura pares de horarios do tipo <impar, par>, nunca o contrario
@@ -40,7 +40,7 @@ public class Componente30h extends Componente {
 	}*/
 
 	@Override
-	public boolean insereNaTabelaDeHorarios(TabelaDeHorarios sugestao, List<Horario> horariosPrerequisitos) {
+	public boolean insereNaTabelaDeHorarios(Semestre sugestao, List<Horario> horariosPrerequisitos) {
 		// TODO Auto-generated method stub
 		return false;
 	}

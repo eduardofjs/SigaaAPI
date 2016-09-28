@@ -15,14 +15,14 @@ import br.ufrn.telefoneme.componente.Componente;
  * @author Marciel Leal
  * 
  */
-public class TabelaDeHorarios {
+public class Semestre {
 	private final Integer nivel;
 	private final Map<Horario,Componente> tabela;
 	//TODO May be add/remove this fields after
 	//private final Semana semana;
 	//private final Turno
 	
-	public TabelaDeHorarios(Integer nivel, Turno turno,Semana semana) {
+	public Semestre(Integer nivel, Turno turno,Semana semana) {
 		this.nivel=nivel;
 		this.tabela=new TreeMap<>();
 		

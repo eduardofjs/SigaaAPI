@@ -5,7 +5,7 @@ import java.util.List;
 
 import br.ufrn.telefoneme.organize.Horario;
 import br.ufrn.telefoneme.organize.SugestaoDeHorario;
-import br.ufrn.telefoneme.organize.TabelaDeHorarios;
+import br.ufrn.telefoneme.organize.Semestre;
 
 /**
  * 
@@ -29,8 +29,8 @@ public abstract class Componente {
 		this.corequisitos=(prerequisitos==null)? new ArrayList<Componente>():corequisitos;
 		this.horarios=new ArrayList<>();
 	}
-	
-	public abstract boolean insereNaTabelaDeHorarios(TabelaDeHorarios sugestao, List<Horario> horariosPrerequisitos);
+	//TODO Adicionar horarios em todos os componentes nos metodos filhos
+	public abstract boolean insereNaTabelaDeHorarios(Semestre sugestao, List<Horario> horariosPrerequisitos);
 	
 	public List<Componente> getPrerequisitos() {
 		return prerequisitos;
