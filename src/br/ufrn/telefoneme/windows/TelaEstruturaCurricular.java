@@ -13,7 +13,10 @@ import javax.swing.border.EmptyBorder;
 
 import br.ufrn.telefoneme.dados.FachadaDeDados;
 import br.ufrn.telefoneme.dto.ComponenteCurricularDTO;
+import br.ufrn.telefoneme.exception.ConexaoException;
 import br.ufrn.telefoneme.exception.IdException;
+import br.ufrn.telefoneme.exception.JsonStringInvalidaException;
+
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JScrollPane;
@@ -44,8 +47,10 @@ public class TelaEstruturaCurricular extends JFrame implements ActionListener {
 	/**
 	 * Create the frame.
 	 * @throws IdException 
+	 * @throws ConexaoException 
+	 * @throws JsonStringInvalidaException 
 	 */
-	public TelaEstruturaCurricular(Integer idCurriculo, String turno) throws IdException {
+	public TelaEstruturaCurricular(Integer idCurriculo, String turno) throws IdException, JsonStringInvalidaException, ConexaoException {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(Toolkit.getDefaultToolkit().getScreenSize());
 		
@@ -60,7 +65,7 @@ public class TelaEstruturaCurricular extends JFrame implements ActionListener {
 				.addComponent(tabbedPane, GroupLayout.DEFAULT_SIZE, 861, Short.MAX_VALUE)
 		);
 
-		List<ComponenteCurricularDTO> componentes = FachadaDeDados.getInstance().getComponentes(idCurriculo);
+		List<ComponenteCurricularDTO> componentes = FachadaDeDados.getInstance().getComponentes((long) idCurriculo);
 		JScrollPane scrollPane;
 		int totalSemestres = 0;
 		for(ComponenteCurricularDTO componente : componentes){
