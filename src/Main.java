@@ -64,8 +64,8 @@ public class Main {
         		componente.setSemetreOferta(1);
         		componente.setObrigatoria(true);
         		componentes.add(componente);
-//        		SugestaoDeHorario sugestao = new SugestaoDeHorario(matrizCurricular, FachadaDeDados.getInstance().getComponentes(matrizCurricular.getIdCurriculo()));
-        		SugestaoDeHorario sugestao = new SugestaoDeHorario(matrizCurricular, componentes);
+        		SugestaoDeHorario sugestao = new SugestaoDeHorario(matrizCurricular, FachadaDeDados.getInstance().getComponentes(matrizCurricular.getIdCurriculo()));
+//        		SugestaoDeHorario sugestao = new SugestaoDeHorario(matrizCurricular, componentes);
         		for(Semestre semestre : sugestao.getSugestao()){
         			for(Horario horario : semestre.getHorariosPeloDia(segunda)){
         				System.out.println("------------");
