@@ -6,6 +6,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.TreeMap;
 
+import br.ufrn.telefoneme.auxiliarhorario.Dia;
 import br.ufrn.telefoneme.auxiliarhorario.GeraTabelaDeTurno;
 import br.ufrn.telefoneme.auxiliarhorario.Semana;
 import br.ufrn.telefoneme.auxiliarhorario.Turno;
@@ -65,22 +66,32 @@ public class Semestre {
 		return tabela.keySet();
 	}
 	
-	/*
+	/**
+	 * Retorna uma lista de horarios de um determinado dia
+	 * @param dia
+	 * @return
+	 */
 	public List<Horario> getHorariosPeloDia(Dia dia){
 		List<Horario> horariosPorDia=new ArrayList<>();
-		for(Horario hor:horarios){
+		for(Horario hor:tabela.keySet()){
 			if(hor.getDia().equals(dia))
 				horariosPorDia.add(hor);
 		}
 		return horariosPorDia;
 	}
-	public List<Horario> getHorariosPeloHorario(Integer horario){
+	/**
+	 * Retorna uma lista de horarios
+	 * @param horario
+	 * @return
+	 */
+	public List<Horario> getHorariosPeloHorario(/*Turno turno,*/ Integer horario){
+		//TODO COlocar turno como parametro para matrizes com mais de um turno
 		List<Horario> horariosPorDia=new ArrayList<>();
-		for(Horario hor:horarios){
+		for(Horario hor:tabela.keySet()){
 			if(hor.getHorarioDoDia().equals(horario))
 				horariosPorDia.add(hor);
 		}
 		return horariosPorDia;
-	}*/
+	}
 
 }
