@@ -16,11 +16,13 @@ public class TurnoFactory {
 			}else if(turno.equals("N")){
 				return new Noite();
 			}else if(turno.equals("MT")){
-				return new Manha(new Tarde());
+				return new Manha();
 			}else if(turno.equals("TN")){
-				return new Tarde(new Noite());
+				return new Tarde();
 			}else if(turno.equals("MN")){
-				return new Manha(new Noite());
+				return new Manha();
+			}else if(turno.equals("MTN")){
+				return new Manha();
 			}
 		}
 		return null;

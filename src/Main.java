@@ -1,20 +1,27 @@
 import java.util.ArrayList;
+import java.util.List;
 
+import br.ufrn.telefoneme.auxiliarhorario.Dia;
 import br.ufrn.telefoneme.connection.OltuJavaClient;
 import br.ufrn.telefoneme.conversion.JsonToObject;
+import br.ufrn.telefoneme.dados.FachadaDeDados;
 import br.ufrn.telefoneme.dto.AvaliacaoInstitucionalDocenteDTO;
 import br.ufrn.telefoneme.dto.ComponenteCurricularDTO;
 import br.ufrn.telefoneme.dto.CursoDTO;
 import br.ufrn.telefoneme.dto.EstatisticasTurmasDTO;
 import br.ufrn.telefoneme.dto.MatrizCurricularDTO;
 import br.ufrn.telefoneme.dto.UnidadeAcademicaDTO;
+import br.ufrn.telefoneme.exception.CargaHorariaDesconhecidaException;
 import br.ufrn.telefoneme.exception.ConexaoException;
 import br.ufrn.telefoneme.exception.IdException;
 import br.ufrn.telefoneme.exception.JsonStringInvalidaException;
+import br.ufrn.telefoneme.organize.Horario;
+import br.ufrn.telefoneme.organize.Semestre;
+import br.ufrn.telefoneme.organize.SugestaoDeHorario;
 
 public class Main {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IdException, JsonStringInvalidaException, ConexaoException, CargaHorariaDesconhecidaException {
 		String text="";
 		/*
 		try {
@@ -46,11 +53,24 @@ public class Main {
 			e1.printStackTrace();
 		}
 		System.out.println("MATRIZES CURRICULARES DO CURSO DE TECNOLOGIA DA INFORMAï¿½ï¿½O\n");
-        for(MatrizCurricularDTO matrizCurricular : matrizesCurriculares){
+        Dia segunda = new Dia(2);
+		for(MatrizCurricularDTO matrizCurricular : matrizesCurriculares){
         	if(matrizCurricular.getAtivo()){
-        		//System.out.println(matrizCurricular.getNome() + " - " + matrizCurricular.getEnfase() + " - " + matrizCurricular.getTurno() + " - " + matrizCurricular.getIdCurriculo());
-        		System.out.println(matrizCurricular.getPeriodo());
-        		System.out.println(matrizCurricular.getNome());
+        		List<ComponenteCurricularDTO> componentes = new ArrayList<ComponenteCurricularDTO>();
+        		ComponenteCurricularDTO componente = new ComponenteCurricularDTO();
+        		componente.setCodigo("IMD0019");
+        		componente.setCargaHorariaTotal(180);
+        		componente.setNome("RESOLUÇÃO DE PROBLEMAS MATEMÁTICOS PARA TI");
+        		componente.setSemetreOferta(1);
+        		componente.setObrigatoria(true);
+        		componentes.add(componente);
+//        		SugestaoDeHorario sugestao = new SugestaoDeHorario(matrizCurricular, FachadaDeDados.getInstance().getComponentes(matrizCurricular.getIdCurriculo()));
+        		SugestaoDeHorario sugestao = new SugestaoDeHorario(matrizCurricular, componentes);
+        		for(Semestre semestre : sugestao.getSugestao()){
+        			for(Horario horario : semestre.getHorariosPeloDia(segunda)){
+        				System.out.println("Segunda" + horario.getHorarioDoDia() + ": " + semestre.getComponente(horario).getNome());
+        			}
+        		}
         	}
         }
 		System.out.println("--------------------------------------------");
