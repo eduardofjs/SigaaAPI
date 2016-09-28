@@ -13,7 +13,7 @@ public class Horario implements Comparable<Horario>{
 	private Turno turno;
 	private Integer horarioDoDia;
 	private boolean isLivre;
-	private Componente componente;
+	//private Componente componente;
 	
 	public Horario(Dia dia, Turno turno, Integer horarioDoDia){
 		this.dia = dia;
@@ -39,10 +39,10 @@ public class Horario implements Comparable<Horario>{
 	}
 	public void setHorarioDoDia(Integer horarioDoDia) {
 		this.horarioDoDia = horarioDoDia;
-	}
+	}/*
 	public Componente getComponente(){
 		return componente;
-	}
+	}*/
 	public boolean isLivre() {
 		return isLivre;
 	}

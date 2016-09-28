@@ -30,7 +30,7 @@ public abstract class Componente {
 		this.horarios=new ArrayList<>();
 	}
 	//TODO Adicionar horarios em todos os componentes nos metodos filhos
-	public abstract boolean insereNaTabelaDeHorarios(Semestre sugestao, List<Horario> horariosPrerequisitos);
+	public abstract boolean insereNaTabelaDeHorarios(Semestre semestre, List<Horario> horariosPrerequisitos);
 	
 	public List<Componente> getPrerequisitos() {
 		return prerequisitos;

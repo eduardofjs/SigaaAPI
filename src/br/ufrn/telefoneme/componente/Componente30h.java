@@ -40,7 +40,7 @@ public class Componente30h extends Componente {
 	}*/
 
 	@Override
-	public boolean insereNaTabelaDeHorarios(Semestre sugestao, List<Horario> horariosPrerequisitos) {
+	public boolean insereNaTabelaDeHorarios(Semestre semestre, List<Horario> horariosPrerequisitos) {
 		// TODO Auto-generated method stub
 		return false;
 	}

@@ -20,7 +20,7 @@ public class Componente180h extends Componente {
 
 
 	@Override
-	public boolean insereNaTabelaDeHorarios(Semestre sugestao, List<Horario> horariosPrerequisitos) {
+	public boolean insereNaTabelaDeHorarios(Semestre semestre, List<Horario> horariosPrerequisitos) {
 		if(horariosDePre)
 		return false;
 	}
