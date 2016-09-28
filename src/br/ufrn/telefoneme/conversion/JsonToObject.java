@@ -38,7 +38,6 @@ public class JsonToObject {
 
 
             } catch (JSONException e) {
-            	e.printStackTrace();
             	throw new JsonStringInvalidaException(e.getMessage());
             }
         }else{

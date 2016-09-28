@@ -6,8 +6,9 @@ package br.ufrn.telefoneme.util;
 import java.util.ArrayList;
 
 /**
+ * Representa um Vertice de um Grafo
  * @author Marciel Leal
- *
+ * 
  */
 public class Vertex<T> implements Comparable<T>{
 	private T value;

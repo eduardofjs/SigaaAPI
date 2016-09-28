@@ -1,6 +1,10 @@
 package br.ufrn.telefoneme.exception;
-
-public class IdException extends ErroNaManipulacaoDosDados {
+/**
+ * 
+ * @author Marciel Leal
+ *
+ */
+public class IdException extends Exception {
 
 	public IdException() {
 		super();
@@ -9,4 +13,7 @@ public class IdException extends ErroNaManipulacaoDosDados {
 	public IdException(String message) {
 		super(message);
 	}
+
+
+
 }

@@ -1,5 +1,9 @@
 package br.ufrn.telefoneme.dto;
-
+/**
+ * 
+ * @author Joel Felipe
+ *
+ */
 public class UnidadeAcademicaDTO {
 	private Long codigoUnidade;
 	private String nomeUnidade;

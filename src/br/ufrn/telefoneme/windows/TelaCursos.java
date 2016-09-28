@@ -50,7 +50,7 @@ public class TelaCursos extends JFrame implements ActionListener {
 	 * @throws ConexaoException 
 	 * @throws JsonStringInvalidaException 
 	 */
-	public TelaCursos() throws JsonStringInvalidaException, ConexaoException {
+	public TelaCursos() {
 		JComboBox<Item> box;
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -64,6 +64,7 @@ public class TelaCursos extends JFrame implements ActionListener {
         model.addElement( new Item("0", "Selecione" ) );
 
         String nomeCurso;
+        //TODO Colocar janela de aviso!
 		for(CursoDTO curso : FachadaDeDados.getInstance().getCursos()){
 			nomeCurso = curso.getCurso() + "/" + curso.getUnidade() + " - " + curso.getMunicipio() + " - " + curso.getNivel();
 			model.addElement( new Item(curso.getIdCurso().toString(), nomeCurso ) );

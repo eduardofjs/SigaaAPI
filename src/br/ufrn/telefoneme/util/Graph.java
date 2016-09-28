@@ -7,8 +7,9 @@ import java.util.ArrayList;
 import java.util.TreeMap;
 
 /**
+ * Representa um Grafo
  * @author Marciel Leal
- *
+ * 
  */
 public class Graph<T>{
 	private TreeMap<Vertex<T>,ArrayList<Vertex<T>>> adj;

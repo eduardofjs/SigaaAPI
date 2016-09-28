@@ -1,5 +1,9 @@
 package br.ufrn.telefoneme.dto;
-
+/**
+ * 
+ * @author Joel Felipe
+ *
+ */
 public class AvaliacaoInstitucionalDocenteDTO {
 	
 	private String docente;

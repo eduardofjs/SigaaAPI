@@ -4,10 +4,9 @@ import java.util.List;
 
 /**
  * 
- * @author Marciel Leal
  * @author Joel Felipe
+ *
  */
-
 public class ComponenteCurricularDTO {
 	
 	private String codigo;

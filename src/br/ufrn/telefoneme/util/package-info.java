@@ -1,6 +1,6 @@
 
 /**
- * @author Marciel Leal
- * Utilities for project, like a Graph class
+ * @author leal
+ * Não utilizado ainda no projeto
  */
 package br.ufrn.telefoneme.util;

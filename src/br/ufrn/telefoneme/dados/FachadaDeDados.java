@@ -14,9 +14,8 @@ import br.ufrn.telefoneme.exception.JsonStringInvalidaException;
 
 /**
  * 
- * PS: Facade and Singleton
  * @author Marciel Leal
- *
+ * @category Facade and Singleton
  */
 public class FachadaDeDados {
 	private static FachadaDeDados instance=new FachadaDeDados();

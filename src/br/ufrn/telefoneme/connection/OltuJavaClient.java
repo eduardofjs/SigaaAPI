@@ -82,16 +82,7 @@ public class OltuJavaClient {
     private static String getDados(String urlIntermediaria, String complemento) throws ConexaoException{
     	return getDadosAux(urlIntermediaria,complemento);
     }
-    /**
-     * Request a fresh access token using the given client ID, client secret, and token request URL,
-     * then request the resource at the given resource URL using that access token, and get the resource
-     * content.  If an exception is thrown, print the stack trace instead.
-     * 
-     * @param urlIntermediaria
-     * @param complemento
-     * @return
-     * @throws Exception 
-     */
+
     private static String getDadosAux(String urlIntermediaria, String complemento) throws ConexaoException{
         String resultJson = "";
         try {
@@ -122,8 +113,7 @@ public class OltuJavaClient {
             }
 
         } catch (Exception exn) {
-        	exn.printStackTrace();
-            throw new ConexaoException("Problemas na obten��o de dados!",exn.getCause());
+            throw new ConexaoException();
         }
 
         return resultJson;

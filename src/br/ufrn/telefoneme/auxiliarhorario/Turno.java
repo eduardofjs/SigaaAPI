@@ -3,7 +3,7 @@ package br.ufrn.telefoneme.auxiliarhorario;
 /**
  * 
  * @author Marciel Leal
- * @category Decorator
+ * @category Decorator e Template
  */
 public abstract class Turno {
 	
