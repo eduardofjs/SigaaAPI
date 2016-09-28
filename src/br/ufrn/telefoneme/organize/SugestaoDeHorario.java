@@ -44,11 +44,18 @@ public class SugestaoDeHorario {
 				componentes.add(new ComponenteFactory().geraNovoComponente(componenteDaGrade, matriz.getIdCurriculo()));
 		}
 		
-		//Ordenando componentes para facilitar a procura de componentes sem prerequisito
+		//Ordenando componentes por CH e por quantidade de prerequisitos
 		componentes.sort(new Comparator<Componente>(){
 			@Override
 			public int compare(Componente o1, Componente o2) {
-				return new Integer(o2.getPrerequisitos().size()).compareTo(new Integer(o1.getPrerequisitos().size()));
+				if(o1.getClass().getName().length()>o2.getClass().getName().length())
+					return 1;
+				else if(o1.getClass().getName().length()<o2.getClass().getName().length()){
+					return -1;
+				}
+				if(o1.getClass().getName().compareTo(o1.getClass().getName())==0)
+					return new Integer(o2.getPrerequisitos().size()).compareTo(new Integer(o1.getPrerequisitos().size()));
+				return o1.getClass().getName().compareTo(o1.getClass().getName());
 			}
 		});
 	}
