@@ -60,7 +60,7 @@ public class Main {
         		ComponenteCurricularDTO componente = new ComponenteCurricularDTO();
         		componente.setCodigo("IMD0019");
         		componente.setCargaHorariaTotal(180);
-        		componente.setNome("RESOLUÇÃO DE PROBLEMAS MATEMÁTICOS PARA TI");
+        		componente.setNome("RESOLUï¿½ï¿½O DE PROBLEMAS MATEMï¿½TICOS PARA TI");
         		componente.setSemetreOferta(1);
         		componente.setObrigatoria(true);
         		componentes.add(componente);
@@ -68,7 +68,11 @@ public class Main {
         		SugestaoDeHorario sugestao = new SugestaoDeHorario(matrizCurricular, componentes);
         		for(Semestre semestre : sugestao.getSugestao()){
         			for(Horario horario : semestre.getHorariosPeloDia(segunda)){
-        				System.out.println("Segunda" + horario.getHorarioDoDia() + ": " + semestre.getComponente(horario).getNome());
+        				System.out.println("------------");
+        				System.out.println(horario);
+        				//if(semestre.getComponente(horario)!=null)
+        					System.out.println("Segunda" + horario.getHorarioDoDia() + ": " + semestre.getComponente(horario).getNome());
+        				System.out.println("NSODMA");
         			}
         		}
         	}

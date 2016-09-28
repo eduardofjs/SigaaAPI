@@ -55,7 +55,7 @@ public class Horario implements Comparable<Horario>{
 	public boolean equals(Object o){
 		if(o instanceof Horario){
 			Horario outrohor=(Horario) o;
-			if(this.dia.equals(outrohor)
+			if(this.dia.equals(outrohor.getDia())
 					&&this.turno.equals(outrohor.getTurno())
 					&&this.horarioDoDia.equals(outrohor.getHorarioDoDia())){
 				return true;
@@ -68,5 +68,8 @@ public class Horario implements Comparable<Horario>{
 		return this.getDia().compareTo(o.getDia());
 	}	
 	
-	
+	@Override
+	public String toString(){
+		return ""+this.dia.getDia()+this.getTurno().toString()+this.horarioDoDia;
+	}
 }

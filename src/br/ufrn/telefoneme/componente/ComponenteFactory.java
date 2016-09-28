@@ -26,24 +26,30 @@ public class ComponenteFactory {
 		List<ComponenteCurricularDTO> corequisitos = new StringToComponente().getComponentes(componente.getCoRequisitos(), idCurriculo);
 		List<ComponenteCurricularDTO> subComponentes=componente.getComponentesBloco();
 		
-		//TODO Muita memooria, criando basicamente um grafo
 		List<Componente> prerequisitosConvertidos=new ArrayList<>();
-		for(ComponenteCurricularDTO prereq:prerequisitos){
-			prerequisitosConvertidos.add(geraNovoComponente(prereq,idCurriculo));
-		}
 		List<Componente> corequisitosConvertidos=new ArrayList<>();
-		for(ComponenteCurricularDTO coreq:corequisitos){
-			corequisitosConvertidos.add(geraNovoComponente(coreq,idCurriculo));
+		
+		//TODO Muita memooria, criando basicamente um grafo
+		if(!prerequisitos.isEmpty()){
+			for(ComponenteCurricularDTO prereq:prerequisitos){
+				prerequisitosConvertidos.add(geraNovoComponente(prereq,idCurriculo));
+			}
+		}if(!corequisitos.isEmpty()){
+			for(ComponenteCurricularDTO coreq:corequisitos){
+				corequisitosConvertidos.add(geraNovoComponente(coreq,idCurriculo));
+			}
 		}
 		
-		if(!subComponentes.isEmpty()){
-			List<Componente> subComponentesConvertidos=new ArrayList<>();
-			for(ComponenteCurricularDTO sub:subComponentes){
-				subComponentesConvertidos.add(geraNovoComponente(sub, idCurriculo));
-			}			
-			Componente novo= this.getComponente(componente,prerequisitosConvertidos,corequisitosConvertidos);
-			novo.getSubComponente().addAll(subComponentesConvertidos);
-			return novo;
+		if(subComponentes!=null){
+			if(!subComponentes.isEmpty()){
+				List<Componente> subComponentesConvertidos=new ArrayList<>();
+				for(ComponenteCurricularDTO sub:subComponentes){
+					subComponentesConvertidos.add(geraNovoComponente(sub, idCurriculo));
+				}			
+				Componente novo= this.getComponente(componente,prerequisitosConvertidos,corequisitosConvertidos);
+				novo.getSubComponente().addAll(subComponentesConvertidos);
+				return novo;
+			}
 		}
 		
 		return getComponente(componente,prerequisitosConvertidos,corequisitosConvertidos);

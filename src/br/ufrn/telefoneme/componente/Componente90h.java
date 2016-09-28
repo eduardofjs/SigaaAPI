@@ -25,7 +25,7 @@ public class Componente90h extends Componente {
 			if(horario.getDia().equals(segunda)){
 				for(int horarioDoDia = 1; horarioDoDia <= horario.getTurno().getNumHorariosNoDia(); horarioDoDia++){
 					if(horario.getHorarioDoDia().equals(horarioDoDia) && horario.isLivre()){
-						if(horariosPrerequisitos.equals(null)){
+						if(horariosPrerequisitos==null){
 							for(int i = 2; i < 7; i+=2){
 								horario.setDia(new Dia(i));
 								horario.setHorarioDoDia(horarioDoDia);

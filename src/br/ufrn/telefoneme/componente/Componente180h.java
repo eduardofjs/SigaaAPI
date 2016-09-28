@@ -25,16 +25,17 @@ public class Componente180h extends Componente {
 			if(horario.getDia().equals(segunda)){
 				for(int horarioDoDia = 1; horarioDoDia <= horario.getTurno().getNumHorariosNoDia(); horarioDoDia++){
 					if(horario.getHorarioDoDia().equals(horarioDoDia) && horario.isLivre()){
-						if(horariosPrerequisitos.equals(null)){
-							for(int i = 2; i < 7; i+=2){
+						if(horariosPrerequisitos==null){//TODO Nao entendi
+							System.out.println("ENTROOOU");
+							for(int i = 2; i < 7; i+=4){
 								horario.setDia(new Dia(i));
 								horario.setHorarioDoDia(horarioDoDia);
 								semestre.getTabela().replace(horario, this);
 								horario.setHorarioDoDia(horarioDoDia+1);
 								semestre.getTabela().replace(horario, this);
-								horario.setHorarioDoDia(horarioDoDia+1);
+								horario.setHorarioDoDia(horarioDoDia+2);
 								semestre.getTabela().replace(horario, this);
-								horario.setHorarioDoDia(horarioDoDia+1);
+								horario.setHorarioDoDia(horarioDoDia+3);
 								semestre.getTabela().replace(horario, this);
 							}
 							return true;

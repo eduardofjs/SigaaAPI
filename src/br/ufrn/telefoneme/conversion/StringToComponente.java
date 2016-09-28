@@ -53,14 +53,19 @@ public class StringToComponente {
 	 * @throws IdException 
 	 * @throws ConexaoException 
 	 */
-	public List<ComponenteCurricularDTO> getComponentes(String componentes, Long idCurriculo) throws ConexaoException, IdException, JsonStringInvalidaException{
-		List<ComponenteCurricularDTO> novosComponentes=new ArrayList<>();
-		List<ComponenteCurricularDTO> compsNoBanco=FachadaDeDados.getInstance().getComponentes(idCurriculo);
-		
-		for(ComponenteCurricularDTO compNoBanco:compsNoBanco){
-			for(String comp:tokenizeStringOfComponents(componentes)){				
-				if(compNoBanco.getCodigo().equals(comp)){
-					novosComponentes.add(compNoBanco);
+	public List<ComponenteCurricularDTO> getComponentes(String componentes, Long idCurriculo)
+			throws ConexaoException, IdException, JsonStringInvalidaException {
+		List<ComponenteCurricularDTO> novosComponentes = new ArrayList<>();
+		if (componentes != null) {
+			if (!componentes.isEmpty()) {
+				List<ComponenteCurricularDTO> compsNoBanco = FachadaDeDados.getInstance().getComponentes(idCurriculo);
+
+				for (ComponenteCurricularDTO compNoBanco : compsNoBanco) {
+					for (String comp : tokenizeStringOfComponents(componentes)) {
+						if (compNoBanco.getCodigo().equals(comp)) {
+							novosComponentes.add(compNoBanco);
+						}
+					}
 				}
 			}
 		}
