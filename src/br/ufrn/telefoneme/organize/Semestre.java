@@ -94,4 +94,8 @@ public class Semestre {
 		return horariosPorDia;
 	}
 
+	public Map<Horario, Componente> getTabela() {
+		return tabela;
+	}
+
 }
