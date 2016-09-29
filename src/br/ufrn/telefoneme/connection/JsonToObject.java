@@ -1,4 +1,4 @@
-package br.ufrn.telefoneme.conversion;
+package br.ufrn.telefoneme.connection;
 
 import java.util.ArrayList;
 import java.util.List;
