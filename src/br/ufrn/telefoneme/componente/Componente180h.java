@@ -27,7 +27,7 @@ public class Componente180h extends Componente {
 					if(horario.getHorarioDoDia().equals(horarioDoDia) && horario.isLivre()){
 						if(horariosPrerequisitos==null){//TODO Nao entendi
 							System.out.println("ENTROOOU");
-							for(int i = 2; i < 7; i+=2){
+							for(int i = 2; i < 7; i+=4){
 								horario.setDia(new Dia(i));
 								horario.setHorarioDoDia(horarioDoDia);
 								semestre.getTabela().replace(horario, this);
