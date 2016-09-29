@@ -4,6 +4,7 @@ package br.ufrn.telefoneme.exception;
  * @author Marciel Leal
  *
  */
+@SuppressWarnings("serial")
 public class ConexaoException extends Exception {
 	public ConexaoException() {
 		super();

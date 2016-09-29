@@ -2,7 +2,6 @@ package br.ufrn.telefoneme.organize;
 
 import br.ufrn.telefoneme.auxiliarhorario.Dia;
 import br.ufrn.telefoneme.auxiliarhorario.Turno;
-import br.ufrn.telefoneme.componente.Componente;
 
 /**
  * @author Marciel Leal

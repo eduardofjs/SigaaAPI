@@ -7,7 +7,7 @@ import java.util.List;
  * @author Joel Felipe
  *
  */
-public class ComponenteCurricularDTO {
+public class ComponenteCurricularDTO implements Comparable<ComponenteCurricularDTO>{
 	
 	private String codigo;
 	private String nome;
@@ -114,5 +114,13 @@ public class ComponenteCurricularDTO {
 				return true;
 			}
 		}return false;
+	}
+	
+	public int compareTo(ComponenteCurricularDTO compareFruit) {
+
+		int compareQuantity = ((ComponenteCurricularDTO) compareFruit).getCargaHorariaTotal();
+
+		return compareQuantity - this.cargaHorariaTotal;
+
 	}
 }

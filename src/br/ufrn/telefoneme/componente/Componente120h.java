@@ -3,7 +3,6 @@ package br.ufrn.telefoneme.componente;
 import java.util.List;
 
 import br.ufrn.telefoneme.organize.Horario;
-import br.ufrn.telefoneme.organize.SugestaoDeHorario;
 import br.ufrn.telefoneme.organize.Semestre;
 
 /**

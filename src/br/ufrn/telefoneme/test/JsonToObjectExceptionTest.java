@@ -2,7 +2,7 @@ package br.ufrn.telefoneme.test;
 
 import org.junit.Test;
 
-import br.ufrn.telefoneme.conversion.JsonToObject;
+import br.ufrn.telefoneme.connection.JsonToObject;
 import br.ufrn.telefoneme.exception.JsonStringInvalidaException;
 
 public class JsonToObjectExceptionTest {

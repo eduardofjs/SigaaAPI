@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.ufrn.telefoneme.organize.Horario;
-import br.ufrn.telefoneme.organize.SugestaoDeHorario;
 import br.ufrn.telefoneme.organize.Semestre;
 
 /**

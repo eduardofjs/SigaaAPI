@@ -1,7 +1,6 @@
 package br.ufrn.telefoneme.auxiliarhorario;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class Semana {

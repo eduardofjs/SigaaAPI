@@ -60,8 +60,6 @@ public class ComponenteFactory {
 			switch (componente.getCargaHorariaTotal()) {
 			case 30:
 				return new Componente30h(componente.getSemetreOferta(),componente.getCodigo(), componente.getNome(),prerequisitosConvertidos,corequisitosConvertidos);
-			case 45:
-				return new Componente45h(componente.getSemetreOferta(),componente.getCodigo(), componente.getNome(),prerequisitosConvertidos,corequisitosConvertidos);
 			case 60:
 				return new Componente60h(componente.getSemetreOferta(),componente.getCodigo(), componente.getNome(),prerequisitosConvertidos,corequisitosConvertidos);
 			case 75:

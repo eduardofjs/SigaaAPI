@@ -1,6 +1,5 @@
 package br.ufrn.telefoneme.auxiliarhorario;
 
-import java.util.List;
 /**
  * 
  * @author Marciel Leal

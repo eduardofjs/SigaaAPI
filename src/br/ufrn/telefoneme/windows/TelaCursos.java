@@ -24,6 +24,7 @@ import br.ufrn.telefoneme.exception.ConexaoException;
 import br.ufrn.telefoneme.exception.IdException;
 import br.ufrn.telefoneme.exception.JsonStringInvalidaException;
 
+@SuppressWarnings("serial")
 public class TelaCursos extends JFrame implements ActionListener {
 
 	private JPanel contentPane;
@@ -36,7 +37,7 @@ public class TelaCursos extends JFrame implements ActionListener {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					TelaCursos frame = new TelaCursos();
+					TelaCursos frame = new TelaCursos(args);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -50,7 +51,7 @@ public class TelaCursos extends JFrame implements ActionListener {
 	 * @throws ConexaoException 
 	 * @throws JsonStringInvalidaException 
 	 */
-	public TelaCursos() {
+	public TelaCursos(String[] args ) throws JsonStringInvalidaException, ConexaoException {
 		JComboBox<Item> box;
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -92,12 +93,13 @@ public class TelaCursos extends JFrame implements ActionListener {
         createComponentMap();
 	}
 	
+	@SuppressWarnings("unchecked")
 	public void actionPerformed(ActionEvent e)
     {
-        JComboBox<?> comboBox = (JComboBox<?>)e.getSource();
+        JComboBox<Item> comboBox = (JComboBox<Item>)e.getSource();
         Item item = (Item)comboBox.getSelectedItem();
         if(!comboBox.equals((JComboBox<?>) getComponentByName("Matriz"))){
-	        comboBox = (JComboBox<?>) getComponentByName("Matriz");
+	        comboBox = (JComboBox<Item>) getComponentByName("Matriz");
 	        Integer idCurso = Integer.parseInt(item.getId());
 	        Vector<Item> model = new Vector<Item>();
 	        model.addElement( new Item("0", "Selecione" ) );
@@ -116,7 +118,7 @@ public class TelaCursos extends JFrame implements ActionListener {
 			} catch (IdException | JsonStringInvalidaException | ConexaoException e1) {
 				e1.printStackTrace();
 			}
-			DefaultComboBoxModel modelo = new DefaultComboBoxModel(model);
+			DefaultComboBoxModel<Item> modelo = new DefaultComboBoxModel<Item>(model);
 			comboBox.setModel(modelo);
 			comboBox.setEnabled(true);
 			comboBox.addActionListener( this );
@@ -126,12 +128,7 @@ public class TelaCursos extends JFrame implements ActionListener {
         	String[] aux = item.getId().split(" . ");
         	Integer idCurriculo = Integer.parseInt(aux[0]);
         	String turno = aux[1];
-        	try {
-        		TelaEstruturaCurricular ec = new TelaEstruturaCurricular(idCurriculo, turno);
-	        	ec.main(idCurriculo, turno);
-			} catch (IdException | JsonStringInvalidaException | ConexaoException e1) {
-				e1.printStackTrace();
-			}
+        	TelaEstruturaCurricular.main(idCurriculo, turno);
         }
     }
 	

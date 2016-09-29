@@ -5,7 +5,7 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 import br.ufrn.telefoneme.connection.OltuJavaClient;
-import br.ufrn.telefoneme.conversion.JsonToObject;
+import br.ufrn.telefoneme.connection.JsonToObject;
 import br.ufrn.telefoneme.exception.ConexaoException;
 import br.ufrn.telefoneme.exception.IdException;
 import br.ufrn.telefoneme.exception.JsonStringInvalidaException;

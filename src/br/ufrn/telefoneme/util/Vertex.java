@@ -37,6 +37,7 @@ public class Vertex<T> implements Comparable<T>{
 	public String toString(){
 		return "Vertex= {"+this.value+","+this.parents+"}";
 	}
+	@SuppressWarnings("unchecked")
 	@Override
 	public boolean equals(Object o){
 		if(o instanceof Vertex){
@@ -48,6 +49,7 @@ public class Vertex<T> implements Comparable<T>{
 		}return false;
 	}
 	
+	@SuppressWarnings("unchecked")
 	@Override
 	public int compareTo(Object o) {
 		if(o instanceof Vertex && value instanceof Comparable){

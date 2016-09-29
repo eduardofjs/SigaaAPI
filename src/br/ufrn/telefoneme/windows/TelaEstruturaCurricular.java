@@ -5,6 +5,7 @@ import java.awt.EventQueue;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.swing.JFrame;
@@ -24,6 +25,7 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JTabbedPane;
 
+@SuppressWarnings("serial")
 public class TelaEstruturaCurricular extends JFrame implements ActionListener {
 
 	private JPanel contentPane;
@@ -31,7 +33,7 @@ public class TelaEstruturaCurricular extends JFrame implements ActionListener {
 	/**
 	 * Launch the application.
 	 */
-	public void main(Integer idCurriculo, String turno) {
+	public static void main(Integer idCurriculo, String turno) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -98,28 +100,82 @@ public class TelaEstruturaCurricular extends JFrame implements ActionListener {
 					"Horários", "Segunda-feira", "Terça-Feira", "Quarta-Feira", "Quinta-Feira", "Sexta-Feira", "Sábado"
 				}
 			));
-			
-			
-			
+			componentes.sort(null);
 			for(ComponenteCurricularDTO componente : componentes){
 				int cargaHoraria = componente.getCargaHorariaTotal();
 				if(componente.getSemetreOferta() == semestreAtual){
+					int horarioInicial, horarioFinal;
+					if(turno.equals("M") || turno.equals("MT") || turno.equals("MTN")){
+						horarioInicial = 0;
+						horarioFinal = 5;
+					}
+					else if(turno.equals("T") || turno.equals("TN")){
+						horarioInicial = 6;
+						horarioFinal = 11;
+					}
+					else{
+						horarioInicial = 12;
+						horarioFinal = 15;
+					}
 					if(cargaHoraria%90 == 0){
-						int horario;
 						int qtdHorario = 2*(cargaHoraria/90);
-						if(turno.equals("M") || turno.equals("MT") || turno.equals("MTN"))
-							horario = 0;
-						else if(turno.equals("T") || turno.equals("TN"))
-							horario = 6;
-						else
-							horario = 12;
-						for(int i = horario; i < 15 && cargaHoraria > 0; i++){
-							for(int j = 1; j < 7; j+=2){
-								if(table.getValueAt(i, j) == null){
-									for(int k = i; k < i + qtdHorario; k++){
-										table.setValueAt(componente.getNome(), k, j);
-										cargaHoraria -= 30;
+						int qtdHorarioFixa = qtdHorario;
+						int cargaHorarioRestante = cargaHoraria;
+						for(int i = horarioInicial; (i < horarioFinal) && (qtdHorario > 0); i++){
+							if(table.getValueAt(i, 1) == null){
+								for(int j = 1;(j < 6) && (cargaHorarioRestante > 0); j+=2){
+									if(table.getValueAt(i, j) == null){
+										for(int k = i; k < i + qtdHorarioFixa; k++){
+											table.setValueAt(componente.getNome(), k, j);
+											qtdHorario--;
+										}
+										cargaHorarioRestante-=30;
 									}
+								}
+							}
+						}
+					}
+					if(cargaHoraria == 60){
+						int qtdHorario = 2;
+						int qtdHorarioFixa = qtdHorario;
+						int cargaHorarioRestante = cargaHoraria;
+						for(int i = horarioInicial; (i < horarioFinal); i++){
+							if(table.getValueAt(i, 1) == null){
+								for(int j = 1; (j < 6) && (cargaHorarioRestante > 0); j+=2){
+									if(table.getValueAt(i, j) == null){
+										for(int k = i; k < i + qtdHorarioFixa; k++){
+											table.setValueAt(componente.getNome(), k, j);
+											qtdHorario--;
+										}
+										cargaHorarioRestante-=30;
+									}
+								}
+							}
+							else if(table.getValueAt(i, 2) == null){
+								for(int j = 2; (j < 6) && (cargaHorarioRestante > 0); j+=2){
+									if(table.getValueAt(i, j) == null){
+										for(int k = i; k < i + qtdHorarioFixa; k++){
+											table.setValueAt(componente.getNome(), k, j);
+											qtdHorario--;
+										}
+										cargaHorarioRestante-=30;
+									}
+								}
+							}
+						}
+					}
+					if(cargaHoraria == 30){
+						int qtdHorario = 2;
+						int qtdHorarioFixa = qtdHorario;
+						int cargaHorarioRestante = cargaHoraria;
+						for(int i = horarioInicial; (i < horarioFinal); i++){
+							for(int j = 1; (j < 6) && (cargaHorarioRestante > 0); j++){
+								if(table.getValueAt(i, j) == null){
+									for(int k = i; k < i + qtdHorarioFixa; k++){
+										table.setValueAt(componente.getNome(), k, j);
+										qtdHorario--;
+									}
+									cargaHorarioRestante-=30;
 								}
 							}
 						}
