@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.ufrn.telefoneme.connection.OltuJavaClient;
-import br.ufrn.telefoneme.conversion.JsonToObject;
+import br.ufrn.telefoneme.connection.JsonToObject;
 import br.ufrn.telefoneme.dto.ComponenteCurricularDTO;
 import br.ufrn.telefoneme.dto.CursoDTO;
 import br.ufrn.telefoneme.dto.MatrizCurricularDTO;
