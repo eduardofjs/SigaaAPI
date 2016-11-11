@@ -1,7 +1,7 @@
 package br.ufrn.telefoneme.dto;
 /**
  * 
- * @author Joel Felipe
+ * @author Joel Felipe and Marciel Leal
  *
  */
 public class EstatisticasTurmasDTO {
@@ -70,6 +70,7 @@ public class EstatisticasTurmasDTO {
 	public Integer getMatriculados() {
 		return matriculados;
 	}
+	
 	
 	/*--------------------------------------------*/
 	public Integer getTotalAlunos(){

@@ -24,26 +24,30 @@ import br.ufrn.telefoneme.exception.JsonStringInvalidaException;
  */
 public class SugestaoDeHorario {
 	private final List<Semestre> tabelas;
-	private final List<Componente> componentes;
+	private final List<Componente> componentesObrigatorios;
+	private final List<Componente> componentesOptativos;
 	
-	public SugestaoDeHorario(MatrizCurricularDTO matriz,List<ComponenteCurricularDTO> componentesDaGrade) throws IdException, JsonStringInvalidaException, CargaHorariaDesconhecidaException, ConexaoException{
+	public SugestaoDeHorario(MatrizCurricularDTO matriz, String turno,List<ComponenteCurricularDTO> componentesDaGrade) throws IdException, JsonStringInvalidaException, CargaHorariaDesconhecidaException, ConexaoException{
 		this.tabelas=new ArrayList<>();
-		this.componentes=new ArrayList<>();
+		this.componentesObrigatorios=new ArrayList<>();
+		this.componentesOptativos=new ArrayList<>();
 		
 		//Criando horarios
 		for (int nivel = 1; nivel <= matriz.getSemestreConclusaoIdeal(); nivel++) {
-			tabelas.add(new Semestre(nivel, new TurnoFactory().geraTurno(matriz.getTurno()),
+			tabelas.add(new Semestre(nivel, new TurnoFactory().geraTurno(turno),
 					new Semana(new Dia(2), new Dia(7))));
 		}
 		
 		//Convertendo componentes
 		for(ComponenteCurricularDTO componenteDaGrade:componentesDaGrade){
 			if(componenteDaGrade.isObrigatoria())
-				componentes.add(new ComponenteFactory().geraNovoComponente(componenteDaGrade, matriz.getIdCurriculo()));
+				componentesObrigatorios.add(new ComponenteFactory().geraNovoComponente(componenteDaGrade, matriz.getIdCurriculo()));
+			else
+				componentesOptativos.add(new ComponenteFactory().geraNovoComponente(componenteDaGrade, matriz.getIdCurriculo()));
 		}
 		
 		//Ordenando componentes por CH e por quantidade de prerequisitos
-		componentes.sort(new Comparator<Componente>(){
+		componentesObrigatorios.sort(new Comparator<Componente>(){
 			@Override
 			public int compare(Componente o1, Componente o2) {
 				if(o1.getClass().getName().length()>o2.getClass().getName().length())
@@ -60,7 +64,7 @@ public class SugestaoDeHorario {
 
 	public List<Semestre> getSugestao() {
 		for (int nivel = 1; nivel <= tabelas.size(); nivel++) {
-			for (Componente componente : componentes) {
+			for (Componente componente : componentesObrigatorios) {
 				if (componente.getNivel().equals(nivel)) {
 					for (Semestre tabela : tabelas) {
 						if (tabela.getNivel().equals(componente.getNivel())) {
