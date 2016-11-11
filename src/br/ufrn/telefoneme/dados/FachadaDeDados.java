@@ -3,7 +3,7 @@ package br.ufrn.telefoneme.dados;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.ufrn.telefoneme.connection.OltuJavaClient;
+import br.ufrn.telefoneme.connection.Connection;
 import br.ufrn.telefoneme.connection.JsonToObject;
 import br.ufrn.telefoneme.dto.ComponenteCurricularDTO;
 import br.ufrn.telefoneme.dto.CursoDTO;
@@ -31,7 +31,7 @@ public class FachadaDeDados {
 	
 	public List<CursoDTO> getCursos() throws JsonStringInvalidaException, ConexaoException{
 
-		text = OltuJavaClient.getCursos();
+		text = Connection.getCursos();
         ArrayList<CursoDTO> cursos=new ArrayList<>();		
 		cursos = JsonToObject.toCursoDTO(text);
         
@@ -39,7 +39,7 @@ public class FachadaDeDados {
 	}
 	
 	public List<MatrizCurricularDTO> getMatrizes(Integer idCurso) throws IdException, ConexaoException, JsonStringInvalidaException{
-		text = OltuJavaClient.getMatrizCurricular(idCurso);
+		text = Connection.getMatrizCurricular(idCurso);
 
 		ArrayList<MatrizCurricularDTO> cursos=new ArrayList<>();
 		cursos = JsonToObject.toMatrizCurricularDTO(text);
@@ -48,7 +48,7 @@ public class FachadaDeDados {
 	}
 	
 	public List<ComponenteCurricularDTO> getComponentes(Long idCurriculo) throws ConexaoException, IdException, JsonStringInvalidaException{
-		text = OltuJavaClient.getComponentes(idCurriculo.intValue());
+		text = Connection.getComponentes(idCurriculo.intValue());
 
         ArrayList<ComponenteCurricularDTO> componentesCurriculares = new ArrayList<>();
         componentesCurriculares = JsonToObject.toComponenteCurricularDTO(text);

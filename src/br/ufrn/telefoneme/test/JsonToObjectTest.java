@@ -4,7 +4,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import br.ufrn.telefoneme.connection.OltuJavaClient;
+import br.ufrn.telefoneme.connection.Connection;
 import br.ufrn.telefoneme.connection.JsonToObject;
 import br.ufrn.telefoneme.exception.ConexaoException;
 import br.ufrn.telefoneme.exception.IdException;
@@ -17,7 +17,7 @@ public class JsonToObjectTest {
 		String text="";
 		
 		try {
-			text = OltuJavaClient.getCursos();
+			text = Connection.getCursos();
 			assertNotNull(JsonToObject.toCursoDTO(text));
 			assertFalse(JsonToObject.toCursoDTO(text).isEmpty());
 		} catch (ConexaoException e) {
@@ -32,7 +32,7 @@ public class JsonToObjectTest {
 	public void testToComponenteCurricularDTO() throws  IdException {
 		String text="";
 		try {
-			text=OltuJavaClient.getComponentes(102200805);
+			text=Connection.getComponentes(102200805);
 			assertNotNull(JsonToObject.toComponenteCurricularDTO(text));
 			assertFalse(JsonToObject.toComponenteCurricularDTO(text).isEmpty());
 		} catch (ConexaoException e) {
@@ -46,7 +46,7 @@ public class JsonToObjectTest {
 	public void testToMatrizCurricularDTO() throws IdException {
 		String text="";
 		try {
-			text=OltuJavaClient.getMatrizCurricular(92127264);
+			text=Connection.getMatrizCurricular(92127264);
 			assertNotNull(JsonToObject.toMatrizCurricularDTO(text));
 			assertNotNull(JsonToObject.toMatrizCurricularDTO(text).isEmpty());
 		} catch (ConexaoException e) {

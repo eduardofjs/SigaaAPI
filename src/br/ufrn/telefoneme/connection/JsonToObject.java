@@ -16,6 +16,7 @@ import br.ufrn.telefoneme.dto.UnidadeAcademicaDTO;
 import br.ufrn.telefoneme.exception.JsonStringInvalidaException;
 
 public class JsonToObject {
+	private static final Integer limEst=2010;
 	
 	public static ArrayList<CursoDTO> toCursoDTO(String text) throws JsonStringInvalidaException{
 		ArrayList<CursoDTO> cursos = new ArrayList<CursoDTO>();
@@ -38,6 +39,7 @@ public class JsonToObject {
 
 
             } catch (JSONException e) {
+            	System.out.println(e.getMessage());
             	throw new JsonStringInvalidaException(e.getMessage());
             }
         }else{
@@ -167,11 +169,14 @@ public class JsonToObject {
         if(!text.equalsIgnoreCase("")){
             try {
                 JSONArray array = new JSONArray(text);
+                EstatisticasTurmasDTO estatisticasTurma=null;
                 for(int i = 0; i < array.length(); ++i){
                     JSONObject jsonList = array.getJSONObject(i);
 
-                    EstatisticasTurmasDTO estatisticasTurma = new EstatisticasTurmasDTO();
+                    estatisticasTurma = new EstatisticasTurmasDTO();
                     estatisticasTurma.setAno(jsonList.getInt("ano"));
+                    if(estatisticasTurma.getAno().equals(limEst)) 
+                    	break;
                     estatisticasTurma.setPeriodo(jsonList.getInt("periodo"));
                     estatisticasTurma.setCodigo(jsonList.getString("codigo"));
                     estatisticasTurma.setNomeComponente(jsonList.getString("nomeComponente"));
@@ -179,6 +184,7 @@ public class JsonToObject {
                     estatisticasTurma.setAprovados(jsonList.getInt("aprovados"));
                     estatisticasTurma.setReprovados(jsonList.getInt("reprovados"));
                     estatisticasTurma.setTrancados(jsonList.getInt("trancados"));
+                    estatisticasTurma.setMatriculados(jsonList.getInt("matriculados"));
                     
                     estatisticasTurmas.add(estatisticasTurma);
                 }

@@ -18,7 +18,7 @@ import java.net.URL;
 /**
  * Example of the OAuth client credentials flow using the Apache Oltu OAuth2 client.
  */
-public class OltuJavaClient {
+public class Connection {
     /**
      * URL for requesting OAuth access tokens.
      */
@@ -37,6 +37,9 @@ public class OltuJavaClient {
     public static final String RESOURCE_URL_TPL = "https://apitestes.info.ufrn.br";
 
     
+    public static String getTurmas(String string,String ano, String periodo) throws ConexaoException{
+    	return getDados("/ensino-services/services/consulta/turmas/centro",string+"/"+ano+"/"+periodo);
+    }
     
     public static String getCursos() throws ConexaoException{
     	return getDados("/curso-services/services/consulta/curso/GRADUACAO","");
@@ -107,13 +110,14 @@ public class OltuJavaClient {
             
             BufferedReader r = new BufferedReader(new InputStreamReader(resource, "UTF-8"));
             String line = null;
-
+            
             while ((line = r.readLine()) != null) {
-                resultJson += line;
-            }
+            	resultJson += line;
+            }System.out.println(RESOURCE_URL_TPL + urlIntermediaria + "/" + complemento);
 
         } catch (Exception exn) {
-            throw new ConexaoException();
+            System.out.println(exn.getMessage());
+        	throw new ConexaoException();
         }
 
         return resultJson;
