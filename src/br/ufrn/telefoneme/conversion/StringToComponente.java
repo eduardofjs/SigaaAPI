@@ -60,9 +60,11 @@ public class StringToComponente {
 			throws ConnectionException, IdException, JsonStringInvalidaException {
 		
 		List<ComponenteCurricularDTO> novosComponentes = new ArrayList<>();
+		
 		if (componentes != null) {
 			if (!componentes.isEmpty()) {
-				List<ComponenteCurricularDTO> compsNoBanco = FachadaDeDados.getInstance().getComponentes(new APIConnection(),idCurriculo);
+				List<ComponenteCurricularDTO> compsNoBanco = FachadaDeDados.getInstance()
+						.getComponentes(connection,idCurriculo);
 
 				for (ComponenteCurricularDTO compNoBanco : compsNoBanco) {
 					for (String comp : tokenizeStringOfComponents(componentes)) {

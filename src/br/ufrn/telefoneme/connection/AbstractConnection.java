@@ -2,7 +2,11 @@ package br.ufrn.telefoneme.connection;
 
 import br.ufrn.telefoneme.exception.ConnectionException;
 import br.ufrn.telefoneme.exception.IdException;
-
+/**
+ * Abstraction for connection
+ * @author Marciel Leal
+ *
+ */
 public interface AbstractConnection {
 
 	public String getTurmas(String string,String ano, String periodo) throws ConnectionException;
