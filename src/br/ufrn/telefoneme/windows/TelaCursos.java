@@ -20,7 +20,7 @@ import javax.swing.border.EmptyBorder;
 import br.ufrn.telefoneme.dados.FachadaDeDados;
 import br.ufrn.telefoneme.dto.CursoDTO;
 import br.ufrn.telefoneme.dto.MatrizCurricularDTO;
-import br.ufrn.telefoneme.exception.ConexaoException;
+import br.ufrn.telefoneme.exception.ConnectionException;
 import br.ufrn.telefoneme.exception.IdException;
 import br.ufrn.telefoneme.exception.JsonStringInvalidaException;
 
@@ -48,10 +48,10 @@ public class TelaCursos extends JFrame implements ActionListener {
 
 	/**
 	 * Create the frame.
-	 * @throws ConexaoException 
+	 * @throws ConnectionException 
 	 * @throws JsonStringInvalidaException 
 	 */
-	public TelaCursos(String[] args ) throws JsonStringInvalidaException, ConexaoException {
+	public TelaCursos(String[] args ) throws JsonStringInvalidaException, ConnectionException {
 		JComboBox<Item> box;
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -115,7 +115,7 @@ public class TelaCursos extends JFrame implements ActionListener {
 						nomeMatriz += "(Inativo)";
 				    model.addElement( new Item(new Item (matriz.getIdCurriculo().toString(), matriz.getTurno()), nomeMatriz ) );
 				}
-			} catch (IdException | JsonStringInvalidaException | ConexaoException e1) {
+			} catch (IdException | JsonStringInvalidaException | ConnectionException e1) {
 				e1.printStackTrace();
 			}
 			DefaultComboBoxModel<Item> modelo = new DefaultComboBoxModel<Item>(model);

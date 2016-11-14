@@ -8,9 +8,10 @@ import java.net.ConnectException;
 
 import br.ufrn.telefoneme.connection.APIConnection;
 import br.ufrn.telefoneme.dados.FachadaDeDados;
+import br.ufrn.telefoneme.dto.ComponenteCurricularDTO;
 import br.ufrn.telefoneme.dto.CursoDTO;
 import br.ufrn.telefoneme.dto.MatrizCurricularDTO;
-import br.ufrn.telefoneme.exception.ConexaoException;
+import br.ufrn.telefoneme.exception.ConnectionException;
 import br.ufrn.telefoneme.exception.IdException;
 import br.ufrn.telefoneme.exception.JsonStringInvalidaException;
 
@@ -40,31 +41,47 @@ public class LocalDBCreator {
 		else return f;
 	}
 	
-	public void createCursosDB() throws IOException, ConexaoException{
-		escrever("CURSOS",new APIConnection().getCursos());
+	public void createCursosDB() throws IOException, ConnectionException{
+		File caminho=novoDiretorio("CursosByNivel");
+		escrever(caminho.getPath()+"/"+"GRADUACAO",new APIConnection().getCursos("GRADUACAO"));
 	}
 	
-	public void createMatrizesDBByCursoName() throws JsonStringInvalidaException, ConexaoException, IdException, IOException{
+	public void createMatrizesDBByCursoName() throws JsonStringInvalidaException, ConnectionException, IdException, IOException{
 		File caminho=novoDiretorio("MatrizesByCursoName");
-		for(CursoDTO curso:FachadaDeDados.getInstance().getCursos()){
+		for(CursoDTO curso:FachadaDeDados.getInstance().getCursos(new APIConnection())){
 			String jsonMatriz=new APIConnection().getMatrizCurricular(curso.getIdCurso());
 			escrever(caminho.getPath()+"/"+curso.getCurso(),jsonMatriz);
 		}
 	}
 	
-	public void createMatrizesDBByCursoId() throws JsonStringInvalidaException, ConexaoException, IdException, IOException{
+	public void createMatrizesDBByCursoId() throws JsonStringInvalidaException, ConnectionException, IdException, IOException{
 		File caminho=novoDiretorio("MatrizesByCursoId");
-		for(CursoDTO curso:FachadaDeDados.getInstance().getCursos()){
+		for(CursoDTO curso:FachadaDeDados.getInstance().getCursos(new APIConnection())){
 			String jsonMatriz=new APIConnection().getMatrizCurricular(curso.getIdCurso());
 			escrever(caminho.getPath()+"/"+curso.getIdCurso(),jsonMatriz);
 		}
 	}
-	public void createComponentesDBByMatrizId() throws JsonStringInvalidaException, ConexaoException, IdException, IOException{
+	public void createComponentesDBByMatrizId() throws JsonStringInvalidaException, ConnectionException, IdException, IOException{
 		File caminho=novoDiretorio("ComponentesByMatrizId");
-		for(CursoDTO curso:FachadaDeDados.getInstance().getCursos()){
-			for(MatrizCurricularDTO matriz:FachadaDeDados.getInstance().getMatrizes(curso.getIdCurso())){
+		for(CursoDTO curso:FachadaDeDados.getInstance().getCursos(new APIConnection())){
+			for(MatrizCurricularDTO matriz:FachadaDeDados.getInstance().getMatrizes(new APIConnection(),curso.getIdCurso())){
 				String jsonMatriz=new APIConnection().getComponentes(matriz.getIdCurriculo());
 				escrever(caminho.getPath()+"/"+matriz.getIdCurriculo(),jsonMatriz);
+			}
+		}
+	}
+	
+	public void createEstatisticaDBByComponenteCod() throws JsonStringInvalidaException, ConnectionException, IdException, IOException{
+		File caminho=novoDiretorio("Estatisticas");
+		for(CursoDTO curso:FachadaDeDados.getInstance().getCursos(new APIConnection())){
+			for(MatrizCurricularDTO matriz:FachadaDeDados.getInstance().getMatrizes(new APIConnection(),curso.getIdCurso())){
+				if(matriz.getAtivo()){
+					System.out.println(matriz.getNome());
+					for(ComponenteCurricularDTO componente:FachadaDeDados.getInstance().getComponentes(new APIConnection(),matriz.getIdCurriculo())){
+						String jsonEstatistica=new APIConnection().getEstatisticas("GRADUACAO", componente.getCodigo());
+						escrever(caminho.getPath()+"/"+componente.getCodigo(),jsonEstatistica);
+					}
+				}
 			}
 		}
 	}

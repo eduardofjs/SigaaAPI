@@ -8,7 +8,7 @@ import org.junit.Test;
 
 import br.ufrn.telefoneme.conversion.StringToComponente;
 import br.ufrn.telefoneme.dto.ComponenteCurricularDTO;
-import br.ufrn.telefoneme.exception.ConexaoException;
+import br.ufrn.telefoneme.exception.ConnectionException;
 import br.ufrn.telefoneme.exception.IdException;
 import br.ufrn.telefoneme.exception.JsonStringInvalidaException;
 
@@ -28,7 +28,7 @@ public class StringToComponentTest {
 			List<ComponenteCurricularDTO> certa = conv.getComponentes("( IMD0011 ) OU ( DIM0600 )",
 					new Long(102200805));
 			assertEquals(certa.size(), 2);
-		} catch (JsonStringInvalidaException | ConexaoException | IdException e) {
+		} catch (JsonStringInvalidaException | ConnectionException | IdException e) {
 			e.printStackTrace();
 			fail();
 		}

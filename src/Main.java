@@ -1,57 +1,46 @@
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 
+import br.ufrn.telefoneme.connection.APIConnection;
 import br.ufrn.telefoneme.dados.FachadaDeDados;
 import br.ufrn.telefoneme.dto.CursoDTO;
 import br.ufrn.telefoneme.dto.MatrizCurricularDTO;
 import br.ufrn.telefoneme.exception.CargaHorariaDesconhecidaException;
-import br.ufrn.telefoneme.exception.ConexaoException;
+import br.ufrn.telefoneme.exception.ConnectionException;
 import br.ufrn.telefoneme.exception.IdException;
 import br.ufrn.telefoneme.exception.JsonStringInvalidaException;
+import br.ufrn.telefoneme.util.LocalDBCreator;
+import javafx.fxml.LoadException;
 
 public class Main {
-	private static ArrayList<String> tokenizeStringOfComponents(String components){
-		ArrayList<String> tokens=new ArrayList<>();
+	private static void escrever(String arquivo,String texto) throws IOException{
+		FileWriter out=null;		
 		
-		String buffer="";
-		for(Character c: components.toCharArray()){
-			if(c.equals('(')){
-				//tokens.add("(");
-			}else if(c.equals(')')){
-				//tokens.add(")");
-			}else if(c.equals('E')){
-				//buffer+="E";
-			}else if(c.equals('O')||c.equals('U')){
-				//buffer+="O";
-			}else if(c.equals(' ')){
-				if(!buffer.isEmpty()){
-					tokens.add(buffer);
-				}
-				buffer="";
-			}else{
-				buffer+=c;
-			}
-		}
-		return tokens;
-	} 
+		try{
+			//Escrevendo
+			out = new FileWriter(arquivo); 
+			PrintWriter gravarArq = new PrintWriter(out);
+			gravarArq.print(texto);
 
-	
-	
-	public static void main(String[] args) throws IdException, JsonStringInvalidaException, ConexaoException, CargaHorariaDesconhecidaException, IOException {
-		//System.out.println(tokenizeStringOfComponents(" ( ( DIM0052 ) E ( DIM0301 OU DIM0053 ) )"));
+		}finally{
+			if(out!=null)
+				out.close();
+		}
+	}
+	public static void main(String[] args) throws IdException, JsonStringInvalidaException, ConnectionException, CargaHorariaDesconhecidaException, IOException {
 		//TelaCursos.main(args);
-		//String j= new APIConnection().getEstatisticas("graduacao", "IMD0030");
 		
-		//new LocalDBCreator().createComponentesDBByMatrizId();
-		
-		for(CursoDTO curso: FachadaDeDados.getInstance().getCursos()){
+		//for(CursoDTO curso: FachadaDeDados.getInstance().getCursos()){
 			
-				System.out.println(curso.getCurso()+ "   "+curso.getIdCurso());
+			//	System.out.println(curso.getCurso()+ "   "+curso.getIdCurso());
 				
-				for(MatrizCurricularDTO matriz:FachadaDeDados.getInstance().getMatrizes(curso.getIdCurso()))
-					System.out.println(matriz.getNome()+ "   "+matriz.getIdCurriculo());
-		}
-
+				//for(MatrizCurricularDTO matriz:FachadaDeDados.getInstance().getMatrizes(curso.getIdCurso()))
+					//System.out.println(matriz.getNome()+ "   "+matriz.getIdCurriculo());
+		//}
+		//new LocalDBCreator().createCursosDB();
+		new LocalDBCreator().createEstatisticaDBByComponenteCod();
 		//System.out.println(JsonToObject.toEstatisticasTurmasDTO(j).get(5));
 		//FachadaDeDados fac=FachadaDeDados.getInstance();
 		//fac.getMatrizes(idCurso)

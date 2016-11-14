@@ -6,7 +6,7 @@ import java.util.List;
 import br.ufrn.telefoneme.conversion.StringToComponente;
 import br.ufrn.telefoneme.dto.ComponenteCurricularDTO;
 import br.ufrn.telefoneme.exception.CargaHorariaDesconhecidaException;
-import br.ufrn.telefoneme.exception.ConexaoException;
+import br.ufrn.telefoneme.exception.ConnectionException;
 import br.ufrn.telefoneme.exception.IdException;
 import br.ufrn.telefoneme.exception.JsonStringInvalidaException;
 
@@ -21,7 +21,7 @@ public class ComponenteFactory {
 		//Emmpty
 	}
 
-	public Componente geraNovoComponente(ComponenteCurricularDTO componente, Long idCurriculo) throws CargaHorariaDesconhecidaException, IdException, JsonStringInvalidaException, ConexaoException {
+	public Componente geraNovoComponente(ComponenteCurricularDTO componente, Long idCurriculo) throws CargaHorariaDesconhecidaException, IdException, JsonStringInvalidaException, ConnectionException {
 		List<ComponenteCurricularDTO> prerequisitos = new StringToComponente().getComponentes(componente.getPreRequisitos(), idCurriculo);
 		List<ComponenteCurricularDTO> corequisitos = new StringToComponente().getComponentes(componente.getCoRequisitos(), idCurriculo);
 		List<ComponenteCurricularDTO> subComponentes=componente.getComponentesBloco();

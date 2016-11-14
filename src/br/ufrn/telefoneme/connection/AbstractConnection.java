@@ -1,23 +1,23 @@
 package br.ufrn.telefoneme.connection;
 
-import br.ufrn.telefoneme.exception.ConexaoException;
+import br.ufrn.telefoneme.exception.ConnectionException;
 import br.ufrn.telefoneme.exception.IdException;
 
 public interface AbstractConnection {
 
-	public String getTurmas(String string,String ano, String periodo) throws ConexaoException;
+	public String getTurmas(String string,String ano, String periodo) throws ConnectionException;
     
-    public String getCursos() throws ConexaoException;
+    public String getCursos(String nivel) throws ConnectionException;
     
-    public String getMatrizCurricular(Integer idCurso)throws ConexaoException,IdException;
+    public String getMatrizCurricular(Integer idCurso)throws ConnectionException,IdException;
     
-    public String getComponentes(Long idCurriculo) throws ConexaoException,IdException;
+    public String getComponentes(Long idCurriculo) throws ConnectionException,IdException;
     
-    public String getEstatisticas(String nivel, String codigo) throws ConexaoException;
+    public String getEstatisticas(String nivel, String codigo) throws ConnectionException;
     
-    public String getAvaliacaoInstitucionalDocente(Integer idUnidade, Integer ano, Integer periodo) throws ConexaoException,IdException;
+    public String getAvaliacaoInstitucionalDocente(Integer idUnidade, Integer ano, Integer periodo) throws ConnectionException,IdException;
     
-    public String getUnidadesAcademicas(String nome) throws ConexaoException;
+    public String getUnidadesAcademicas(String nome) throws ConnectionException;
     
-    public String getAvaliacoesInstitucionaisDocentes(Integer codigoUnidade, Integer ano, Integer periodo) throws ConexaoException;
+    public String getAvaliacoesInstitucionaisDocentes(Integer codigoUnidade, Integer ano, Integer periodo) throws ConnectionException;
 }

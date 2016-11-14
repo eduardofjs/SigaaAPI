@@ -5,9 +5,12 @@ package br.ufrn.telefoneme.conversion;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import br.ufrn.telefoneme.connection.APIConnection;
+import br.ufrn.telefoneme.connection.AbstractConnection;
 import br.ufrn.telefoneme.dados.FachadaDeDados;
 import br.ufrn.telefoneme.dto.ComponenteCurricularDTO;
-import br.ufrn.telefoneme.exception.ConexaoException;
+import br.ufrn.telefoneme.exception.ConnectionException;
 import br.ufrn.telefoneme.exception.IdException;
 import br.ufrn.telefoneme.exception.JsonStringInvalidaException;
 
@@ -51,15 +54,15 @@ public class StringToComponente {
 	 * @return Componentes gerados pelo método
 	 * @throws JsonStringInvalidaException 
 	 * @throws IdException 
-	 * @throws ConexaoException 
+	 * @throws ConnectionException 
 	 */
-	public List<ComponenteCurricularDTO> getComponentes(String componentes, Long idCurriculo)
-			throws ConexaoException, IdException, JsonStringInvalidaException {
+	public List<ComponenteCurricularDTO> getComponentes(AbstractConnection connection,String componentes, Long idCurriculo)
+			throws ConnectionException, IdException, JsonStringInvalidaException {
 		
 		List<ComponenteCurricularDTO> novosComponentes = new ArrayList<>();
 		if (componentes != null) {
 			if (!componentes.isEmpty()) {
-				List<ComponenteCurricularDTO> compsNoBanco = FachadaDeDados.getInstance().getComponentes(idCurriculo);
+				List<ComponenteCurricularDTO> compsNoBanco = FachadaDeDados.getInstance().getComponentes(new APIConnection(),idCurriculo);
 
 				for (ComponenteCurricularDTO compNoBanco : compsNoBanco) {
 					for (String comp : tokenizeStringOfComponents(componentes)) {

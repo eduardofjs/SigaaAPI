@@ -12,7 +12,7 @@ import br.ufrn.telefoneme.componente.ComponenteFactory;
 import br.ufrn.telefoneme.dto.ComponenteCurricularDTO;
 import br.ufrn.telefoneme.dto.MatrizCurricularDTO;
 import br.ufrn.telefoneme.exception.CargaHorariaDesconhecidaException;
-import br.ufrn.telefoneme.exception.ConexaoException;
+import br.ufrn.telefoneme.exception.ConnectionException;
 import br.ufrn.telefoneme.exception.IdException;
 import br.ufrn.telefoneme.exception.JsonStringInvalidaException;
 
@@ -27,7 +27,7 @@ public class SugestaoDeHorario {
 	private final List<Componente> componentesObrigatorios;
 	private final List<Componente> componentesOptativos;
 	
-	public SugestaoDeHorario(MatrizCurricularDTO matriz, String turno,List<ComponenteCurricularDTO> componentesDaGrade) throws IdException, JsonStringInvalidaException, CargaHorariaDesconhecidaException, ConexaoException{
+	public SugestaoDeHorario(MatrizCurricularDTO matriz, String turno,List<ComponenteCurricularDTO> componentesDaGrade) throws IdException, JsonStringInvalidaException, CargaHorariaDesconhecidaException, ConnectionException{
 		this.tabelas=new ArrayList<>();
 		this.componentesObrigatorios=new ArrayList<>();
 		this.componentesOptativos=new ArrayList<>();

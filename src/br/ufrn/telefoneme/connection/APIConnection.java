@@ -6,7 +6,7 @@ import org.apache.oltu.oauth2.client.request.OAuthClientRequest;
 import org.apache.oltu.oauth2.client.response.OAuthJSONAccessTokenResponse;
 import org.apache.oltu.oauth2.common.message.types.GrantType;
 
-import br.ufrn.telefoneme.exception.ConexaoException;
+import br.ufrn.telefoneme.exception.ConnectionException;
 import br.ufrn.telefoneme.exception.IdException;
 
 import java.io.BufferedReader;
@@ -37,59 +37,59 @@ public class APIConnection implements AbstractConnection {
     public final String RESOURCE_URL_TPL = "https://apitestes.info.ufrn.br";
 
     
-    public String getTurmas(String string,String ano, String periodo) throws ConexaoException{
+    public String getTurmas(String string,String ano, String periodo) throws ConnectionException{
     	return getDados("/ensino-services/services/consulta/turmas/centro",string+"/"+ano+"/"+periodo);
     }
     
-    public String getCursos() throws ConexaoException{
-    	return getDados("/curso-services/services/consulta/curso/GRADUACAO","");
+    public String getCursos(String nivel) throws ConnectionException{
+    	return getDados("/curso-services/services/consulta/curso",nivel);
     }
     
-    public String getMatrizCurricular(Integer idCurso) throws ConexaoException,IdException{
+    public String getMatrizCurricular(Integer idCurso) throws ConnectionException,IdException{
     	if(idCurso < 0){
     		throw new IdException("ID menor que zero!");  
     	}
         return getDados("/curso-services/services/consulta/curso/matriz/graduacao",idCurso);	
     }
     
-    public String getComponentes(Long idCurriculo) throws ConexaoException,IdException{
+    public String getComponentes(Long idCurriculo) throws ConnectionException,IdException{
     	if(idCurriculo<0){
     		throw new IdException("ID menor que zero!"); 
     	}
     	return getDados("/curso-services/services/consulta/curso/componentes/detalhes",idCurriculo);
     }
     
-    public String getEstatisticas(String nivel, String codigoComponente) throws ConexaoException{
+    public String getEstatisticas(String nivel, String codigoComponente) throws ConnectionException{
     	return getDados("/ensino-services/services/consulta/turmas/estatisticas",nivel + "/" + codigoComponente);
     }
     
-    public  String getAvaliacaoInstitucionalDocente(Integer idUnidade, Integer ano, Integer periodo) throws ConexaoException,IdException{
+    public  String getAvaliacaoInstitucionalDocente(Integer idUnidade, Integer ano, Integer periodo) throws ConnectionException,IdException{
     	if(idUnidade<0){
     		throw new IdException("ID menor que zero!"); 
     	}
     	return getDados("/ensino-services/services/consulta/avaliacaoInstitucional/docente",idUnidade + "/" + ano + "/" + periodo);
     }
     
-    public  String getUnidadesAcademicas(String nome) throws ConexaoException{
+    public  String getUnidadesAcademicas(String nome) throws ConnectionException{
     	return getDados("/unidades-services/services/consulta/unidade",nome);
     }
     
-    public  String getAvaliacoesInstitucionaisDocentes(Integer codigoUnidade, Integer ano, Integer periodo) throws ConexaoException{
+    public  String getAvaliacoesInstitucionaisDocentes(Integer codigoUnidade, Integer ano, Integer periodo) throws ConnectionException{
     	return getDados("/ensino-services/services/consulta/avaliacaoInstitucional/docente",codigoUnidade + "/" + ano + "/" + periodo);
     }
     
-    private  String getDados(String urlIntermediaria, Integer complemento) throws ConexaoException{
+    private  String getDados(String urlIntermediaria, Integer complemento) throws ConnectionException{
     	return getDadosAux(urlIntermediaria,Integer.toString(complemento));
     }
-    private  String getDados(String urlIntermediaria, Long complemento) throws ConexaoException{
+    private  String getDados(String urlIntermediaria, Long complemento) throws ConnectionException{
     	return getDadosAux(urlIntermediaria,Long.toString(complemento));
     }
     
-    private  String getDados(String urlIntermediaria, String complemento) throws ConexaoException{
+    private  String getDados(String urlIntermediaria, String complemento) throws ConnectionException{
     	return getDadosAux(urlIntermediaria,complemento);
     }
 
-    private String getDadosAux(String urlIntermediaria, String complemento) throws ConexaoException{
+    private String getDadosAux(String urlIntermediaria, String complemento) throws ConnectionException{
         String resultJson = "";
         try {
             OAuthClient client = new OAuthClient(new URLConnectionClient());
@@ -120,7 +120,7 @@ public class APIConnection implements AbstractConnection {
 
         } catch (Exception exn) {
             System.out.println(exn.getMessage());
-        	throw new ConexaoException();
+        	throw new ConnectionException();
         }
 
         return resultJson;

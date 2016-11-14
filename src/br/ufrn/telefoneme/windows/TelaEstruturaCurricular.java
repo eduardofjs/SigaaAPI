@@ -14,7 +14,7 @@ import javax.swing.border.EmptyBorder;
 
 import br.ufrn.telefoneme.dados.FachadaDeDados;
 import br.ufrn.telefoneme.dto.ComponenteCurricularDTO;
-import br.ufrn.telefoneme.exception.ConexaoException;
+import br.ufrn.telefoneme.exception.ConnectionException;
 import br.ufrn.telefoneme.exception.IdException;
 import br.ufrn.telefoneme.exception.JsonStringInvalidaException;
 
@@ -49,10 +49,10 @@ public class TelaEstruturaCurricular extends JFrame implements ActionListener {
 	/**
 	 * Create the frame.
 	 * @throws IdException 
-	 * @throws ConexaoException 
+	 * @throws ConnectionException 
 	 * @throws JsonStringInvalidaException 
 	 */
-	public TelaEstruturaCurricular(Integer idCurriculo, String turno) throws IdException, JsonStringInvalidaException, ConexaoException {
+	public TelaEstruturaCurricular(Integer idCurriculo, String turno) throws IdException, JsonStringInvalidaException, ConnectionException {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(Toolkit.getDefaultToolkit().getScreenSize());
 		
@@ -97,7 +97,7 @@ public class TelaEstruturaCurricular extends JFrame implements ActionListener {
 					{"N4", null, null, null, null, null, null},
 				},
 				new String[] {
-					"Horários", "Segunda-feira", "Terça-Feira", "Quarta-Feira", "Quinta-Feira", "Sexta-Feira", "Sábado"
+					"Horï¿½rios", "Segunda-feira", "Terï¿½a-Feira", "Quarta-Feira", "Quinta-Feira", "Sexta-Feira", "Sï¿½bado"
 				}
 			));
 			componentes.sort(null);
@@ -184,7 +184,7 @@ public class TelaEstruturaCurricular extends JFrame implements ActionListener {
 			}
 			
 			scrollPane = new JScrollPane();
-			tabbedPane.addTab(semestreAtual + "º Semestre", null, scrollPane, null);
+			tabbedPane.addTab(semestreAtual + "ï¿½ Semestre", null, scrollPane, null);
 			scrollPane.setViewportView(table);
 		}
 		getContentPane().setLayout(groupLayout);
