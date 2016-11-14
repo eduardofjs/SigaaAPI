@@ -3,6 +3,7 @@ package br.ufrn.telefoneme.componente;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.ufrn.telefoneme.dto.EstatisticasTurmasDTO;
 import br.ufrn.telefoneme.organize.Horario;
 import br.ufrn.telefoneme.organize.Semestre;
 
@@ -15,29 +16,24 @@ public abstract class Componente {
 	private final Integer nivel;
 	private final String codigo;
 	private final String nome;
-	private final List<Componente> prerequisitos;
-	private final List<Componente> corequisitos;
 	private final List<Componente> subComponente;
 	private final List<Horario> horarios;//TODO repensar: tentar criar uma classe Turma que tenha um componente e uma lista de hoarios
 	
-	public Componente(Integer nivel,String codigo,String nome,List<Componente> prerequisitos,List<Componente> corequisitos){
+	private final List<EstatisticasTurmasDTO> estatisticas;
+	
+	public Componente(Integer nivel,String codigo,String nome){
 		this.nivel=nivel;
 		this.codigo = codigo;
 		this.nome = nome;
-		this.prerequisitos=(prerequisitos==null)? new ArrayList<Componente>():prerequisitos;
-		this.corequisitos=(prerequisitos==null)? new ArrayList<Componente>():corequisitos;
 		this.subComponente=new ArrayList<>();
+		this.estatisticas=new ArrayList<>();
 		this.horarios=new ArrayList<>();
 	}
 	//TODO Adicionar horarios em todos os componentes nos metodos filhos
 	public abstract boolean insereNaTabelaDeHorarios(Semestre semestre, List<Horario> horariosPrerequisitos);
 	
-	public List<Componente> getPrerequisitos() {
-		return prerequisitos;
-	}
-
-	public List<Componente> getCorequisitos() {
-		return corequisitos;
+	public List<EstatisticasTurmasDTO> getestatisticas() {
+		return estatisticas;
 	}
 
 	public String getCodigo() {
