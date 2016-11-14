@@ -55,6 +55,7 @@ public class StringToComponente {
 	 */
 	public List<ComponenteCurricularDTO> getComponentes(String componentes, Long idCurriculo)
 			throws ConexaoException, IdException, JsonStringInvalidaException {
+		
 		List<ComponenteCurricularDTO> novosComponentes = new ArrayList<>();
 		if (componentes != null) {
 			if (!componentes.isEmpty()) {

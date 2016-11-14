@@ -5,7 +5,7 @@ import static org.junit.Assert.fail;
 
 import org.junit.Test;
 
-import br.ufrn.telefoneme.connection.Connection;
+import br.ufrn.telefoneme.connection.APIConnection;
 import br.ufrn.telefoneme.exception.ConexaoException;
 import br.ufrn.telefoneme.exception.IdException;
 
@@ -15,7 +15,7 @@ public class OltuJavaClientTest {
 	@Test
 	public void getCursosTest(){
 		try{
-			assertNotEquals(Connection.getCursos(), "");
+			assertNotEquals(APIConnection.getCursos(), "");
 		}catch(ConexaoException ex){
 			fail("Não conectado");
 		}
@@ -24,7 +24,7 @@ public class OltuJavaClientTest {
 	@Test
 	public void getComponentesTest(){
 		try{
-			assertNotEquals(Connection.getComponentes(3213), "");
+			assertNotEquals(APIConnection.getComponentes(3213), "");
 		}catch(ConexaoException ex){
 			fail("Não conectado");
 		}catch(IdException ex){
@@ -35,7 +35,7 @@ public class OltuJavaClientTest {
 	@Test
 	public void getMatrizTest(){
 		try{
-			assertNotEquals(Connection.getMatrizCurricular(3113), "");
+			assertNotEquals(APIConnection.getMatrizCurricular(3113), "");
 		}catch(ConexaoException ex){
 			fail("Não conectado");
 		}catch(IdException ex){
