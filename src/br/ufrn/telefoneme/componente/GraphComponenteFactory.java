@@ -25,18 +25,18 @@ public class GraphComponenteFactory {
 		//Emmpty
 	}
 	
-	public Graph<Componente> componenteBuilder(AbstractConnection connection, Long idCurriculo) 
+	public List<Componente> componenteBuilder(AbstractConnection connection, Long idCurriculo) 
 			throws JsonStringInvalidaException, ConnectionException, IdException, CargaHorariaDesconhecidaException{
 		
-		Graph<Componente> graph=new Graph<>();
+		List<Componente> lista=new ArrayList<>();
 		for(ComponenteCurricularDTO componente:FachadaDeDados.getInstance().getComponentes(connection, idCurriculo)){
-			addCompInGraph(connection, idCurriculo,componente, graph);
+			addCompInGraph(connection, idCurriculo,componente);
 		}
-		return graph;
+		return lista;
 	}
 	
 	private void addCompInGraph(AbstractConnection connection, Long idCurriculo,
-			ComponenteCurricularDTO componente, Graph<Componente> graph)
+			ComponenteCurricularDTO componente)
 			throws CargaHorariaDesconhecidaException, IdException, JsonStringInvalidaException, ConnectionException {
 		
 		List<ComponenteCurricularDTO> prerequisitos = new StringToComponente().getComponentes(connection, componente.getPreRequisitos(), idCurriculo);
@@ -45,14 +45,10 @@ public class GraphComponenteFactory {
 		
 		Componente convComp=curricToComponente(componente);
 		
+		addPrerequisitos(convComp, prerequisitos);
 		addCorrequisitos(convComp, correquisitos);
 		addSubComponentes(convComp, subComponentes);
 		
-		List<Componente> convPrereq=new ArrayList<>();
-		for(ComponenteCurricularDTO prer:prerequisitos){
-			convPrereq.add(curricToComponente(prer));
-		}
-		graph.addVertex(convComp,convPrereq);
 	}
 	
 	private void addPrerequisitos(Componente componente, List<ComponenteCurricularDTO> prerequisitos) throws CargaHorariaDesconhecidaException{
