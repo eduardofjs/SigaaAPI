@@ -42,4 +42,8 @@ public class Graph<T>{
 	public List<T> Adj(T key){
 		return this.adj.get(key);
 	}
+	
+	public String toString(){
+		return adj.toString();
+	}
 }

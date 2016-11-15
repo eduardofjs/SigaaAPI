@@ -18,16 +18,18 @@ public abstract class Componente {
 	private final String codigo;
 	private final String nome;
 	private final List<Componente> subComponente;
+	private final List<Componente> correquisitos;
 	private final List<Horario> horarios;//TODO repensar: tentar criar uma classe Turma que tenha um componente e uma lista de hoarios
 	
 	private final List<EstatisticasTurmasDTO> estatisticas;
 	
-	public Componente(boolean obrigatoria, Integer nivel,String codigo,String nome){
-		this.obrigatoria=obrigatoria;
+	public Componente(Integer nivel,String codigo,String nome,boolean obrigatoria){
 		this.nivel=nivel;
 		this.codigo = codigo;
 		this.nome = nome;
+		this.obrigatoria=obrigatoria;
 		this.subComponente=new ArrayList<>();
+		this.correquisitos=new ArrayList<>();
 		this.estatisticas=new ArrayList<>();
 		this.horarios=new ArrayList<>();
 	}
@@ -49,10 +51,20 @@ public abstract class Componente {
 	public Integer getNivel() {
 		return nivel;
 	}
-
+	public List<Componente> getSubComponente() {
+		return subComponente;
+	}
+	public List<Componente> getCorrequisitos() {
+		return correquisitos;
+	}
+	public boolean isObrigatoria() {
+		return obrigatoria;
+	}
 	public List<Horario> getHorarios() {
 		return horarios;
 	}
+	
+	
 	@Override
 	public boolean equals(Object o){
 		if(o instanceof Componente){
@@ -63,11 +75,6 @@ public abstract class Componente {
 			}
 		}return false;
 	}
-	public List<Componente> getSubComponente() {
-		return subComponente;
-	}
-	public boolean isObrigatoria() {
-		return obrigatoria;
-	}
+	
 	
 }

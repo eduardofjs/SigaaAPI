@@ -20,7 +20,7 @@ import br.ufrn.telefoneme.util.Graph;
  *
  */
 public class GraphComponenteFactory {
-
+	
 	public GraphComponenteFactory() {
 		//Emmpty
 	}
@@ -29,51 +29,71 @@ public class GraphComponenteFactory {
 			throws JsonStringInvalidaException, ConnectionException, IdException, CargaHorariaDesconhecidaException{
 		
 		Graph<Componente> graph=new Graph<>();
-		for(ComponenteCurricularDTO componente: FachadaDeDados.getInstance().getComponentes(connection, idCurriculo)){
-			
-			graph.addVertex(this.getComponente(componente),);
+		for(ComponenteCurricularDTO componente:FachadaDeDados.getInstance().getComponentes(connection, idCurriculo)){
+			addCompInGraph(connection, idCurriculo,componente, graph);
+		}
+		return graph;
+	}
+	
+	private void addCompInGraph(AbstractConnection connection, Long idCurriculo,
+			ComponenteCurricularDTO componente, Graph<Componente> graph)
+			throws CargaHorariaDesconhecidaException, IdException, JsonStringInvalidaException, ConnectionException {
+		
+		List<ComponenteCurricularDTO> prerequisitos = new StringToComponente().getComponentes(connection, componente.getPreRequisitos(), idCurriculo);
+		List<ComponenteCurricularDTO> correquisitos = new StringToComponente().getComponentes(connection, componente.getCoRequisitos(), idCurriculo);
+		List<ComponenteCurricularDTO> subComponentes=componente.getComponentesBloco();
+		
+		Componente convComp=curricToComponente(componente);
+		
+		addCorrequisitos(convComp, correquisitos);
+		addSubComponentes(convComp, subComponentes);
+		
+		List<Componente> convPrereq=new ArrayList<>();
+		for(ComponenteCurricularDTO prer:prerequisitos){
+			convPrereq.add(curricToComponente(prer));
+		}
+		graph.addVertex(convComp,convPrereq);
+	}
+	
+	private void addCorrequisitos(Componente componente, List<ComponenteCurricularDTO> correquisitos) throws CargaHorariaDesconhecidaException{
+		if(correquisitos!=null){
+			if(!correquisitos.isEmpty()){
+				List<Componente> correquisitosConvertidos=new ArrayList<>();
+				for(ComponenteCurricularDTO corOrig:correquisitos){
+					correquisitosConvertidos.add(curricToComponente(corOrig));
+				}
+				componente.getCorrequisitos().addAll(correquisitosConvertidos);
+			}
 		}
 	}
 	
-	public Componente geraNovoComponente(AbstractConnection connection, ComponenteCurricularDTO componente, Long idCurriculo) throws CargaHorariaDesconhecidaException, IdException, JsonStringInvalidaException, ConnectionException {
-		List<ComponenteCurricularDTO> prerequisitos = new StringToComponente().getComponentes(connection, componente.getPreRequisitos(), idCurriculo);
-		List<ComponenteCurricularDTO> corequisitos = new StringToComponente().getComponentes(connection, componente.getCoRequisitos(), idCurriculo);
-		List<ComponenteCurricularDTO> subComponentes=componente.getComponentesBloco();
-		
-		List<Componente> prerequisitosConvertidos=new ArrayList<>();
-		List<Componente> corequisitosConvertidos=new ArrayList<>();
-		
-		//Subturmas
+	private void addSubComponentes(Componente componente, List<ComponenteCurricularDTO> subComponentes) throws CargaHorariaDesconhecidaException{
 		if(subComponentes!=null){
 			if(!subComponentes.isEmpty()){
 				List<Componente> subComponentesConvertidos=new ArrayList<>();
-				for(ComponenteCurricularDTO sub:subComponentes){
-					subComponentesConvertidos.add(getComponente(sub));
-				}			
-				Componente novo= this.getComponente(componente);
-				novo.getSubComponente().addAll(subComponentesConvertidos);
-				return novo;
+				for(ComponenteCurricularDTO subOrig:subComponentes){
+					subComponentesConvertidos.add(curricToComponente(subOrig));
+				}
+				componente.getSubComponente().addAll(subComponentesConvertidos);
 			}
 		}
-		
-		return getComponente(componente);
 	}
 	
-	private Componente getComponente(ComponenteCurricularDTO componente) throws CargaHorariaDesconhecidaException{
+	private Componente curricToComponente(ComponenteCurricularDTO componente) throws CargaHorariaDesconhecidaException{
 		if (componente != null) {
 			switch (componente.getCargaHorariaTotal()) {
 			case 30:
-				return new Componente30h(componente.getSemetreOferta(),componente.getCodigo(), componente.getNome());
+				return new Componente30h(componente.getSemetreOferta(),componente.getCodigo(), componente.getNome(), componente.isObrigatoria());
 			case 60:
-				return new Componente60h(componente.getSemetreOferta(),componente.getCodigo(), componente.getNome());
+				return new Componente60h(componente.getSemetreOferta(),componente.getCodigo(), componente.getNome(), componente.isObrigatoria());
 			case 75:
-				return new Componente75h(componente.getSemetreOferta(),componente.getCodigo(), componente.getNome());
+				return new Componente75h(componente.getSemetreOferta(),componente.getCodigo(), componente.getNome(), componente.isObrigatoria());
 			case 90:
-				return new Componente90h(componente.getSemetreOferta(),componente.getCodigo(), componente.getNome());
+				return new Componente90h(componente.getSemetreOferta(),componente.getCodigo(), componente.getNome(), componente.isObrigatoria());
 			case 120:
-				return new Componente120h(componente.getSemetreOferta(),componente.getCodigo(), componente.getNome());
+				return new Componente120h(componente.getSemetreOferta(),componente.getCodigo(), componente.getNome(), componente.isObrigatoria());
 			case 180:
-				return new Componente180h(componente.getSemetreOferta(),componente.getCodigo(), componente.getNome());
+				return new Componente180h(componente.getSemetreOferta(),componente.getCodigo(), componente.getNome(), componente.isObrigatoria());
 			default:
 				throw new CargaHorariaDesconhecidaException("Carga Horária de: " + componente.getCargaHorariaTotal());
 			}
