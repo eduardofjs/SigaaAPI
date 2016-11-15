@@ -80,7 +80,8 @@ public class ArchiveConnection implements AbstractConnection {
 
 	@Override
 	public String getEstatisticas(String nivel, String codigo) throws ConnectionException {
-		File font=new File(estatisticas+"/"+nivel);
+		//TODO So esta para IMD
+		File font=new File(estatisticas+"/"+codigo);
 		if(font.exists()){
 			return ler(font.getPath());
 		}

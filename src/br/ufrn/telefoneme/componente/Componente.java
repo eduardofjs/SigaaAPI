@@ -71,7 +71,6 @@ public abstract class Componente {
 		return prerequisitos;
 	}
 	
-	
 	@Override
 	public boolean equals(Object o){
 		if(o instanceof Componente){
@@ -82,7 +81,8 @@ public abstract class Componente {
 			}
 		}return false;
 	}
+	
 	public String toString(){
-		return this.codigo+" "+this.nome+"\n";
+		return this.codigo+" "+this.nome+" "+ this.prerequisitos+"\n";
 	}
 }
