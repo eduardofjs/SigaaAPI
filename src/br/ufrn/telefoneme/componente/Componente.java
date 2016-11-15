@@ -3,6 +3,7 @@ package br.ufrn.telefoneme.componente;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.ufrn.telefoneme.dto.ComponenteCurricularDTO;
 import br.ufrn.telefoneme.dto.EstatisticasTurmasDTO;
 import br.ufrn.telefoneme.organize.Horario;
 import br.ufrn.telefoneme.organize.Semestre;
@@ -17,11 +18,13 @@ public abstract class Componente {
 	private final Integer nivel;
 	private final String codigo;
 	private final String nome;
-	private final List<Componente> subComponente;
+	private final List<Componente> prerequisitos;
 	private final List<Componente> correquisitos;
+	private final List<Componente> subComponente;
 	private final List<Horario> horarios;//TODO repensar: tentar criar uma classe Turma que tenha um componente e uma lista de hoarios
 	
 	private final List<EstatisticasTurmasDTO> estatisticas;
+	
 	
 	public Componente(Integer nivel,String codigo,String nome,boolean obrigatoria){
 		this.nivel=nivel;
@@ -30,6 +33,7 @@ public abstract class Componente {
 		this.obrigatoria=obrigatoria;
 		this.subComponente=new ArrayList<>();
 		this.correquisitos=new ArrayList<>();
+		this.prerequisitos=new ArrayList<>();
 		this.estatisticas=new ArrayList<>();
 		this.horarios=new ArrayList<>();
 	}
@@ -63,6 +67,9 @@ public abstract class Componente {
 	public List<Horario> getHorarios() {
 		return horarios;
 	}
+	public List<Componente> getPrerequisitos() {
+		return prerequisitos;
+	}
 	
 	
 	@Override
@@ -75,6 +82,7 @@ public abstract class Componente {
 			}
 		}return false;
 	}
-	
-	
+	public String toString(){
+		return this.codigo+" "+this.nome+"\n";
+	}
 }
