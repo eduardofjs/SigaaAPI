@@ -40,7 +40,7 @@ public abstract class Componente {
 	//TODO Adicionar horarios em todos os componentes nos metodos filhos
 	public abstract boolean insereNaTabelaDeHorarios(Semestre semestre, List<Horario> horariosPrerequisitos);
 	
-	public List<EstatisticasTurmasDTO> getestatisticas() {
+	public List<EstatisticasTurmasDTO> getEstatisticas() {
 		return estatisticas;
 	}
 

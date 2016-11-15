@@ -17,6 +17,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import br.ufrn.telefoneme.connection.APIConnection;
+import br.ufrn.telefoneme.connection.AbstractConnection;
 import br.ufrn.telefoneme.dados.FachadaDeDados;
 import br.ufrn.telefoneme.dto.CursoDTO;
 import br.ufrn.telefoneme.dto.MatrizCurricularDTO;
@@ -29,6 +31,7 @@ public class TelaCursos extends JFrame implements ActionListener {
 
 	private JPanel contentPane;
 	private HashMap<String, Component> componentMap;
+	private AbstractConnection connection = new APIConnection();
 	
 	/**
 	 * Launch the application.
@@ -66,7 +69,7 @@ public class TelaCursos extends JFrame implements ActionListener {
 
         String nomeCurso;
         //TODO Colocar janela de aviso!
-		for(CursoDTO curso : FachadaDeDados.getInstance().getCursos()){
+		for(CursoDTO curso : FachadaDeDados.getInstance().getCursos(connection)){
 			nomeCurso = curso.getCurso() + "/" + curso.getUnidade() + " - " + curso.getMunicipio() + " - " + curso.getNivel();
 			model.addElement( new Item(curso.getIdCurso().toString(), nomeCurso ) );
 		}
@@ -106,7 +109,7 @@ public class TelaCursos extends JFrame implements ActionListener {
 
 	        String nomeMatriz;
 			try {
-				for(MatrizCurricularDTO matriz : FachadaDeDados.getInstance().getMatrizes(idCurso)){
+				for(MatrizCurricularDTO matriz : FachadaDeDados.getInstance().getMatrizes(connection,idCurso)){
 					nomeMatriz = matriz.getNome() + " - " + matriz.getMunicipio() + " - " + matriz.getModalidade() + " - ";
 					if(matriz.getEnfase() != null)
 						nomeMatriz += matriz.getEnfase() + " - ";
@@ -128,7 +131,7 @@ public class TelaCursos extends JFrame implements ActionListener {
         	String[] aux = item.getId().split(" . ");
         	Integer idCurriculo = Integer.parseInt(aux[0]);
         	String turno = aux[1];
-        	TelaEstruturaCurricular.main(idCurriculo, turno);
+        	TelaEstruturaCurricular.main(connection, idCurriculo, turno);
         }
     }
 	

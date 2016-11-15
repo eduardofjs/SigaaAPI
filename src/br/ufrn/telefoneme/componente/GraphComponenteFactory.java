@@ -31,7 +31,8 @@ public class GraphComponenteFactory {
 		
 		List<Componente> lista=new ArrayList<>();
 		for(ComponenteCurricularDTO componente:FachadaDeDados.getInstance().getComponentes(connection, idCurriculo)){
-			lista.add(componenteBuilder(connection, idCurriculo,componente));
+			if(componente.isObrigatoria())
+				lista.add(componenteBuilder(connection, idCurriculo,componente));
 		}
 		return lista;
 	}
@@ -50,7 +51,7 @@ public class GraphComponenteFactory {
 		addPrerequisitos(convComp, prerequisitos);
 		addCorrequisitos(convComp, correquisitos);
 		addSubComponentes(convComp, subComponentes);
-		convComp.getestatisticas().addAll(estatisticas);
+		convComp.getEstatisticas().addAll(estatisticas);
 		
 		return convComp;
 	}

@@ -5,13 +5,13 @@ import java.awt.EventQueue;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Arrays;
 import java.util.List;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import br.ufrn.telefoneme.connection.AbstractConnection;
 import br.ufrn.telefoneme.dados.FachadaDeDados;
 import br.ufrn.telefoneme.dto.ComponenteCurricularDTO;
 import br.ufrn.telefoneme.exception.ConnectionException;
@@ -33,11 +33,11 @@ public class TelaEstruturaCurricular extends JFrame implements ActionListener {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(Integer idCurriculo, String turno) {
+	public static void main(AbstractConnection connection, Integer idCurriculo, String turno) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					TelaEstruturaCurricular frame = new TelaEstruturaCurricular(idCurriculo,turno);
+					TelaEstruturaCurricular frame = new TelaEstruturaCurricular(connection, idCurriculo,turno);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -52,7 +52,7 @@ public class TelaEstruturaCurricular extends JFrame implements ActionListener {
 	 * @throws ConnectionException 
 	 * @throws JsonStringInvalidaException 
 	 */
-	public TelaEstruturaCurricular(Integer idCurriculo, String turno) throws IdException, JsonStringInvalidaException, ConnectionException {
+	public TelaEstruturaCurricular(AbstractConnection connection, Integer idCurriculo, String turno) throws IdException, JsonStringInvalidaException, ConnectionException {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(Toolkit.getDefaultToolkit().getScreenSize());
 		
@@ -67,7 +67,7 @@ public class TelaEstruturaCurricular extends JFrame implements ActionListener {
 				.addComponent(tabbedPane, GroupLayout.DEFAULT_SIZE, 861, Short.MAX_VALUE)
 		);
 
-		List<ComponenteCurricularDTO> componentes = FachadaDeDados.getInstance().getComponentes((long) idCurriculo);
+		List<ComponenteCurricularDTO> componentes = FachadaDeDados.getInstance().getComponentes(connection, (long) idCurriculo);
 		JScrollPane scrollPane;
 		int totalSemestres = 0;
 		for(ComponenteCurricularDTO componente : componentes){
