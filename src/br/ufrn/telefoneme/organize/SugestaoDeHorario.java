@@ -8,7 +8,7 @@ import br.ufrn.telefoneme.auxiliarhorario.Dia;
 import br.ufrn.telefoneme.auxiliarhorario.Semana;
 import br.ufrn.telefoneme.auxiliarhorario.TurnoFactory;
 import br.ufrn.telefoneme.componente.Componente;
-import br.ufrn.telefoneme.componente.ComponenteFactory;
+import br.ufrn.telefoneme.componente.GraphComponenteFactory;
 import br.ufrn.telefoneme.dto.ComponenteCurricularDTO;
 import br.ufrn.telefoneme.dto.MatrizCurricularDTO;
 import br.ufrn.telefoneme.exception.CargaHorariaDesconhecidaException;
@@ -41,9 +41,9 @@ public class SugestaoDeHorario {
 		//Convertendo componentes
 		for(ComponenteCurricularDTO componenteDaGrade:componentesDaGrade){
 			if(componenteDaGrade.isObrigatoria())
-				componentesObrigatorios.add(new ComponenteFactory().geraNovoComponente(componenteDaGrade, matriz.getIdCurriculo()));
+				componentesObrigatorios.add(new GraphComponenteFactory().geraNovoComponente(componenteDaGrade, matriz.getIdCurriculo()));
 			else
-				componentesOptativos.add(new ComponenteFactory().geraNovoComponente(componenteDaGrade, matriz.getIdCurriculo()));
+				componentesOptativos.add(new GraphComponenteFactory().geraNovoComponente(componenteDaGrade, matriz.getIdCurriculo()));
 		}
 		
 		//Ordenando componentes por CH e por quantidade de prerequisitos

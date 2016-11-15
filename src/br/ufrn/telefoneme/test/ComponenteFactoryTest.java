@@ -5,7 +5,7 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 import br.ufrn.telefoneme.componente.Componente;
-import br.ufrn.telefoneme.componente.ComponenteFactory;
+import br.ufrn.telefoneme.componente.GraphComponenteFactory;
 import br.ufrn.telefoneme.conversion.StringToComponente;
 import br.ufrn.telefoneme.dados.FachadaDeDados;
 import br.ufrn.telefoneme.dto.ComponenteCurricularDTO;
@@ -15,7 +15,7 @@ import br.ufrn.telefoneme.exception.IdException;
 import br.ufrn.telefoneme.exception.JsonStringInvalidaException;
 
 public class ComponenteFactoryTest {
-	ComponenteFactory ren=new ComponenteFactory();
+	GraphComponenteFactory ren=new GraphComponenteFactory();
 	@Test
 	public void test() {		
 		try {

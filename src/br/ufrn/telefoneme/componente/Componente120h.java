@@ -12,8 +12,8 @@ import br.ufrn.telefoneme.organize.Semestre;
  */
 public class Componente120h extends Componente {
 
-	public Componente120h(Integer nivel, String codigo, String nome, List<Componente> prerequisitos, List<Componente> corequisitos) {
-		super(nivel,codigo, nome, prerequisitos, corequisitos);
+	public Componente120h(Integer nivel, String codigo, String nome) {
+		super(nivel,codigo, nome);
 	}
 	
 	@Override

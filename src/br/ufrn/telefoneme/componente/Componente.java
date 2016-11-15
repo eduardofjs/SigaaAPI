@@ -13,6 +13,7 @@ import br.ufrn.telefoneme.organize.Semestre;
  * @category Template
  */
 public abstract class Componente {
+	private final boolean obrigatoria;
 	private final Integer nivel;
 	private final String codigo;
 	private final String nome;
@@ -21,7 +22,8 @@ public abstract class Componente {
 	
 	private final List<EstatisticasTurmasDTO> estatisticas;
 	
-	public Componente(Integer nivel,String codigo,String nome){
+	public Componente(boolean obrigatoria, Integer nivel,String codigo,String nome){
+		this.obrigatoria=obrigatoria;
 		this.nivel=nivel;
 		this.codigo = codigo;
 		this.nome = nome;
@@ -63,6 +65,9 @@ public abstract class Componente {
 	}
 	public List<Componente> getSubComponente() {
 		return subComponente;
+	}
+	public boolean isObrigatoria() {
+		return obrigatoria;
 	}
 	
 }

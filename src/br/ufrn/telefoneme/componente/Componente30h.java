@@ -13,8 +13,8 @@ import br.ufrn.telefoneme.organize.Semestre;
 public class Componente30h extends Componente {
 
 
-	public Componente30h(Integer nivel, String codigo, String nome, List<Componente> prerequisitos, List<Componente> corequisitos) {
-		super(nivel,codigo, nome, prerequisitos, corequisitos);
+	public Componente30h(Integer nivel, String codigo, String nome) {
+		super(nivel,codigo, nome);
 	}
 /*
 	@Override
