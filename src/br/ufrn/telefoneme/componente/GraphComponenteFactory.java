@@ -8,6 +8,7 @@ import br.ufrn.telefoneme.connection.AbstractConnection;
 import br.ufrn.telefoneme.conversion.StringToComponente;
 import br.ufrn.telefoneme.dados.FachadaDeDados;
 import br.ufrn.telefoneme.dto.ComponenteCurricularDTO;
+import br.ufrn.telefoneme.dto.EstatisticasTurmasDTO;
 import br.ufrn.telefoneme.exception.CargaHorariaDesconhecidaException;
 import br.ufrn.telefoneme.exception.ConnectionException;
 import br.ufrn.telefoneme.exception.IdException;
@@ -42,12 +43,14 @@ public class GraphComponenteFactory {
 		List<ComponenteCurricularDTO> prerequisitos = new StringToComponente().getComponentes(connection, componente.getPreRequisitos(), idCurriculo);
 		List<ComponenteCurricularDTO> correquisitos = new StringToComponente().getComponentes(connection, componente.getCoRequisitos(), idCurriculo);
 		List<ComponenteCurricularDTO> subComponentes=componente.getComponentesBloco();
+		List<EstatisticasTurmasDTO> estatisticas=FachadaDeDados.getInstance().getEstatisticas(connection,"GRADUACAO", componente.getCodigo());
 		
 		Componente convComp=curricToComponente(componente);
 		
 		addPrerequisitos(convComp, prerequisitos);
 		addCorrequisitos(convComp, correquisitos);
 		addSubComponentes(convComp, subComponentes);
+		convComp.getestatisticas().addAll(estatisticas);
 		
 		return convComp;
 	}
@@ -87,6 +90,7 @@ public class GraphComponenteFactory {
 			}
 		}
 	}
+	
 	
 	private Componente curricToComponente(ComponenteCurricularDTO componente) throws CargaHorariaDesconhecidaException{
 		if (componente != null) {
