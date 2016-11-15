@@ -73,16 +73,16 @@ public class LocalDBCreator {
 	
 	public void createEstatisticaDBByComponenteCod() throws JsonStringInvalidaException, ConnectionException, IdException, IOException{
 		File caminho=novoDiretorio("Estatisticas");
-		for(CursoDTO curso:FachadaDeDados.getInstance().getCursos(new APIConnection())){
-			for(MatrizCurricularDTO matriz:FachadaDeDados.getInstance().getMatrizes(new APIConnection(),curso.getIdCurso())){
-				if(matriz.getAtivo()){
-					System.out.println(matriz.getNome());
-					for(ComponenteCurricularDTO componente:FachadaDeDados.getInstance().getComponentes(new APIConnection(),matriz.getIdCurriculo())){
+		//for(CursoDTO curso:FachadaDeDados.getInstance().getCursos(new APIConnection())){
+			//for(MatrizCurricularDTO matriz:FachadaDeDados.getInstance().getMatrizes(new APIConnection(),105755388)){
+				//if(matriz.getAtivo()){
+					//System.out.println(matriz.getNome());
+					for(ComponenteCurricularDTO componente:FachadaDeDados.getInstance().getComponentes(new APIConnection(),new Long(105755388))){
 						String jsonEstatistica=new APIConnection().getEstatisticas("GRADUACAO", componente.getCodigo());
 						escrever(caminho.getPath()+"/"+componente.getCodigo(),jsonEstatistica);
 					}
-				}
-			}
-		}
+				//}
+			//}
+		//}
 	}
 }

@@ -40,7 +40,7 @@ public class Main {
 					//System.out.println(matriz.getNome()+ "   "+matriz.getIdCurriculo());
 		//}
 		//new LocalDBCreator().createCursosDB();
-		//new LocalDBCreator().createEstatisticaDBByComponenteCod();
+		new LocalDBCreator().createEstatisticaDBByComponenteCod();
 		//System.out.println(new APIConnection().getUnidadesAcademicas("INSTITUTO METROPOLE DIGITAL"));
 		//System.out.println(new APIConnection().getAvaliacaoInstitucionalDocente(110005, 2015, 2));
 		//System.out.println(JsonToObject.toEstatisticasTurmasDTO(j).get(5));
