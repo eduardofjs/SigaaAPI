@@ -25,17 +25,17 @@ public class GraphComponenteFactory {
 		//Emmpty
 	}
 	
-	public List<Componente> componenteBuilder(AbstractConnection connection, Long idCurriculo) 
+	public List<Componente> listBuilder(AbstractConnection connection, Long idCurriculo) 
 			throws JsonStringInvalidaException, ConnectionException, IdException, CargaHorariaDesconhecidaException{
 		
 		List<Componente> lista=new ArrayList<>();
 		for(ComponenteCurricularDTO componente:FachadaDeDados.getInstance().getComponentes(connection, idCurriculo)){
-			addCompInGraph(connection, idCurriculo,componente);
+			lista.add(componenteBuilder(connection, idCurriculo,componente));
 		}
 		return lista;
 	}
 	
-	private void addCompInGraph(AbstractConnection connection, Long idCurriculo,
+	private Componente componenteBuilder(AbstractConnection connection, Long idCurriculo,
 			ComponenteCurricularDTO componente)
 			throws CargaHorariaDesconhecidaException, IdException, JsonStringInvalidaException, ConnectionException {
 		
@@ -49,6 +49,7 @@ public class GraphComponenteFactory {
 		addCorrequisitos(convComp, correquisitos);
 		addSubComponentes(convComp, subComponentes);
 		
+		return convComp;
 	}
 	
 	private void addPrerequisitos(Componente componente, List<ComponenteCurricularDTO> prerequisitos) throws CargaHorariaDesconhecidaException{
@@ -98,6 +99,8 @@ public class GraphComponenteFactory {
 				return new Componente75h(componente.getSemetreOferta(),componente.getCodigo(), componente.getNome(), componente.isObrigatoria());
 			case 90:
 				return new Componente90h(componente.getSemetreOferta(),componente.getCodigo(), componente.getNome(), componente.isObrigatoria());
+			case 100:
+				return new Componente100h(componente.getSemetreOferta(),componente.getCodigo(), componente.getNome(), componente.isObrigatoria());
 			case 120:
 				return new Componente120h(componente.getSemetreOferta(),componente.getCodigo(), componente.getNome(), componente.isObrigatoria());
 			case 180:
