@@ -55,6 +55,18 @@ public class GraphComponenteFactory {
 		graph.addVertex(convComp,convPrereq);
 	}
 	
+	private void addPrerequisitos(Componente componente, List<ComponenteCurricularDTO> prerequisitos) throws CargaHorariaDesconhecidaException{
+		if(prerequisitos!=null){
+			if(!prerequisitos.isEmpty()){
+				List<Componente> prerequisitosConvertidos=new ArrayList<>();
+				for(ComponenteCurricularDTO preOrig:prerequisitos){
+					prerequisitosConvertidos.add(curricToComponente(preOrig));
+				}
+				componente.getPrerequisitos().addAll(prerequisitosConvertidos);
+			}
+		}
+	}
+	
 	private void addCorrequisitos(Componente componente, List<ComponenteCurricularDTO> correquisitos) throws CargaHorariaDesconhecidaException{
 		if(correquisitos!=null){
 			if(!correquisitos.isEmpty()){
