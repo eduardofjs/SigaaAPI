@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence-diagram version="1.1.11" icons="true" automaticImage="JPEG">  
+  <object id="1" language="java" name="br.ufrn.telefoneme.windows.TelaCursos" project="SIGAA" 
+    file="/SIGAA/src/br/ufrn/telefoneme/windows/TelaCursos.java" binary="false" label="telaCursos" type="class" 
+    autoSize="true">    
+    <position height="-1" width="-1" x="76" y="0"/>  
+  </object>  
+  <object id="2" language="java" name="br.ufrn.telefoneme.organize.GeradorTurmasProximoSemestre" project="SIGAA" 
+    file="/SIGAA/src/br/ufrn/telefoneme/organize/GeradorTurmasProximoSemestre.java" binary="false" 
+    label="geradorTurmasProximoSemestre" type="class" autoSize="true">    
+    <position height="-1" width="-1" x="223" y="0"/>  
+  </object>  
+  <object id="3" language="java" name="br.ufrn.telefoneme.componente.GeradorDeTodosComponentes" project="SIGAA" 
+    file="/SIGAA/src/br/ufrn/telefoneme/componente/GeradorDeTodosComponentes.java" binary="false" 
+    label="geradorDeTodosComponentes" type="class" autoSize="true">    
+    <position height="-1" width="-1" x="217" y="0"/>  
+  </object>  
+  <object id="4" language="java" name="br.ufrn.telefoneme.dados.FachadaDeDados" project="SIGAA" 
+    file="/SIGAA/src/br/ufrn/telefoneme/dados/FachadaDeDados.java" binary="false" label="fachadaDeDados" type="class" 
+    autoSize="true">    
+    <position height="-1" width="-1" x="417" y="0"/>  
+  </object>  
+  <note id="5">    
+    <position height="36" width="15" x="225" y="108"/>    
+    <text><![CDATA[]]>
+    </text>  
+  </note>  
+  <note id="6">    
+    <position height="50" width="88" x="20" y="91"/>    
+    <text><![CDATA[]]>
+    </text>  
+  </note>  
+  <text-link id="7">    
+    <link-end type="SOURCE" refId="6"/>    
+    <link-end type="TARGET" refId="5"/>  
+  </text-link>  
+  <text-link id="8">    
+    <link-end type="SOURCE" refId="6"/>    
+    <link-end type="TARGET" refId="1"/>  
+  </text-link>  
+  <text-link id="9">    
+    <link-end type="SOURCE" refId="5"/>    
+    <link-end type="TARGET" refId="3"/>  
+  </text-link>
+</sequence-diagram>
