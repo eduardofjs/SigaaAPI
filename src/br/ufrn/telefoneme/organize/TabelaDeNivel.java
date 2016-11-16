@@ -18,6 +18,7 @@ import br.ufrn.telefoneme.componente.Turma;
  * 
  */
 public class TabelaDeNivel {
+	/*
 	private final List<Turma> turmas;
 	private final Integer nivel;
 	
@@ -45,11 +46,10 @@ public class TabelaDeNivel {
 			return this.nivel.equals(o);
 		}
 		return false;
-	}
+	}*/
 	
-	/*private final Integer nivel;
+	private final Integer nivel;
 	private final Map<Horario,Componente> tabela;
-	//TODO May be add/remove this fields after
 	//private final Semana semana;
 	//private final Turno
 	
@@ -102,7 +102,7 @@ public class TabelaDeNivel {
 	 * @param dia
 	 * @return
 	 */
-	/*
+	
 	public List<Horario> getHorariosPeloDia(Dia dia){
 		List<Horario> horariosPorDia=new ArrayList<>();
 		for(Horario hor:tabela.keySet()){
@@ -117,8 +117,8 @@ public class TabelaDeNivel {
 	 * @param horario
 	 * @return
 	 */
-	/*
-	public List<Horario> getHorariosPeloHorario( Integer horario){
+	
+	public List<Horario> getHorariosPeloHorario(Integer horario){
 		//TODO COlocar turno como parametro para matrizes com mais de um turno
 		List<Horario> horariosPorDia=new ArrayList<>();
 		for(Horario hor:tabela.keySet()){
@@ -130,8 +130,6 @@ public class TabelaDeNivel {
 
 	public Map<Horario, Componente> getTabela() {
 		return tabela;
-	}*/
-
-
+	}
 
 }

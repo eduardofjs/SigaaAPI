@@ -4,7 +4,7 @@
   router="FAN">  
   <class id="1" language="java" name="br.ufrn.telefoneme.componente.Componente" project="SIGAA" 
     file="/SIGAA/src/br/ufrn/telefoneme/componente/Componente.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="616" y="286"/>    
+    <position height="-1" width="-1" x="740" y="356"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="false" package="false" protected="false" private="false" static="true"/>      
@@ -13,7 +13,7 @@
   </class>  
   <class id="2" language="java" name="br.ufrn.telefoneme.conversion.StringToComponente" project="SIGAA" 
     file="/SIGAA/src/br/ufrn/telefoneme/conversion/StringToComponente.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="90" width="277" x="363" y="693"/>    
+    <position height="90" width="219" x="315" y="233"/>    
     <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="false" package="false" protected="false" private="false" static="true"/>      
@@ -22,7 +22,7 @@
   </class>  
   <class id="3" language="java" name="br.ufrn.telefoneme.dados.FachadaDeDados" project="SIGAA" 
     file="/SIGAA/src/br/ufrn/telefoneme/dados/FachadaDeDados.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="144" width="279" x="-100" y="669"/>    
+    <position height="144" width="279" x="-136" y="477"/>    
     <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="false" package="false" protected="false" private="false" static="true"/>      
@@ -31,7 +31,7 @@
   </class>  
   <class id="4" language="java" name="br.ufrn.telefoneme.dto.EstatisticasTurmasDTO" project="SIGAA" 
     file="/SIGAA/src/br/ufrn/telefoneme/dto/EstatisticasTurmasDTO.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="153" width="196" x="-296" y="370"/>    
+    <position height="153" width="196" x="-346" y="240"/>    
     <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="false" package="false" protected="false" private="false" static="true"/>      
@@ -40,7 +40,7 @@
   </class>  
   <class id="5" language="java" name="br.ufrn.telefoneme.dto.ComponenteCurricularDTO" project="SIGAA" 
     file="/SIGAA/src/br/ufrn/telefoneme/dto/ComponenteCurricularDTO.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="116" width="235" x="448" y="510"/>    
+    <position height="116" width="235" x="268" y="375"/>    
     <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="false" package="false" protected="false" private="false" static="true"/>      
@@ -49,7 +49,7 @@
   </class>  
   <class id="6" language="java" name="br.ufrn.telefoneme.organize.GeradorDeTurmas" project="SIGAA" 
     file="/SIGAA/src/br/ufrn/telefoneme/organize/GeradorDeTurmas.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="611" y="-91"/>    
+    <position height="-1" width="-1" x="703" y="-89"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="false" package="false" protected="false" private="false" static="true"/>      
@@ -67,12 +67,12 @@
   </class>  
   <package id="8" language="java" name="br.ufrn.telefoneme.connection" project="SIGAA" 
     file="/SIGAA/src/br/ufrn/telefoneme/connection" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="248" width="889" x="-288" y="846"/>    
+    <position height="248" width="889" x="-350" y="646"/>    
     <display autosize="false" stereotype="true" sort-features="false" accessors="true"/>  
   </package>  
   <interface id="9" language="java" name="br.ufrn.telefoneme.connection.AbstractConnection" project="SIGAA" 
     file="/SIGAA/src/br/ufrn/telefoneme/connection/AbstractConnection.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="366" y="991"/>    
+    <position height="-1" width="-1" x="303" y="792"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="false" package="false" protected="false" private="false" static="true"/>      
@@ -81,7 +81,7 @@
   </interface>  
   <class id="10" language="java" name="br.ufrn.telefoneme.connection.JsonToObject" project="SIGAA" 
     file="/SIGAA/src/br/ufrn/telefoneme/connection/JsonToObject.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="180" width="355" x="-248" y="901"/>    
+    <position height="180" width="355" x="-342" y="694"/>    
     <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="false" package="false" protected="false" private="false" static="true"/>      
@@ -90,7 +90,7 @@
   </class>  
   <class id="11" language="java" name="br.ufrn.telefoneme.organize.SugestaoDeHorario" project="SIGAA" 
     file="/SIGAA/src/br/ufrn/telefoneme/organize/SugestaoDeHorario.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="90" width="327" x="831" y="-126"/>    
+    <position height="90" width="218" x="895" y="-134"/>    
     <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="false" package="false" protected="false" private="false" static="true"/>      
@@ -99,7 +99,7 @@
   </class>  
   <class id="12" language="java" name="br.ufrn.telefoneme.componente.GeradorDeTodosComponentes" project="SIGAA" 
     file="/SIGAA/src/br/ufrn/telefoneme/componente/GeradorDeTodosComponentes.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="-189" y="73"/>    
+    <position height="-1" width="-1" x="-245" y="54"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="false" package="false" protected="false" private="false" static="true"/>      
@@ -108,190 +108,200 @@
   </class>  
   <class id="13" language="java" name="br.ufrn.telefoneme.organize.GeradorTurmasProximoSemestre" project="SIGAA" 
     file="/SIGAA/src/br/ufrn/telefoneme/organize/GeradorTurmasProximoSemestre.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="443" y="69"/>    
+    <position height="-1" width="-1" x="546" y="55"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="false" package="false" protected="false" private="false" static="true"/>      
       <operations public="true" package="false" protected="false" private="false" static="true"/>    
     </display>  
   </class>  
-  <class id="14" language="java" name="br.ufrn.telefoneme.organize.SugestaoHorarioCoordenador" project="SIGAA" 
-    file="/SIGAA/src/br/ufrn/telefoneme/organize/SugestaoHorarioCoordenador.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="72" width="313" x="928" y="34"/>    
-    <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="false" package="false" protected="false" private="false" static="true"/>      
-      <operations public="true" package="false" protected="false" private="false" static="true"/>    
-    </display>  
-  </class>  
-  <class id="15" language="java" name="br.ufrn.telefoneme.componente.Componente90h" project="SIGAA" 
+  <class id="14" language="java" name="br.ufrn.telefoneme.componente.Componente90h" project="SIGAA" 
     file="/SIGAA/src/br/ufrn/telefoneme/componente/Componente90h.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="90" width="251" x="872" y="122"/>    
+    <position height="90" width="251" x="945" y="455"/>    
     <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="false" package="false" protected="false" private="false" static="true"/>      
       <operations public="true" package="false" protected="false" private="false" static="true"/>    
     </display>  
   </class>  
-  <class id="16" language="java" name="br.ufrn.telefoneme.componente.Componente60h" project="SIGAA" 
+  <class id="15" language="java" name="br.ufrn.telefoneme.componente.Componente60h" project="SIGAA" 
     file="/SIGAA/src/br/ufrn/telefoneme/componente/Componente60h.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="90" width="251" x="1128" y="197"/>    
+    <position height="90" width="251" x="917" y="624"/>    
     <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="false" package="false" protected="false" private="false" static="true"/>      
       <operations public="true" package="false" protected="false" private="false" static="true"/>    
     </display>  
   </class>  
-  <class id="17" language="java" name="br.ufrn.telefoneme.componente.Componente30h" project="SIGAA" 
+  <class id="16" language="java" name="br.ufrn.telefoneme.componente.Componente30h" project="SIGAA" 
     file="/SIGAA/src/br/ufrn/telefoneme/componente/Componente30h.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="90" width="251" x="873" y="289"/>    
+    <position height="90" width="251" x="818" y="754"/>    
     <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="false" package="false" protected="false" private="false" static="true"/>      
       <operations public="true" package="false" protected="false" private="false" static="true"/>    
     </display>  
   </class>  
-  <dependency id="18">    
+  <class id="17" language="java" name="br.ufrn.telefoneme.organize.SugestaoHorarioCoordenador" project="SIGAA" 
+    file="/SIGAA/src/br/ufrn/telefoneme/organize/SugestaoHorarioCoordenador.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="90" width="226" x="1064" y="3"/>    
+    <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="true"/>      
+      <operations public="true" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="18" language="java" name="br.ufrn.telefoneme.componente.Turma" project="SIGAA" 
+    file="/SIGAA/src/br/ufrn/telefoneme/componente/Turma.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1100" y="282"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="true"/>      
+      <operations public="true" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="19" language="java" name="br.ufrn.telefoneme.connection.APIConnection" project="SIGAA" 
+    file="/SIGAA/src/br/ufrn/telefoneme/connection/APIConnection.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="132" width="238" x="550" y="720"/>    
+    <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="true"/>      
+      <operations public="true" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <dependency id="20">    
     <end type="SOURCE" refId="3"/>    
     <end type="TARGET" refId="4"/>  
   </dependency>  
-  <association id="19">    
-    <end type="SOURCE" refId="1" navigable="false" variant="ASSOCIATION">      
-      <attribute id="20" name="prerequisitos"/>      
-      <multiplicity id="21" minimum="0" maximum="2147483647"/>    
+  <dependency id="21">    
+    <end type="SOURCE" refId="13"/>    
+    <end type="TARGET" refId="1"/>  
+  </dependency>  
+  <association id="22">    
+    <end type="SOURCE" refId="18" navigable="false" variant="ASSOCIATION">      
+      <attribute id="23" name="componente"/>      
+      <multiplicity id="24" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="1" navigable="true" variant="ASSOCIATION"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <dependency id="22">    
-    <end type="SOURCE" refId="13"/>    
-    <end type="TARGET" refId="1"/>  
-  </dependency>  
-  <association id="23">    
+  <generalization id="25">    
+    <end type="SOURCE" refId="17"/>    
+    <end type="TARGET" refId="11"/>  
+  </generalization>  
+  <association id="26">    
     <end type="SOURCE" refId="5" navigable="false" variant="ASSOCIATION">      
-      <attribute id="24" name="componentesBloco"/>      
-      <multiplicity id="25" minimum="0" maximum="2147483647"/>    
+      <attribute id="27" name="componentesBloco"/>      
+      <multiplicity id="28" minimum="0" maximum="2147483647"/>    
     </end>    
     <end type="TARGET" refId="5" navigable="true" variant="ASSOCIATION"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="26">    
-    <end type="SOURCE" refId="11" navigable="false" variant="ASSOCIATION">      
-      <attribute id="27" name="componentesObrigatorios"/>      
-      <multiplicity id="28" minimum="0" maximum="2147483647"/>    
-    </end>    
-    <end type="TARGET" refId="1" navigable="true" variant="ASSOCIATION"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="29">    
-    <end type="SOURCE" refId="1" navigable="false" variant="ASSOCIATION">      
-      <attribute id="30" name="correquisitos"/>      
-      <multiplicity id="31" minimum="0" maximum="2147483647"/>    
-    </end>    
-    <end type="TARGET" refId="1" navigable="true" variant="ASSOCIATION"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <dependency id="32">    
+  <dependency id="29">    
+    <end type="SOURCE" refId="17"/>    
+    <end type="TARGET" refId="18"/>  
+  </dependency>  
+  <dependency id="30">    
     <end type="SOURCE" refId="7"/>    
     <end type="TARGET" refId="4"/>  
   </dependency>  
-  <dependency id="33">    
+  <dependency id="31">    
     <end type="SOURCE" refId="2"/>    
     <end type="TARGET" refId="3"/>  
   </dependency>  
-  <dependency id="34">    
+  <dependency id="32">    
     <end type="SOURCE" refId="10"/>    
     <end type="TARGET" refId="4"/>  
   </dependency>  
-  <generalization id="35">    
-    <end type="SOURCE" refId="16"/>    
+  <generalization id="33">    
+    <end type="SOURCE" refId="15"/>    
     <end type="TARGET" refId="1"/>  
   </generalization>  
-  <dependency id="36">    
-    <end type="SOURCE" refId="2"/>    
-    <end type="TARGET" refId="9"/>  
-  </dependency>  
-  <association id="37">    
-    <end type="SOURCE" refId="11" navigable="false" variant="ASSOCIATION">      
-      <attribute id="38" name="componentesOptativos"/>      
-      <multiplicity id="39" minimum="0" maximum="2147483647"/>    
+  <association id="34">    
+    <end type="SOURCE" refId="18" navigable="false" variant="ASSOCIATION">      
+      <attribute id="35" name="anterior"/>      
+      <multiplicity id="36" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="1" navigable="true" variant="ASSOCIATION"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="40">    
+  <dependency id="37">    
+    <end type="SOURCE" refId="11"/>    
+    <end type="TARGET" refId="18"/>  
+  </dependency>  
+  <association id="38">    
     <end type="SOURCE" refId="1" navigable="false" variant="ASSOCIATION">      
-      <attribute id="41" name="estatisticas"/>      
-      <multiplicity id="42" minimum="0" maximum="2147483647"/>    
+      <attribute id="39" name="estatisticas"/>      
+      <multiplicity id="40" minimum="0" maximum="2147483647"/>    
     </end>    
     <end type="TARGET" refId="4" navigable="true" variant="ASSOCIATION"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <generalization id="43">    
-    <end type="SOURCE" refId="17"/>    
+  <realization id="41">    
+    <end type="SOURCE" refId="19"/>    
+    <end type="TARGET" refId="9"/>  
+  </realization>  
+  <generalization id="42">    
+    <end type="SOURCE" refId="16"/>    
     <end type="TARGET" refId="1"/>  
   </generalization>  
-  <generalization id="44">    
-    <end type="SOURCE" refId="14"/>    
-    <end type="TARGET" refId="11"/>  
-  </generalization>  
-  <generalization id="45">    
+  <generalization id="43">    
     <end type="SOURCE" refId="13"/>    
     <end type="TARGET" refId="6"/>  
   </generalization>  
-  <dependency id="46">    
+  <dependency id="44">    
     <end type="SOURCE" refId="7"/>    
     <end type="TARGET" refId="9"/>  
   </dependency>  
-  <generalization id="47">    
-    <end type="SOURCE" refId="15"/>    
+  <generalization id="45">    
+    <end type="SOURCE" refId="14"/>    
     <end type="TARGET" refId="1"/>  
   </generalization>  
-  <dependency id="48">    
+  <dependency id="46">    
     <end type="SOURCE" refId="3"/>    
     <end type="TARGET" refId="5"/>  
   </dependency>  
-  <dependency id="49">    
+  <dependency id="47">    
     <end type="SOURCE" refId="7"/>    
     <end type="TARGET" refId="5"/>  
   </dependency>  
-  <association id="50">    
+  <dependency id="48">    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="18"/>  
+  </dependency>  
+  <association id="49">    
     <end type="SOURCE" refId="3" navigable="false" variant="ASSOCIATION">      
-      <attribute id="51" name="instance"/>      
-      <multiplicity id="52" minimum="0" maximum="1"/>    
+      <attribute id="50" name="instance"/>      
+      <multiplicity id="51" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="3" navigable="true" variant="ASSOCIATION"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <dependency id="53">    
+  <dependency id="52">    
     <end type="SOURCE" refId="7"/>    
     <end type="TARGET" refId="1"/>  
   </dependency>  
-  <dependency id="54">    
+  <dependency id="53">    
     <end type="SOURCE" refId="7"/>    
     <end type="TARGET" refId="3"/>  
   </dependency>  
-  <dependency id="55">    
+  <dependency id="54">    
     <end type="SOURCE" refId="3"/>    
     <end type="TARGET" refId="10"/>  
   </dependency>  
-  <generalization id="56">    
+  <generalization id="55">    
     <end type="SOURCE" refId="12"/>    
     <end type="TARGET" refId="7"/>  
   </generalization>  
-  <association id="57">    
-    <end type="SOURCE" refId="1" navigable="false" variant="ASSOCIATION">      
-      <attribute id="58" name="subComponente"/>      
-      <multiplicity id="59" minimum="0" maximum="2147483647"/>    
-    </end>    
-    <end type="TARGET" refId="1" navigable="true" variant="ASSOCIATION"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <dependency id="60">    
+  <dependency id="56">    
+    <end type="SOURCE" refId="13"/>    
+    <end type="TARGET" refId="18"/>  
+  </dependency>  
+  <dependency id="57">    
     <end type="SOURCE" refId="6"/>    
     <end type="TARGET" refId="1"/>  
   </dependency>  
-  <dependency id="61">    
+  <dependency id="58">    
     <end type="SOURCE" refId="7"/>    
     <end type="TARGET" refId="2"/>  
   </dependency>  
