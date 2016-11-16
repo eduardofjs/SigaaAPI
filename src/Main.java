@@ -13,6 +13,7 @@ import br.ufrn.telefoneme.exception.IdException;
 import br.ufrn.telefoneme.exception.JsonStringInvalidaException;
 import br.ufrn.telefoneme.organize.GeradorDeTurmas;
 import br.ufrn.telefoneme.util.LocalDBCreator;
+import br.ufrn.telefoneme.windows.TelaCursos;
 
 public class Main {
 	private static void escrever(String arquivo,String texto) throws IOException{
@@ -30,7 +31,7 @@ public class Main {
 		}
 	}
 	public static void main(String[] args) throws IdException, JsonStringInvalidaException, ConnectionException, CargaHorariaDesconhecidaException, IOException {
-		//TelaCursos.main(args);
+		TelaCursos.main(args);
 		
 		//for(CursoDTO curso: FachadaDeDados.getInstance().getCursos()){
 			
@@ -48,6 +49,6 @@ public class Main {
 		//FachadaDeDados fac=FachadaDeDados.getInstance();
 		//fac.getMatrizes(idCurso)
 		//SugestaoDeHorario a =new SugestaoDeHorario(matriz, componentesDaGrade);
-		new GeradorDeTurmas().gerarSugestao(2);
+		//new GeradorDeTurmas().gerarSugestao(2);
 	}
 }

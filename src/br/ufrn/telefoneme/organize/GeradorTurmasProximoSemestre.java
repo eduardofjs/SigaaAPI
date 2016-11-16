@@ -71,8 +71,7 @@ public class GeradorTurmasProximoSemestre extends GeradorDeTurmas {
 				System.out.println(resultadoDeAlunos);
 				if(resultadoDeAlunos>=minTurma){
 					resultadoDeAlunos/=(tamanhoDeSala);
-					for(int i=0;i<resultadoDeAlunos;i++)
-						resultado.add(new Turma(componente));
+					resultado.add(new Turma(componente, resultadoDeAlunos + 1));
 				}
 			}
 		}
