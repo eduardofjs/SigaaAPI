@@ -41,7 +41,7 @@ public class Main {
 		//}
 		//new LocalDBCreator().createCursosDB();
 		//new LocalDBCreator().createEstatisticaDBByComponenteCod();
-		/FachadaDeDados.getInstance().getComponentes(connection, idCurriculo)
+		//FachadaDeDados.getInstance().getComponentes(connection, idCurriculo)
 		//System.out.println(new APIConnection().getUnidadesAcademicas("INSTITUTO METROPOLE DIGITAL"));
 		//System.out.println(new APIConnection().getAvaliacaoInstitucionalDocente(110005, 2015, 2));
 		//System.out.println(JsonToObject.toEstatisticasTurmasDTO(j).get(5));
