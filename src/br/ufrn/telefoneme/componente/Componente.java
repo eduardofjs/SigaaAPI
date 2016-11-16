@@ -21,7 +21,7 @@ public abstract class Componente {
 	private final List<Componente> prerequisitos;
 	private final List<Componente> correquisitos;
 	private final List<Componente> subComponente;
-	private final List<Horario> horarios;//TODO repensar: tentar criar uma classe Turma que tenha um componente e uma lista de hoarios
+	//TODO repensar: tentar criar uma classe Turma que tenha um componente e uma lista de hoarios
 	
 	private final List<EstatisticasTurmasDTO> estatisticas;
 	
@@ -35,7 +35,7 @@ public abstract class Componente {
 		this.correquisitos=new ArrayList<>();
 		this.prerequisitos=new ArrayList<>();
 		this.estatisticas=new ArrayList<>();
-		this.horarios=new ArrayList<>();
+		//this.horarios=new ArrayList<>();
 	}
 	//TODO Adicionar horarios em todos os componentes nos metodos filhos
 	public abstract boolean insereNaTabelaDeHorarios(Semestre semestre, List<Horario> horariosPrerequisitos);
@@ -64,9 +64,7 @@ public abstract class Componente {
 	public boolean isObrigatoria() {
 		return obrigatoria;
 	}
-	public List<Horario> getHorarios() {
-		return horarios;
-	}
+
 	public List<Componente> getPrerequisitos() {
 		return prerequisitos;
 	}
@@ -79,7 +77,10 @@ public abstract class Componente {
 				return true;
 				//TODO Realmente so por codigo da certo?
 			}
-		}return false;
+		}else if(o instanceof String){
+			return this.codigo.equals(o);
+		}
+		return false;
 	}
 	
 	public String toString(){

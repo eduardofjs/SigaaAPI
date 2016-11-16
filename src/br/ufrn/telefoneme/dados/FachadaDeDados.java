@@ -59,7 +59,8 @@ public class FachadaDeDados {
 		String text=connection.getEstatisticas(nivel, codigoComponente);
 		
 		ArrayList<EstatisticasTurmasDTO> estatisticas=new ArrayList<>();
-		estatisticas=JsonToObject.toEstatisticasTurmasDTO(text);
+		if(!text.equals(""))	//TODO Estatisticas ArchiveConnection
+			estatisticas=JsonToObject.toEstatisticasTurmasDTO(text);
 		
 		return estatisticas;
 	}

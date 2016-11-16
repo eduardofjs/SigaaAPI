@@ -5,6 +5,7 @@ import java.util.List;
 
 import br.ufrn.telefoneme.componente.Componente;
 import br.ufrn.telefoneme.componente.GraphComponenteFactory;
+import br.ufrn.telefoneme.componente.Turma;
 import br.ufrn.telefoneme.connection.APIConnection;
 import br.ufrn.telefoneme.connection.AbstractConnection;
 import br.ufrn.telefoneme.dados.FachadaDeDados;
@@ -15,18 +16,33 @@ import br.ufrn.telefoneme.exception.IdException;
 import br.ufrn.telefoneme.exception.JsonStringInvalidaException;
 
 public class SugestaoAbrirDisciplinas {
-	private AbstractConnection connection = new APIConnection();
-	
-	public void gerarSugestao(Integer periodoRecomendado) throws JsonStringInvalidaException, ConnectionException, IdException, CargaHorariaDesconhecidaException{
-		List<Componente> componentes = new GraphComponenteFactory().listBuilder(connection, (long) 102200805);
+	/**
+	 * 
+	 * @param connection
+	 * @param idCurriculo
+	 * @param componentes
+	 * @param periodoRecomendado 0 para os dois, 1 para periodos .1 e 2 para periodos .2
+	 * @return
+	 */
+	public List<Turma> gerarSugestao(List<Componente> componentes,Integer periodoRecomendado) throws JsonStringInvalidaException, ConnectionException, IdException, CargaHorariaDesconhecidaException{
+		List<Turma> resultado=new ArrayList<>();
 		List<EstatisticasTurmasDTO> estatisticasPreRequisito = new ArrayList<EstatisticasTurmasDTO>();
-		Integer periodo = periodoRecomendado % 2;
+		double provaveisReprovados=0;
+		double provaveisAprovadosPreRequisito=0;
+		
+
+		int periodo = periodoRecomendado % 2;
+		double totalPorcentagem;
+		int totalTurmas;
+		int totalAlunos;
+		int resultadoDeTurmas;
+		
 		for(Componente componente : componentes){
-			if(componente.getNivel() % 2 == periodo || periodo == 0){
-				System.out.print(componente.getNome() + " - ");
-				Double totalPorcentagem = 0.0;
-				Integer totalTurmas = 0;
-				Integer totalAlunos = 0;
+			totalPorcentagem = 0.0;
+			totalTurmas = 0;
+			totalAlunos = 0;
+			
+			if(componente.getNivel() % 2 == periodo||periodoRecomendado==0){
 				for(EstatisticasTurmasDTO estatistica : componente.getEstatisticas()){
 					if(estatistica.getMatriculados() > 0){
 						totalAlunos += estatistica.getMatriculados();
@@ -36,13 +52,14 @@ public class SugestaoAbrirDisciplinas {
 						totalTurmas++;
 					}
 				}
+				
 				totalPorcentagem = totalPorcentagem/totalTurmas;
-				Double provaveisReprovados = totalPorcentagem * totalAlunos;
-				System.out.println("QTD prevista de reprovados: " + provaveisReprovados);
+				provaveisReprovados = totalPorcentagem * totalAlunos;
+				
 				if(!componente.getPrerequisitos().isEmpty()){
-					for(Componente componentePreRequisito : componente.getPrerequisitos()){
-						System.out.print("	" + componentePreRequisito.getNome() + " - ");
-						estatisticasPreRequisito = FachadaDeDados.getInstance().getEstatisticas(connection,"GRADUACAO", componentePreRequisito.getCodigo());
+					for(Componente componentePreRequisito : componente.getPrerequisitos()){						
+						//TODO Não acho possivel, mas pode gerar exceção de ponteiro nulo, vide o metodo abaixo
+						estatisticasPreRequisito=getPrerequisito(componentes,componentePreRequisito).getEstatisticas();
 						Double totalPorcentagemPreRequisito = 0.0;
 						Integer totalTurmasPreRequisito = 0;
 						Integer totalAlunosPreRequisito = 0;
@@ -56,11 +73,30 @@ public class SugestaoAbrirDisciplinas {
 							}
 						}
 						totalPorcentagemPreRequisito = totalPorcentagemPreRequisito/totalTurmasPreRequisito;
-						Double provaveisAprovadosPreRequisito = totalPorcentagemPreRequisito * totalAlunosPreRequisito;
-						System.out.println("	QTD prevista de aprovados: " + provaveisAprovadosPreRequisito);
+						provaveisAprovadosPreRequisito = totalPorcentagemPreRequisito * totalAlunosPreRequisito;
+						
 					}
 				}
+				
+				resultadoDeTurmas=(int)provaveisAprovadosPreRequisito+(int)provaveisReprovados+2;
+				for(int i=0;i<resultadoDeTurmas;i++)
+					resultado.add(new Turma(componente));
 			}
 		}
+		return resultado;
+	}
+	/**
+	 * 
+	 * @param componentes Lista de componentes da grade
+	 * @param prerequisito Procurar esse prerequisito na grade
+	 * @return O prerequisito
+	 */
+	private Componente getPrerequisito(List<Componente> componentes, Componente prerequisito){
+		for(Componente componente:componentes){
+			if(componente.equals(prerequisito)){
+				return componente;
+			}
+		}
+		return null; 
 	}
 }
