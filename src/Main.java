@@ -11,7 +11,7 @@ import br.ufrn.telefoneme.exception.CargaHorariaDesconhecidaException;
 import br.ufrn.telefoneme.exception.ConnectionException;
 import br.ufrn.telefoneme.exception.IdException;
 import br.ufrn.telefoneme.exception.JsonStringInvalidaException;
-import br.ufrn.telefoneme.organize.SugestaoAbrirDisciplinas;
+import br.ufrn.telefoneme.organize.GeradorDeTurma;
 import br.ufrn.telefoneme.util.LocalDBCreator;
 
 public class Main {
@@ -48,6 +48,6 @@ public class Main {
 		//FachadaDeDados fac=FachadaDeDados.getInstance();
 		//fac.getMatrizes(idCurso)
 		//SugestaoDeHorario a =new SugestaoDeHorario(matriz, componentesDaGrade);
-		new SugestaoAbrirDisciplinas().gerarSugestao(2);
+		new GeradorDeTurma().gerarSugestao(2);
 	}
 }

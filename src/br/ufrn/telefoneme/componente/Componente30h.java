@@ -3,7 +3,7 @@ package br.ufrn.telefoneme.componente;
 import java.util.List;
 
 import br.ufrn.telefoneme.organize.Horario;
-import br.ufrn.telefoneme.organize.Semestre;
+import br.ufrn.telefoneme.organize.TabelaDeNivel;
 
 /**
  * Sempre procura pares de horarios do tipo <impar, par>, nunca o contrario
@@ -39,7 +39,7 @@ public class Componente30h extends Componente {
 	}*/
 
 	@Override
-	public boolean insereNaTabelaDeHorarios(Semestre semestre, List<Horario> horariosPrerequisitos) {
+	public boolean insereNaTabelaDeHorarios(TabelaDeNivel semestre, List<Horario> horariosPrerequisitos) {
 		
 		return false;
 	}

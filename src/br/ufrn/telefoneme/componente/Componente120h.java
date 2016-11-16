@@ -3,7 +3,7 @@ package br.ufrn.telefoneme.componente;
 import java.util.List;
 
 import br.ufrn.telefoneme.organize.Horario;
-import br.ufrn.telefoneme.organize.Semestre;
+import br.ufrn.telefoneme.organize.TabelaDeNivel;
 
 /**
  * 
@@ -17,7 +17,7 @@ public class Componente120h extends Componente {
 	}
 	
 	@Override
-	public boolean insereNaTabelaDeHorarios(Semestre semestre, List<Horario> horariosPrerequisitos) {
+	public boolean insereNaTabelaDeHorarios(TabelaDeNivel semestre, List<Horario> horariosPrerequisitos) {
 		// TODO Auto-generated method stub
 		return false;
 	}

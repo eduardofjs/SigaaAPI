@@ -9,7 +9,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import br.ufrn.telefoneme.componente.Componente;
-import br.ufrn.telefoneme.componente.GraphComponenteFactory;
+import br.ufrn.telefoneme.componente.GeradorDeComponentes;
 import br.ufrn.telefoneme.connection.APIConnection;
 import br.ufrn.telefoneme.dados.FachadaDeDados;
 import br.ufrn.telefoneme.dto.CursoDTO;
@@ -21,7 +21,7 @@ import br.ufrn.telefoneme.exception.JsonStringInvalidaException;
 
 public class GraphComponenteFactoryTest {
 
-	GraphComponenteFactory fac=new GraphComponenteFactory();
+	GeradorDeComponentes fac=new GeradorDeComponentes();
 	/*
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {

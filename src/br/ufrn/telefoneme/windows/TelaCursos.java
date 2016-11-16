@@ -19,6 +19,7 @@ import javax.swing.border.EmptyBorder;
 
 import br.ufrn.telefoneme.connection.APIConnection;
 import br.ufrn.telefoneme.connection.AbstractConnection;
+import br.ufrn.telefoneme.connection.ArchiveConnection;
 import br.ufrn.telefoneme.dados.FachadaDeDados;
 import br.ufrn.telefoneme.dto.CursoDTO;
 import br.ufrn.telefoneme.dto.MatrizCurricularDTO;
@@ -31,7 +32,7 @@ public class TelaCursos extends JFrame implements ActionListener {
 
 	private JPanel contentPane;
 	private HashMap<String, Component> componentMap;
-	private AbstractConnection connection = new APIConnection();
+	private AbstractConnection connection = new ArchiveConnection();//new APIConnection();
 	
 	/**
 	 * Launch the application.

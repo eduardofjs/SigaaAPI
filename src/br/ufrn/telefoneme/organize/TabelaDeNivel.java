@@ -11,19 +11,49 @@ import br.ufrn.telefoneme.auxiliarhorario.GeraTabelaDeTurno;
 import br.ufrn.telefoneme.auxiliarhorario.Semana;
 import br.ufrn.telefoneme.auxiliarhorario.Turno;
 import br.ufrn.telefoneme.componente.Componente;
+import br.ufrn.telefoneme.componente.Turma;
 /**
  * Dada uma tabela imaginaria, ela sera "lida" de cima pra baixo em cada dia e de cada horario
  * @author Marciel Leal
  * 
  */
-public class Semestre {
+public class TabelaDeNivel {
+	private final List<Turma> turmas;
 	private final Integer nivel;
+	
+	public TabelaDeNivel(Integer nivel, List<Turma> turmas){
+		this.nivel=nivel;
+		this.turmas=turmas;
+	}
+	public TabelaDeNivel(Integer nivel){
+		this.nivel=nivel;
+		this.turmas=new ArrayList<>();
+	}
+	
+	public List<Turma> getTurmas() {
+		return turmas;
+	}
+
+	public Integer getNivel() {
+		return nivel;
+	}
+	
+	public boolean equals(Object o){
+		if(o instanceof TabelaDeNivel){
+			return this.nivel.equals(((TabelaDeNivel)o).getNivel());
+		}else if(o instanceof Integer){
+			return this.nivel.equals(o);
+		}
+		return false;
+	}
+	
+	/*private final Integer nivel;
 	private final Map<Horario,Componente> tabela;
 	//TODO May be add/remove this fields after
 	//private final Semana semana;
 	//private final Turno
 	
-	public Semestre(Integer nivel, Turno turno,Semana semana) {
+	public TabelaDeNivel(Integer nivel, Turno turno,Semana semana) {
 		this.nivel=nivel;
 		this.tabela=new TreeMap<>();
 		
@@ -66,11 +96,13 @@ public class Semestre {
 		return tabela.keySet();
 	}
 	
+	
 	/**
 	 * Retorna uma lista de horarios de um determinado dia
 	 * @param dia
 	 * @return
 	 */
+	/*
 	public List<Horario> getHorariosPeloDia(Dia dia){
 		List<Horario> horariosPorDia=new ArrayList<>();
 		for(Horario hor:tabela.keySet()){
@@ -79,12 +111,14 @@ public class Semestre {
 		}
 		return horariosPorDia;
 	}
+	
 	/**
 	 * Retorna uma lista de horarios
 	 * @param horario
 	 * @return
 	 */
-	public List<Horario> getHorariosPeloHorario(/*Turno turno,*/ Integer horario){
+	/*
+	public List<Horario> getHorariosPeloHorario( Integer horario){
 		//TODO COlocar turno como parametro para matrizes com mais de um turno
 		List<Horario> horariosPorDia=new ArrayList<>();
 		for(Horario hor:tabela.keySet()){
@@ -96,6 +130,8 @@ public class Semestre {
 
 	public Map<Horario, Componente> getTabela() {
 		return tabela;
-	}
+	}*/
+
+
 
 }

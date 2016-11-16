@@ -4,7 +4,7 @@ import java.util.List;
 
 import br.ufrn.telefoneme.auxiliarhorario.Dia;
 import br.ufrn.telefoneme.organize.Horario;
-import br.ufrn.telefoneme.organize.Semestre;
+import br.ufrn.telefoneme.organize.TabelaDeNivel;
 
 /**
  * 
@@ -19,7 +19,7 @@ public class Componente180h extends Componente {
 
 
 	@Override
-	public boolean insereNaTabelaDeHorarios(Semestre semestre, List<Horario> horariosPrerequisitos) {
+	public boolean insereNaTabelaDeHorarios(TabelaDeNivel semestre, List<Horario> horariosPrerequisitos) {
 		Dia segunda = new Dia(2);
 		for(Horario horario : semestre.getHorarios()){
 			if(horario.getDia().equals(segunda)){

@@ -6,7 +6,7 @@ import java.util.List;
 import br.ufrn.telefoneme.dto.ComponenteCurricularDTO;
 import br.ufrn.telefoneme.dto.EstatisticasTurmasDTO;
 import br.ufrn.telefoneme.organize.Horario;
-import br.ufrn.telefoneme.organize.Semestre;
+import br.ufrn.telefoneme.organize.TabelaDeNivel;
 
 /**
  * 
@@ -38,7 +38,7 @@ public abstract class Componente {
 		//this.horarios=new ArrayList<>();
 	}
 	//TODO Adicionar horarios em todos os componentes nos metodos filhos
-	public abstract boolean insereNaTabelaDeHorarios(Semestre semestre, List<Horario> horariosPrerequisitos);
+	public abstract boolean insereNaTabelaDeHorarios(TabelaDeNivel semestre, List<Horario> horariosPrerequisitos);
 	
 	public List<EstatisticasTurmasDTO> getEstatisticas() {
 		return estatisticas;

@@ -4,29 +4,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.ufrn.telefoneme.componente.Componente;
-import br.ufrn.telefoneme.componente.GraphComponenteFactory;
 import br.ufrn.telefoneme.componente.Turma;
-import br.ufrn.telefoneme.connection.APIConnection;
-import br.ufrn.telefoneme.connection.AbstractConnection;
-import br.ufrn.telefoneme.dados.FachadaDeDados;
 import br.ufrn.telefoneme.dto.EstatisticasTurmasDTO;
-import br.ufrn.telefoneme.exception.CargaHorariaDesconhecidaException;
-import br.ufrn.telefoneme.exception.ConnectionException;
-import br.ufrn.telefoneme.exception.IdException;
-import br.ufrn.telefoneme.exception.JsonStringInvalidaException;
 
-public class SugestaoAbrirDisciplinas {
-	private final int tamanhoDeSala=40;
-	private final int minTurma=5;
-	/**
-	 * 
-	 * @param connection
-	 * @param idCurriculo
-	 * @param componentes
-	 * @param periodoRecomendado 0 para os dois, 1 para periodos .1 e 2 para periodos .2
-	 * @return
-	 */
-	public List<Turma> gerarSugestao(List<Componente> componentes,Integer periodoRecomendado) throws JsonStringInvalidaException, ConnectionException, IdException, CargaHorariaDesconhecidaException{
+public class GeradorTurmasProximoSemestre extends GeradorDeTurma {
+
+	public GeradorTurmasProximoSemestre() {
+		// TODO Auto-generated constructor stub
+	}
+
+	public List<Turma> gerar(List<Componente> componentes, Integer periodoRecomendado) {
 		List<Turma> resultado=new ArrayList<>();
 		List<EstatisticasTurmasDTO> estatisticasPreRequisito = new ArrayList<EstatisticasTurmasDTO>();
 		double provaveisReprovados=0;
@@ -89,7 +76,7 @@ public class SugestaoAbrirDisciplinas {
 				}
 			}
 		}
-		return resultado;
+			return resultado;
 	}
 	/**
 	 * 
@@ -105,4 +92,5 @@ public class SugestaoAbrirDisciplinas {
 		}
 		return null; 
 	}
+
 }
