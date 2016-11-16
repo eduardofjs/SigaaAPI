@@ -83,7 +83,7 @@ public class SugestaoAbrirDisciplinas {
 				resultadoDeAlunos=((int)provaveisAprovadosPreRequisito+(int)provaveisReprovados+2);
 				System.out.println(resultadoDeAlunos);
 				if(resultadoDeAlunos>=minTurma){
-					resultadoDeAlunos/=tamanhoDeSala;
+					resultadoDeAlunos/=(tamanhoDeSala);
 					for(int i=0;i<resultadoDeAlunos;i++)
 						resultado.add(new Turma(componente));
 				}
