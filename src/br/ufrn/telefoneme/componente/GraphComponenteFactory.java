@@ -32,9 +32,31 @@ public class GraphComponenteFactory {
 		List<Componente> lista=new ArrayList<>();
 		for(ComponenteCurricularDTO componente:FachadaDeDados.getInstance().getComponentes(connection, idCurriculo)){
 			if(componente.isObrigatoria())
-				lista.add(componenteBuilder(connection, idCurriculo,componente));
+				//If para problema dos subcomponentes
+				if(componente.getComponentesBloco().isEmpty())
+					lista.add(componenteBuilder(connection, idCurriculo,componente));
+				else {
+					for(ComponenteCurricularDTO subComponente: componente.getComponentesBloco()){
+						lista.add(componenteBuilder(connection, idCurriculo,subComponente));
+					}
+				}
 		}
 		return lista;
+	}
+
+	private Componente subComponenteBuilder(AbstractConnection connection, Long idCurriculo,
+			ComponenteCurricularDTO componente) throws JsonStringInvalidaException, ConnectionException, CargaHorariaDesconhecidaException{
+		
+		List<EstatisticasTurmasDTO> estatisticas=FachadaDeDados.getInstance().getEstatisticas(connection,"GRADUACAO", componente.getCodigo());
+		
+		Componente convComp=curricToComponente(componente);
+		
+		if(estatisticas!=null)
+			if(!estatisticas.isEmpty())
+				convComp.getEstatisticas().addAll(estatisticas);
+		
+		
+		return convComp;
 	}
 	
 	private Componente componenteBuilder(AbstractConnection connection, Long idCurriculo,
@@ -51,7 +73,10 @@ public class GraphComponenteFactory {
 		addPrerequisitos(convComp, prerequisitos);
 		addCorrequisitos(convComp, correquisitos);
 		addSubComponentes(convComp, subComponentes);
-		convComp.getEstatisticas().addAll(estatisticas);
+		
+		if(estatisticas!=null)
+			if(!estatisticas.isEmpty())
+				convComp.getEstatisticas().addAll(estatisticas);
 		
 		return convComp;
 	}

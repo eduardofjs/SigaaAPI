@@ -35,12 +35,13 @@ public class GraphComponenteFactoryTest {
 	@Test
 	public void test() throws IdException{
 		try {
-			for(Componente comp: fac.listBuilder(new APIConnection(), new Long(105755388)))
+			for(Componente comp: fac.listBuilder(new APIConnection(), new Long(105755388))){
 				System.out.println(comp.getNome()+
 						"\n->"+comp.getPrerequisitos()+
 						"\n->"+comp.getCorrequisitos()+
-						"\n->"+comp.getSubComponente()+
-						"\n->"+comp.getestatisticas()+"\n\n\n");
+						//"\n->"+comp.getSubComponente()+
+						"\n->"+comp.getEstatisticas()+"\n\n\n");
+			}
 		} catch (JsonStringInvalidaException | ConnectionException | CargaHorariaDesconhecidaException e) {
 			e.printStackTrace();
 		}
