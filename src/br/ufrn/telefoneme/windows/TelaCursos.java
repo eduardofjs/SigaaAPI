@@ -32,7 +32,7 @@ public class TelaCursos extends JFrame implements ActionListener {
 
 	private JPanel contentPane;
 	private HashMap<String, Component> componentMap;
-	private AbstractConnection connection = new ArchiveConnection();//new APIConnection();
+	private AbstractConnection connection = new APIConnection();//new APIConnection();
 	
 	/**
 	 * Launch the application.

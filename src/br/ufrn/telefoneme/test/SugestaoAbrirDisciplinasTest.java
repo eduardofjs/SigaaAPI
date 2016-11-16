@@ -7,6 +7,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import br.ufrn.telefoneme.componente.GeradorDeTodosComponentes;
+import br.ufrn.telefoneme.connection.APIConnection;
 import br.ufrn.telefoneme.connection.AbstractConnection;
 import br.ufrn.telefoneme.connection.ArchiveConnection;
 import br.ufrn.telefoneme.exception.CargaHorariaDesconhecidaException;
@@ -18,7 +19,7 @@ import br.ufrn.telefoneme.organize.GeradorTurmasProximoSemestre;
 
 public class SugestaoAbrirDisciplinasTest {
 	GeradorDeTurmas sugestao=new GeradorTurmasProximoSemestre();
-	AbstractConnection connection=new ArchiveConnection();
+	AbstractConnection connection=new APIConnection();
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
 	}
