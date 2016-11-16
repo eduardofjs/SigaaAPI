@@ -13,11 +13,11 @@ import br.ufrn.telefoneme.exception.CargaHorariaDesconhecidaException;
 import br.ufrn.telefoneme.exception.ConnectionException;
 import br.ufrn.telefoneme.exception.IdException;
 import br.ufrn.telefoneme.exception.JsonStringInvalidaException;
-import br.ufrn.telefoneme.organize.GeradorDeTurma;
+import br.ufrn.telefoneme.organize.GeradorDeTurmas;
 import br.ufrn.telefoneme.organize.GeradorTurmasProximoSemestre;
 
 public class SugestaoAbrirDisciplinasTest {
-	GeradorDeTurma sugestao=new GeradorTurmasProximoSemestre();
+	GeradorDeTurmas sugestao=new GeradorTurmasProximoSemestre();
 	AbstractConnection connection=new ArchiveConnection();
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {

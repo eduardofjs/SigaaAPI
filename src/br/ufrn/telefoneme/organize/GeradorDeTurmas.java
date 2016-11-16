@@ -15,7 +15,7 @@ import br.ufrn.telefoneme.exception.ConnectionException;
 import br.ufrn.telefoneme.exception.IdException;
 import br.ufrn.telefoneme.exception.JsonStringInvalidaException;
 
-public abstract class GeradorDeTurma {
+public abstract class GeradorDeTurmas {
 	protected final int tamanhoDeSala=40;
 	protected final int minTurma=5;
 	/**
