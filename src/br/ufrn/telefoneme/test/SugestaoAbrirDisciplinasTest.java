@@ -39,9 +39,7 @@ public class SugestaoAbrirDisciplinasTest {
 
 	@Test
 	public void test() throws JsonStringInvalidaException, ConnectionException, IdException, CargaHorariaDesconhecidaException {
-					
 		System.out.println(sugestao.gerarSugestao(new GraphComponenteFactory().listBuilder(connection, new Long(105755388)), 2));
-		
 	}
 
 }

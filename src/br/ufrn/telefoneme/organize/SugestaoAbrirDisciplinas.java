@@ -16,6 +16,8 @@ import br.ufrn.telefoneme.exception.IdException;
 import br.ufrn.telefoneme.exception.JsonStringInvalidaException;
 
 public class SugestaoAbrirDisciplinas {
+	private final int tamanhoDeSala=40;
+	private final int minTurma=5;
 	/**
 	 * 
 	 * @param connection
@@ -35,7 +37,7 @@ public class SugestaoAbrirDisciplinas {
 		double totalPorcentagem;
 		int totalTurmas;
 		int totalAlunos;
-		int resultadoDeTurmas;
+		int resultadoDeAlunos;
 		
 		for(Componente componente : componentes){
 			totalPorcentagem = 0.0;
@@ -78,9 +80,13 @@ public class SugestaoAbrirDisciplinas {
 					}
 				}
 				
-				resultadoDeTurmas=(int)provaveisAprovadosPreRequisito+(int)provaveisReprovados+2;
-				for(int i=0;i<resultadoDeTurmas;i++)
-					resultado.add(new Turma(componente));
+				resultadoDeAlunos=((int)provaveisAprovadosPreRequisito+(int)provaveisReprovados+2);
+				System.out.println(resultadoDeAlunos);
+				if(resultadoDeAlunos>=minTurma){
+					resultadoDeAlunos/=tamanhoDeSala;
+					for(int i=0;i<resultadoDeAlunos;i++)
+						resultado.add(new Turma(componente));
+				}
 			}
 		}
 		return resultado;
