@@ -7,10 +7,10 @@ import br.ufrn.telefoneme.componente.Componente;
 import br.ufrn.telefoneme.componente.Turma;
 import br.ufrn.telefoneme.dto.EstatisticasTurmasDTO;
 
-public class GeradorTurmasProximoSemestre extends GeradorDeTurmas {
+public class GeradorTurmasProximoSemestre extends AnalisadorDeTurmas {
 
 	public GeradorTurmasProximoSemestre() {
-		// TODO Auto-generated constructor stub
+		//Empty
 	}
 
 	public List<Turma> gerar(List<Componente> componentes, Integer periodoRecomendado) {

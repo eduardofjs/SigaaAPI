@@ -2,7 +2,6 @@ package br.ufrn.telefoneme.componente;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.TreeMap;
 
 import br.ufrn.telefoneme.connection.AbstractConnection;
 import br.ufrn.telefoneme.conversion.StringToComponente;
@@ -13,26 +12,35 @@ import br.ufrn.telefoneme.exception.CargaHorariaDesconhecidaException;
 import br.ufrn.telefoneme.exception.ConnectionException;
 import br.ufrn.telefoneme.exception.IdException;
 import br.ufrn.telefoneme.exception.JsonStringInvalidaException;
-import br.ufrn.telefoneme.util.Graph;
 
 /**
  * 
  * @author Marciel Leal
  * @category Template
  */
-public abstract class GeradorDeComponentes {
+public class GeradorDeComponentes {
 	
 	public GeradorDeComponentes() {
 		//Empty
 	}
-	protected abstract boolean condition(ComponenteCurricularDTO componente);
-	
-	public List<Componente> listBuilder(AbstractConnection connection, Long idCurriculo) 
+	//protected abstract boolean condition(ComponenteCurricularDTO componente);
+	/**
+	 * Gera a lista de componentes considerando subcomponentes como componentes
+	 * @param connection
+	 * @param idCurriculo
+	 * @param semestre
+	 * @return
+	 * @throws JsonStringInvalidaException
+	 * @throws ConnectionException
+	 * @throws IdException
+	 * @throws CargaHorariaDesconhecidaException
+	 */
+	public List<Componente> listComponenteBuilder(AbstractConnection connection, Long idCurriculo,Integer semestre) 
 			throws JsonStringInvalidaException, ConnectionException, IdException, CargaHorariaDesconhecidaException{
 		
 		List<Componente> lista=new ArrayList<>();
 		for(ComponenteCurricularDTO componente:FachadaDeDados.getInstance().getComponentes(connection, idCurriculo)){
-			if(componente.isObrigatoria()&&condition(componente)){
+			if(componente.isObrigatoria()&&componente.getSemetreOferta()==semestre){
 				//If para problema dos subcomponentes
 				if(componente.getComponentesBloco().isEmpty())
 					lista.add(componenteBuilder(connection, idCurriculo,componente));
