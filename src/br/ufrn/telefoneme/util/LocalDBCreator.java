@@ -78,8 +78,15 @@ public class LocalDBCreator {
 				//if(matriz.getAtivo()){
 					//System.out.println(matriz.getNome());
 					for(ComponenteCurricularDTO componente:FachadaDeDados.getInstance().getComponentes(new APIConnection(),new Long(105755388))){
-						String jsonEstatistica=new APIConnection().getEstatisticas("GRADUACAO", componente.getCodigo());
-						escrever(caminho.getPath()+"/"+componente.getCodigo(),jsonEstatistica);
+						if(componente.getComponentesBloco().isEmpty()){
+							String jsonEstatistica=new APIConnection().getEstatisticas("GRADUACAO", componente.getCodigo());
+							escrever(caminho.getPath()+"/"+componente.getCodigo(),jsonEstatistica);
+						}else{
+							for(ComponenteCurricularDTO comp:componente.getComponentesBloco()){
+								String jsonEstatistica=new APIConnection().getEstatisticas("GRADUACAO", comp.getCodigo());
+								escrever(caminho.getPath()+"/"+componente.getCodigo(),jsonEstatistica);
+							}
+						}
 					}
 				//}
 			//}

@@ -40,7 +40,7 @@ public abstract class GeradorDeComponentes {
 		
 		List<Componente> lista=new ArrayList<>();
 		for(ComponenteCurricularDTO componente:FachadaDeDados.getInstance().getComponentes(connection, idCurriculo)){
-			if(componente.isObrigatoria()&&condicao.compare(componente)){
+			if(condicao.compare(componente)){
 				//If para problema dos subcomponentes
 				if(componente.getComponentesBloco().isEmpty())
 					lista.add(componenteBuilder(connection, idCurriculo,componente));
