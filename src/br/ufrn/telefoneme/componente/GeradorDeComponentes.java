@@ -35,9 +35,24 @@ public abstract class GeradorDeComponentes {
 	 * @throws IdException
 	 * @throws CargaHorariaDesconhecidaException
 	 */
-	public abstract List<Componente> listComponenteBuilder(AbstractConnection connection, Long idCurriculo,Integer semestre) 
-			throws JsonStringInvalidaException, ConnectionException, IdException, CargaHorariaDesconhecidaException;
-	
+	public List<Componente> listComponenteBuilder(AbstractConnection connection, Long idCurriculo,Condition condicao) 
+			throws JsonStringInvalidaException, ConnectionException, IdException, CargaHorariaDesconhecidaException{
+		
+		List<Componente> lista=new ArrayList<>();
+		for(ComponenteCurricularDTO componente:FachadaDeDados.getInstance().getComponentes(connection, idCurriculo)){
+			if(componente.isObrigatoria()&&condicao.compare(componente)){
+				//If para problema dos subcomponentes
+				if(componente.getComponentesBloco().isEmpty())
+					lista.add(componenteBuilder(connection, idCurriculo,componente));
+				else {
+					for(ComponenteCurricularDTO subComponente: componente.getComponentesBloco()){
+						lista.add(componenteBuilder(connection, idCurriculo,subComponente));
+					}
+				}
+			}
+		}
+		return lista;
+	}
 	protected Componente componenteBuilder(AbstractConnection connection, Long idCurriculo,
 			ComponenteCurricularDTO componente)
 			throws CargaHorariaDesconhecidaException, IdException, JsonStringInvalidaException, ConnectionException {
