@@ -78,6 +78,7 @@ public class LocalDBCreator {
 				//if(matriz.getAtivo()){
 					//System.out.println(matriz.getNome());
 					for(ComponenteCurricularDTO componente:FachadaDeDados.getInstance().getComponentes(new APIConnection(),new Long(105755388))){
+						if(componente.isObrigatoria())
 						if(componente.getComponentesBloco().isEmpty()){
 							String jsonEstatistica=new APIConnection().getEstatisticas("GRADUACAO", componente.getCodigo());
 							escrever(caminho.getPath()+"/"+componente.getCodigo(),jsonEstatistica);
