@@ -18,7 +18,7 @@ import br.ufrn.telefoneme.exception.JsonStringInvalidaException;
  * @author Marciel Leal
  * @category Template
  */
-public class GeradorDeComponentes {
+public abstract class GeradorDeComponentes {
 	
 	public GeradorDeComponentes() {
 		//Empty
@@ -35,26 +35,10 @@ public class GeradorDeComponentes {
 	 * @throws IdException
 	 * @throws CargaHorariaDesconhecidaException
 	 */
-	public List<Componente> listComponenteBuilder(AbstractConnection connection, Long idCurriculo,Integer semestre) 
-			throws JsonStringInvalidaException, ConnectionException, IdException, CargaHorariaDesconhecidaException{
-		
-		List<Componente> lista=new ArrayList<>();
-		for(ComponenteCurricularDTO componente:FachadaDeDados.getInstance().getComponentes(connection, idCurriculo)){
-			if(componente.isObrigatoria()&&componente.getSemetreOferta()==semestre){
-				//If para problema dos subcomponentes
-				if(componente.getComponentesBloco().isEmpty())
-					lista.add(componenteBuilder(connection, idCurriculo,componente));
-				else {
-					for(ComponenteCurricularDTO subComponente: componente.getComponentesBloco()){
-						lista.add(componenteBuilder(connection, idCurriculo,subComponente));
-					}
-				}
-			}
-		}
-		return lista;
-	}
+	public abstract List<Componente> listComponenteBuilder(AbstractConnection connection, Long idCurriculo,Integer semestre) 
+			throws JsonStringInvalidaException, ConnectionException, IdException, CargaHorariaDesconhecidaException;
 	
-	private Componente componenteBuilder(AbstractConnection connection, Long idCurriculo,
+	protected Componente componenteBuilder(AbstractConnection connection, Long idCurriculo,
 			ComponenteCurricularDTO componente)
 			throws CargaHorariaDesconhecidaException, IdException, JsonStringInvalidaException, ConnectionException {
 		
@@ -76,7 +60,7 @@ public class GeradorDeComponentes {
 		return convComp;
 	}
 	
-	private void addPrerequisitos(Componente componente, List<ComponenteCurricularDTO> prerequisitos) throws CargaHorariaDesconhecidaException{
+	protected void addPrerequisitos(Componente componente, List<ComponenteCurricularDTO> prerequisitos) throws CargaHorariaDesconhecidaException{
 		if(prerequisitos!=null){
 			if(!prerequisitos.isEmpty()){
 				List<Componente> prerequisitosConvertidos=new ArrayList<>();
@@ -88,7 +72,7 @@ public class GeradorDeComponentes {
 		}
 	}
 	
-	private void addCorrequisitos(Componente componente, List<ComponenteCurricularDTO> correquisitos) throws CargaHorariaDesconhecidaException{
+	protected void addCorrequisitos(Componente componente, List<ComponenteCurricularDTO> correquisitos) throws CargaHorariaDesconhecidaException{
 		if(correquisitos!=null){
 			if(!correquisitos.isEmpty()){
 				List<Componente> correquisitosConvertidos=new ArrayList<>();
@@ -100,7 +84,7 @@ public class GeradorDeComponentes {
 		}
 	}
 	
-	private void addSubComponentes(Componente componente, List<ComponenteCurricularDTO> subComponentes) throws CargaHorariaDesconhecidaException{
+	protected void addSubComponentes(Componente componente, List<ComponenteCurricularDTO> subComponentes) throws CargaHorariaDesconhecidaException{
 		if(subComponentes!=null){
 			if(!subComponentes.isEmpty()){
 				List<Componente> subComponentesConvertidos=new ArrayList<>();
@@ -113,7 +97,7 @@ public class GeradorDeComponentes {
 	}
 	
 	
-	private Componente curricToComponente(ComponenteCurricularDTO componente) throws CargaHorariaDesconhecidaException{
+	protected Componente curricToComponente(ComponenteCurricularDTO componente) throws CargaHorariaDesconhecidaException{
 		if (componente != null) {
 			switch (componente.getCargaHorariaTotal()) {
 			case 30:
