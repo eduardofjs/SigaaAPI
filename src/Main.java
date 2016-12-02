@@ -31,8 +31,8 @@ public class Main {
 		}
 	}
 	public static void main(String[] args) throws IdException, JsonStringInvalidaException, ConnectionException, CargaHorariaDesconhecidaException, IOException {
-		TelaCursos.main(args);
-		
+		//TelaCursos.main(args);
+		new LocalDBCreator().createEstatisticaDBByComponenteCod();
 		//for(CursoDTO curso: FachadaDeDados.getInstance().getCursos()){
 			
 			//	System.out.println(curso.getCurso()+ "   "+curso.getIdCurso());
